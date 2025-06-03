@@ -1,10 +1,9 @@
 import os
 import feedparser
-from openai import OpenAI
-from datetime import datetime
 import re
+from datetime import datetime
+from openai import OpenAI
 import traceback
-from urllib.parse import urlparse
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -23,15 +22,14 @@ topics = {
     }
 }
 
+def clean_html(text):
+    return re.sub('<[^<]+?>', '', text)
+
 def summarize(text):
-    prompt = (
-        "Summarize this article in 2-3 sentences for a cybersecurity-focused audience:\n\n"
-        f"{text}\n\nSummary:"
-    )
     try:
         response = client.chat.completions.create(
             model="gpt-4",
-            messages=[{"role": "user", "content": prompt}],
+            messages=[{"role": "user", "content": f"Summarize this for a cybersecurity-focused audience:\n\n{text}"}],
             max_tokens=200,
             temperature=0.5
         )
@@ -39,58 +37,43 @@ def summarize(text):
     except Exception as e:
         return f"[Error: {e}]"
 
-def clean_html(text):
-    return re.sub('<[^<]+?>', '', text)
+def format_table(rows):
+    table = "| Source | Title | Summary |\n|--------|-------|---------|\n"
+    for row in rows:
+        table += f"| {row['source']} | [{row['title']}]({row['link']}) | {row['summary']} |\n"
+    return table
 
-def extract_source_and_date(entry):
-    parsed_url = urlparse(entry.link)
-    source = parsed_url.netloc.replace("www.", "")
-    pub_date = entry.get("published", "")[:16]
-    return f"{source} {pub_date.strip()}"
-
-def fetch_and_summarize():
+def fetch_news():
     os.makedirs("news", exist_ok=True)
-    output = [f"_Last updated: {datetime.utcnow().isoformat()} UTC_\n"]
-    output.append("| Source | Title | Summary |")
-    output.append("|--------|-------|---------|")
+    news_rows = []
 
-    for data in topics.values():
+    for title, data in topics.items():
         feed = feedparser.parse(data['url'])
-        entries = feed.entries[:5]
-
-        for entry in entries:
-            source_date = extract_source_and_date(entry)
-            summary_text = clean_html(entry.get('summary', '')) or entry.get('title', '')
+        for entry in feed.entries[:5]:
+            summary_text = clean_html(entry.get('summary', entry.title))
             summarized = summarize(summary_text)
-            title = entry.title.strip().replace("|", "-")
-            link = entry.link.strip()
-            output.append(f"| {source_date} | [{title}]({link}) | {summarized} |")
+            news_rows.append({
+                'source': entry.get('source', {}).get('title', 'Unknown'),
+                'title': entry.title,
+                'link': entry.link,
+                'summary': summarized
+            })
 
-    markdown = "\n".join(output)
-    
-    # Save to dedicated file
-    with open("news/paloalto_news_section.md", "w", encoding="utf-8") as f:
-        f.write(markdown)
+    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+    table_md = f"# 📰 Palo Alto Networks News Summary\n\n_Last updated: {timestamp}_\n\n"
+    table_md += format_table(news_rows)
 
-    # Replace section in README
-    with open("README.md", "r", encoding="utf-8") as f:
-        readme = f.read()
-
-    new_readme = re.sub(
-        r"(<!-- NEWS_START -->)(.*?)(<!-- NEWS_END -->)",
-        f"\\1\n\n{markdown}\n\n\\3",
-        readme,
-        flags=re.DOTALL
-    )
+    with open("news/paloalto_news.md", "w", encoding="utf-8") as f:
+        f.write(table_md)
 
     with open("README.md", "w", encoding="utf-8") as f:
-        f.write(new_readme)
+        f.write(table_md)
 
 if __name__ == "__main__":
     try:
-        fetch_and_summarize()
+        fetch_news()
     except Exception as e:
-        print("❌ Script failed:")
+        print("❌ Script failed with an error:")
         print(e)
         traceback.print_exc()
         exit(2)
