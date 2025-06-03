@@ -3,19 +3,20 @@ import feedparser
 import openai
 from datetime import datetime
 import re
+import traceback
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 topics = {
-    'Palo Alto Networks News': {
+    'Palo Alto Networks': {
         'url': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
         'desc': 'Latest news and updates about Palo Alto Networks cybersecurity solutions.'
     },
-    'Palo Alto Firewalls': {
+    'Palo Alto Networks Firewalls': {
         'url': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
         'desc': 'News about Palo Alto Networks firewall products and innovations.'
     },
-    'Palo Alto Security Research': {
+    'Palo Alto Networks Research': {
         'url': 'https://unit42.paloaltonetworks.com/feed/',
         'desc': 'Threat intelligence and research updates from Palo Alto Networks Unit 42.'
     }
@@ -35,7 +36,7 @@ def summarize(text):
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        return f"[Error: {e}]"
+        return f"[Error in summarization: {e}]"
 
 def clean_html(text):
     return re.sub('<[^<]+?>', '', text)
@@ -62,4 +63,10 @@ def fetch_and_summarize():
         f.write("\n".join(output))
 
 if __name__ == "__main__":
-    fetch_and_summarize()
+    try:
+        fetch_and_summarize()
+    except Exception as e:
+        print("❌ Script failed with an error:")
+        print(e)
+        traceback.print_exc()
+        exit(2)
