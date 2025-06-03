@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: List repo files for debugging
+      - name: List .github directory files for debugging
         run: ls -R .github
 
       - name: Set up Python
