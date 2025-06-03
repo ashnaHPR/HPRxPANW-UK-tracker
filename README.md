@@ -4,8 +4,6 @@ _Last updated: 2025-06-03 18:00 UTC_
 
 | Source | Title | Summary |
 |--------|-------|---------|
-| SiliconANGLE | [Illumio and Nvidia team up to strengthen zero-trust security](https://example.com) | Illumio and Nvidia are collaborating on a zero-trust framework to protect critical infrastructure. |
-| Cybersecurity Dive | [Trump’s CISA budget lays out deep job cuts](https://example.com) | The proposed CISA budget includes major staff reductions that may affect national cyber readiness. |
 
 ---
 
