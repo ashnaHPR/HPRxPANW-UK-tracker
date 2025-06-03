@@ -2,8 +2,8 @@ import os
 import feedparser
 import openai
 from datetime import datetime
+import re
 
-# Load API key from environment
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 topics = {
@@ -23,22 +23,21 @@ topics = {
 
 def summarize(text):
     prompt = (
-        "Summarize the following news article in 2-3 sentences:\n\n"
+        "Summarize this article in 2-3 sentences for a cybersecurity-focused audience:\n\n"
         f"{text}\n\nSummary:"
     )
     try:
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=150,
+            max_tokens=200,
             temperature=0.5
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        return f"[Error summarizing: {e}]"
+        return f"[Error: {e}]"
 
 def clean_html(text):
-    import re
     return re.sub('<[^<]+?>', '', text)
 
 def fetch_and_summarize():
@@ -55,8 +54,8 @@ def fetch_and_summarize():
             continue
 
         for entry in entries:
-            summary = clean_html(entry.get('summary', ''))
-            summarized = summarize(summary or entry.get('title', ''))
+            summary_text = clean_html(entry.get('summary', '')) or entry.get('title', '')
+            summarized = summarize(summary_text)
             output.append(f"- **[{entry.title}]({entry.link})**\n  - {summarized}\n")
 
     with open("news/paloalto_news.md", "w", encoding="utf-8") as f:
