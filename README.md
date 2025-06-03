@@ -1,50 +1,40 @@
 # Palo Alto Networks Cybersecurity News Tracker
 
-Welcome to the Palo Alto Networks Cybersecurity News Tracker!  
-This repository automatically fetches, summarizes, and updates the latest news about Palo Alto Networks and their cybersecurity innovations every 6 hours using OpenAI GPT-4.
+This README is updated every 6 hours with the latest Palo Alto Networks news summarized by GPT-4.
 
----
+# 📰 Palo Alto Networks News Summary
 
-_Last updated: Automatically updated every 6 hours via GitHub Actions_
-
----
-
-## Latest Palo Alto Networks News Summary
+_Last updated: 2025-06-03 13:25:20 UTC_
 
 | Source | Title | Summary |
-|--------|-------|---------|
-| Palo Alto Networks Jun 02, 2025 | [Palo Alto Networks Expands Security Platform](https://example.com/article1) | Palo Alto Networks announced the expansion of its security platform to include new AI-powered threat detection capabilities, improving real-time response for enterprises. |
-| Palo Alto Networks Firewalls Jun 02, 2025 | [New Firewall Innovations Released](https://example.com/article2) | The latest Palo Alto firewall models introduce enhanced throughput and integrated cloud security features, providing robust protection against evolving cyber threats. |
-| Palo Alto Networks Research Jun 01, 2025 | [Unit 42 Releases Threat Intelligence Report](https://example.com/article3) | Palo Alto Networks Unit 42 published an extensive threat intelligence report highlighting emerging ransomware tactics and mitigation strategies. |
+|---|---|---|
 
----
+| Palo Alto Networks Jun 03, 2025 | [Goldman Sachs maintains Buy rating on Palo Alto Networks stock - Investing.com](https://news.google.com/rss/articles/CBMivwFBVV95cUxPZWdNZGVvOUlQZUVVYXBLZWNadzliUnYxN2F3U1Z6blpHVXJzRkRoMTczSG4xNjNiX19OTzJLMFBnSVFZc3BoM2xVbTdUSkF1XzhoWEpSQVdieFRfWE1lN0dHaUNqMlB1QlZFY3lScmc5QVNvaHVqZnlGMDA5aHp5Q1E2R3VucDZyUHdhVFZ3WjlTOGdpVGZNOUdzRE5rMjc3WVZUdWxZMjMtUGY2V3d2aHp6TzZaOFdvVFFPWXJGWQ?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-## About this Project
+| Palo Alto Networks Jun 02, 2025 | [Here's How Much $100 Invested In Palo Alto Networks 10 Years Ago Would Be Worth Today - Benzinga](https://news.google.com/rss/articles/CBMi0wFBVV95cUxPR21obDFaU2pQQmdhdlpaVHpDTVhiMEF3S0d3TjBBczQtWXVwRXp2N2xDR3BNWlcwWkVhRjVtdl80THkzYVhza3ZqdGFBbjBTMXlMaVBJNmpSTldpNjZCWUkwMlNBUHcwaFNVNDhqZDJLZS1xaklfR2hYU0NNU053MlVvbVU3RktGaDZ4bTdxM2FwTFBJaWtYX25ZbG10Q083SERxelNidzFIamVMRG5wUnNkSndack81amJOQXhoOXhWdDlrdkVad0dIeU84TnBEd21n?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-This repository uses GitHub Actions to:
+| Palo Alto Networks Jun 03, 2025 | [President Capital Adjusts Price Target on Palo Alto Networks to $205 From $222, Maintains Neutral Rating - marketscreener.com](https://news.google.com/rss/articles/CBMilgJBVV95cUxPc3pEakN4bWhTX0VMVEhLdlZHeVhmaXpGZWhyYmNQNHZ5cDVpaEdITE9DeG1pSWJDQ0dXZHJiMjdqRnhOdkJYQzJoYm0xMzlVTFFvTDRQYXE4ZTdCakRTekRQQTlLYlRibV9KeGN3anozVWFsNVFMMmF5SU9MZUhHMFR6YjRldGtSVEl4WHVTd0VuY3ZmVEZOb0tjWTJLbW0tTG5INExKd1R0eWFkSW5XZ29Eck5HYlRQOTBKemE2UDJkNjNrbEZRdEdYZ25yb3VMYWQxcDlIdjF1bDFWYWdaN2otZHZOWmlfRlJQNmw1azJHQTNrNVZSTlVzZ0x4UFpXRXNMeHFmaldZMDAxbGwxLUlEQ3lpUQ?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-- Fetch the latest RSS news feeds relevant to Palo Alto Networks.
-- Summarize articles using OpenAI GPT-4 to provide concise, cybersecurity-focused insights.
-- Update the news summary as a markdown table both in this README.md and in a dedicated markdown file (`news/paloalto_news.md`).
-- Run this process automatically every 6 hours to keep you up-to-date without manual effort.
+| Palo Alto Networks Jun 03, 2025 | [Lost in Resolution: Azure OpenAI's DNS Resolution Issue - Unit 42](https://news.google.com/rss/articles/CBMickFVX3lxTE9oelRaejYyWnFzSEZWRVd1UVphV08yYUFRcFJsSUpHTXllcUpaYWdBSGNEWm9aUXJ4VDRydWlHcVhzSHlyNUFrV1paRGVXMG1yMW4yMTNUT1oweEF0cUVLckRMeVZwdmpSckJ3WlVxNFdxQQ?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-## How to Use
+| Palo Alto Networks Jun 02, 2025 | [Palo Alto Networks, Inc.'s (NASDAQ:PANW) Stock Has Fared Decently: Is the Market Following Strong Financials? - Yahoo Finance](https://news.google.com/rss/articles/CBMigAFBVV95cUxOLWgwTzEya2UzZFBVRjE3VHdwT2V3dE1BUFpJZEJYeEpSeUM4Y3phLTlqVHJYMFhyWktWRzJxX1VxeU1fak5HbGY5SV95ckFpTXEwbjcyYzNIQ3k0TDJDOWtWbExIbVMtdkZlMEotQU4temJkenFHb1ppQng3T0VqYg?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-Feel free to fork and customize this project for your own cybersecurity news tracking needs. Update the RSS feeds in `.github/scripts/scrape_rss_news.py` to add new sources or topics.
+| Palo Alto Networks Firewalls Feb 13, 2025 | [Mysterious Palo Alto firewall reboots? You're not alone - theregister.com](https://news.google.com/rss/articles/CBMiakFVX3lxTFBrNy0wNWlmVnR1MWZuZFBzWE03ZHBLUy1oLUNTV0Nwang3ZFhVVEk5dmJWWWllaXZ4dDZrMFFweDlJbVJWV29nV0FKN1VJbFdIT05TOEd4ODYtMk5VUkRnaVRJRTBKSmRGeEHSAW9BVV95cUxNUXVXQmJTNTJIRXJlS1RydHg2ZXlWd0tiRmwyaHgwZkUwUlRIMkxWMUN3c3h3MW1ja29ySGQ2Q1haR2V4c1p4S3pOZTNrWGNPMERSbXZLTUs0TUhuT1VmSkZocVpoR29jS2x2cENxLU0?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
----
+| Palo Alto Networks Firewalls Apr 01, 2025 | [Palo Alto firewall hack: network security policy management is no longer optional - TechRadar](https://news.google.com/rss/articles/CBMirwFBVV95cUxPRFpwZW9hMS1wZy1OVVFBRWREdzJ2ME9GUzZNSnFpel80SEtlNXVRNkJKTGZXeXBjYmF4NnpKYmVhdUlTSTJ2SDlEWUJGb3Y3aU4xdFVjcTNMMEg3T3Jsci0wTFZOdHJsTV9NNFZzeFNCY0F6SDJaUmp0anJ4THFWSE9KdDVtSml3YlJDb0RvcXZGTGxfQU8zZ0dQazBIVkZ0dFN3WGxZOWpxenZSU0VJ?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-## License
+| Palo Alto Networks Firewalls Nov 22, 2024 | [Experts warn of Palo Alto firewall exploitation after 2,000 compromises spotted - The Record from Recorded Future News](https://news.google.com/rss/articles/CBMijgFBVV95cUxPaWs5ZTJQNUk3ZUw4WjdCRHNGMzFTdm53X2x1MzAyN2FLdVZMblc3VmFQcXNMT3FGSElkMXo2Y2MxR3NUS2pYaUs4QUJRVmIxUlJSRndobndsak5oM21KTHkzZ2JSbnhoYXM3cmxDNkRBMmQ3bkJscGRGTnJEMkdENFpEQk9xQzB3MTNxOVd3?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-This project is open source under the [MIT License](LICENSE).
+| Palo Alto Networks Firewalls Feb 14, 2025 | [Hackers Exploit Palo Alto Firewall Vulnerability Day After Disclosure - SecurityWeek](https://news.google.com/rss/articles/CBMioAFBVV95cUxNdXhkUXY3RUJBYmFmLUlLUXoxWEJnR0V3RjlzQm9OSFR3UXJqVjM2RlIyYTJrelREbVY5ZU5pM0RkT25nUGdXRVFvOTNudXNOcGJzMUU4N3V2TVk5SVF2U0pOajF0Um9ycUJveVZ3UHBfbWpvVnF3VDhCanJzY3NhUDVHVV82SjRLSklxRWt1Z3dtY3h5TUE0Nm94WGg1ZE5i0gGmAUFVX3lxTE1vcDFyTWlVN1F4ajZFdFVjT0JUU002ejhmMVBhQVBFbG9EaUd0c05icG1uYmFiemFhSzFqVm9vc2cycTJnRDZNbTZCdEZCNzJxRFZWcHMwa0lfSWdIdEFKNFgwZE1DVmFvdzBNeWI5QmhqYjVqT05Fb1hlWGJnTExoVnFSdUR6YnpBQU9ueVE3a1pPZk5NZlpCTlExdUxQaWJvTjJ3d1E?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
----
+| Palo Alto Networks Firewalls Feb 19, 2025 | [Palo Alto Firewall Vulnerability (CVE-2025-0108) Under Attack – Are You at Risk? - SOCRadar Extended Threat Intelligence](https://news.google.com/rss/articles/CBMigAFBVV95cUxNNUY4Z1VHUFR1eHBtWUVzd2RrR2FKVEEwWDl0d2R2SDVXbHZpUEtTcVU3SVFSYlZwY0VJd1NMUHlvY3g3VnNKbjIycVZ4QTcxaHBsZThDTmpZVnV3T1ozc0xRYkg5NTNCMkh0d1NPQ0REaWxSbEVWdjVOYW10RW1mVA?oc=5) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-*Powered by [OpenAI GPT-4](https://openai.com) and [GitHub Actions](https://github.com/features/actions).*
+| Palo Alto Networks Research Jun 03, 2025 | [Lost in Resolution: Azure OpenAI's DNS Resolution Issue](https://unit42.paloaltonetworks.com/azure-openai-dns-resolution/) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
+| Palo Alto Networks Research Jun 02, 2025 | [How Good Are the LLM Guardrails on the Market? A Comparative Study on the Effectiveness of LLM Content Filtering Across Major GenAI Platforms](https://unit42.paloaltonetworks.com/comparing-llm-guardrails-across-genai-platforms/) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
 
-✅ Powered by:
-- [Google News RSS](https://news.google.com)
-- [Palo Alto Unit 42](https://unit42.paloaltonetworks.com/)
-- [OpenAI GPT](https://platform.openai.com/)
-- [GitHub Actions](https://github.com/features/actions)
+| Palo Alto Networks Research May 23, 2025 | [Threat Brief: CVE-2025-31324 (Updated May 23)](https://unit42.paloaltonetworks.com/threat-brief-sap-netweaver-cve-2025-31324/) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
+
+| Palo Alto Networks Research May 16, 2025 | [Threat Group Assessment: Muddled Libra (Updated May 16, 2025)](https://unit42.paloaltonetworks.com/muddled-libra/) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
+
+| Palo Alto Networks Research May 14, 2025 | [DarkCloud Stealer: Comprehensive Analysis of a New Attack Chain That Employs AutoIt](https://unit42.paloaltonetworks.com/darkcloud-stealer-and-obfuscated-autoit-scripting/) | [Error in summarization: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 9aadb2e6********************49d5. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}] |
