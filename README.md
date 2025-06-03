@@ -1,22 +1,19 @@
 # 🛡️ Palo Alto Networks News Bot
 
-This GitHub Action automatically fetches and summarizes daily news related to Palo Alto Networks, including:
+A GitHub Action that automatically fetches and summarizes daily cybersecurity news related to **Palo Alto Networks**.
 
-- 📰 General company news
-- 🔥 Firewall technology updates
-- 🧠 Threat intelligence from Unit 42
+## 🔧 What It Does
+
+- Pulls news from Google News and Unit 42
+- Summarizes each article using GPT-4 (OpenAI)
+- Outputs to `news/paloalto_news.md` daily
 
 ## ⏱️ Schedule
 
-- Runs **daily at 12:00 UTC**
-- Outputs to [`news/paloalto_news.md`](news/paloalto_news.md)
-
-## 💡 Features
-
-- Pulls from curated RSS feeds (Google News + Unit 42)
-- Uses OpenAI GPT-4 for clean, concise summaries
-- Keeps your repo updated with the latest in cybersecurity trends
+- Runs every day at 12:00 UTC
+- Can also be triggered manually from the Actions tab
 
 ## 🔐 Setup
 
-1. Go to **Repository Settings → Secrets** and add:
+1. In your repo, go to `Settings` → `Secrets and variables` → `Actions` → `New repository secret`
+2. Add:
