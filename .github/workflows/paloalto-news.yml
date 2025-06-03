@@ -24,7 +24,9 @@ jobs:
           pip install feedparser openai python-dotenv
 
       - name: Run RSS news fetcher
-        run: python .github/scripts/scrape_rss_news.py
+        run: |
+          echo "Running Palo Alto RSS fetcher..."
+          python .github/scripts/scrape_rss_news.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
