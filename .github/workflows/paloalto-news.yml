@@ -2,7 +2,7 @@ name: Fetch Palo Alto News
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+    - cron: '0 12 * * *'  # Daily at 12:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -33,5 +33,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add news/paloalto_news.md
-          git commit -m "📥 Daily Palo Alto news update"
+          git commit -m "📥 Daily Palo Alto news update" || echo "No changes to commit"
           git push
