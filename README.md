@@ -1,19 +1,16 @@
-# 🛡️ Palo Alto Networks News Bot
+# 🔐 Palo Alto Networks Cybersecurity News Tracker
 
-A GitHub Action that automatically fetches and summarizes daily cybersecurity news related to **Palo Alto Networks**.
+_This repository auto-tracks cybersecurity news related to Palo Alto Networks and updates every 6 hours using GitHub Actions + OpenAI GPT._
 
-## 🔧 What It Does
+## 📰 Latest News (updated every 6 hours)
 
-- Pulls news from Google News and Unit 42
-- Summarizes each article using GPT-4 (OpenAI)
-- Outputs to `news/paloalto_news.md` daily
+<!-- NEWS_START -->
+<!-- NEWS_END -->
 
-## ⏱️ Schedule
+---
 
-- Runs every day at 12:00 UTC
-- Can also be triggered manually from the Actions tab
-
-## 🔐 Setup
-
-1. In your repo, go to `Settings` → `Secrets and variables` → `Actions` → `New repository secret`
-2. Add:
+✅ Powered by:
+- [Google News RSS](https://news.google.com)
+- [Palo Alto Unit 42](https://unit42.paloaltonetworks.com/)
+- [OpenAI GPT](https://platform.openai.com/)
+- [GitHub Actions](https://github.com/features/actions)
