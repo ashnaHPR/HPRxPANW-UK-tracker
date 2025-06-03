@@ -26,54 +26,69 @@ def clean_html(text):
     return re.sub('<[^<]+?>', '', text)
 
 def summarize(text):
+    prompt = (
+        "Summarize this article in 2-3 sentences for a cybersecurity-focused audience:\n\n"
+        f"{text}\n\nSummary:"
+    )
     try:
         response = client.chat.completions.create(
             model="gpt-4",
-            messages=[{"role": "user", "content": f"Summarize this for a cybersecurity-focused audience:\n\n{text}"}],
+            messages=[{"role": "user", "content": prompt}],
             max_tokens=200,
             temperature=0.5
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        return f"[Error: {e}]"
+        return f"[Error in summarization: {e}]"
 
-def format_table(rows):
-    table = "| Source | Title | Summary |\n|--------|-------|---------|\n"
-    for row in rows:
-        table += f"| {row['source']} | [{row['title']}]({row['link']}) | {row['summary']} |\n"
-    return table
-
-def fetch_news():
+def fetch_and_summarize():
     os.makedirs("news", exist_ok=True)
-    news_rows = []
+    output = [f"# 📰 Palo Alto Networks News Summary\n\n_Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}_\n"]
+
+    table_header = "| Source | Title | Summary |\n|---|---|---|\n"
+    output.append(table_header)
 
     for title, data in topics.items():
         feed = feedparser.parse(data['url'])
-        for entry in feed.entries[:5]:
-            summary_text = clean_html(entry.get('summary', entry.title))
-            summarized = summarize(summary_text)
-            news_rows.append({
-                'source': entry.get('source', {}).get('title', 'Unknown'),
-                'title': entry.title,
-                'link': entry.link,
-                'summary': summarized
-            })
+        entries = feed.entries[:5]
 
-    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
-    table_md = f"# 📰 Palo Alto Networks News Summary\n\n_Last updated: {timestamp}_\n\n"
-    table_md += format_table(news_rows)
+        if not entries:
+            output.append(f"| {title} | _No articles found._ |  |\n")
+            continue
+
+        for entry in entries:
+            summary_text = clean_html(entry.get('summary', '')) or entry.get('title', '')
+            summarized = summarize(summary_text)
+            # Format date if available
+            published = entry.get('published', '') or entry.get('updated', '')
+            # Some feeds have dates like 'Tue, 02 Jun 2025 10:00:00 GMT' - convert to YYYY-MM-DD if possible
+            try:
+                dt_obj = datetime(*entry.published_parsed[:6])
+                published_fmt = dt_obj.strftime("%b %d, %Y")
+            except Exception:
+                published_fmt = published
+
+            title_md = f"[{entry.title}]({entry.link})"
+            # Append markdown table row
+            output.append(f"| {title} {published_fmt} | {title_md} | {summarized} |\n")
 
     with open("news/paloalto_news.md", "w", encoding="utf-8") as f:
-        f.write(table_md)
+        f.write("\n".join(output))
 
+    # Also update README.md with the same news summary
     with open("README.md", "w", encoding="utf-8") as f:
-        f.write(table_md)
+        readme_intro = (
+            "# Palo Alto Networks Cybersecurity News Tracker\n\n"
+            "This README is updated every 6 hours with the latest Palo Alto Networks news summarized by GPT-4.\n\n"
+        )
+        f.write(readme_intro)
+        f.write("\n".join(output))
 
 if __name__ == "__main__":
     try:
-        fetch_news()
+        fetch_and_summarize()
     except Exception as e:
         print("❌ Script failed with an error:")
         print(e)
         traceback.print_exc()
-        exit(2)
+        exit(1)
