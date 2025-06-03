@@ -1,11 +1,11 @@
-# 🔐 Palo Alto Networks Cybersecurity News Tracker
+# 📰 Palo Alto Networks News Summary
 
-_This repository auto-tracks cybersecurity news related to Palo Alto Networks and updates every 6 hours using GitHub Actions + OpenAI GPT._
+_Last updated: 2025-06-03 18:00 UTC_
 
-## 📰 Latest News (updated every 6 hours)
-
-<!-- NEWS_START -->
-<!-- NEWS_END -->
+| Source | Title | Summary |
+|--------|-------|---------|
+| SiliconANGLE | [Illumio and Nvidia team up to strengthen zero-trust security](https://example.com) | Illumio and Nvidia are collaborating on a zero-trust framework to protect critical infrastructure. |
+| Cybersecurity Dive | [Trump’s CISA budget lays out deep job cuts](https://example.com) | The proposed CISA budget includes major staff reductions that may affect national cyber readiness. |
 
 ---
 
