@@ -1,24 +1,11 @@
-# Palo Alto Networks News Tracker 🛡️
+# 📰 Daily Palo Alto News Scraper
 
-This project tracks the latest news, blog posts, and security advisories from Palo Alto Networks using their public RSS feeds.
+This repository contains an automated GitHub Actions workflow that scrapes daily news articles related to **Palo Alto** and publishes a summarized digest.
 
-## Features
+## 🔧 How It Works
 
-- Automated every 6 hours via GitHub Actions
-- Pulls news from:
-  - Palo Alto Research Center Blog
-  - Security Advisories
+- ✅ Uses Python with `newspaper3k`, `BeautifulSoup`, and `OpenAI` (optional for summarization).
+- 🕒 Runs daily at 8 AM UTC.
+- 📄 Updates `news/paloalto_news.md` with new headlines and summaries.
 
-## Output
-
-All news is saved in `news.json` in the following format:
-
-```json
-[
-  {
-    "title": "Sample Article",
-    "link": "https://...",
-    "published": "Date string",
-    "source": "Palo Alto Research"
-  }
-]
+## 📁 File Structure
