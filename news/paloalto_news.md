@@ -1,6 +1,6 @@
 # 📰 Palo Alto Networks News from Selected Media
 
-_Last updated: 2025-06-03 16:18:29 UTC_
+_Last updated: 2025-06-03 16:25:44 UTC_
 
 | Publication + Date | Headline | Summary |
 |---|---|---|
@@ -10,6 +10,7 @@ _Last updated: 2025-06-03 16:18:29 UTC_
 | Financial Times | _No relevant Palo Alto news found._ | |
 | Forbes | _No relevant Palo Alto news found._ | |
 | Independent | _No relevant Palo Alto news found._ | |
+| PA Media | _No relevant Palo Alto news found._ | |
 | Reuters | _No relevant Palo Alto news found._ | |
 | SC Magazine | _No relevant Palo Alto news found._ | |
 | Sky News | _No relevant Palo Alto news found._ | |

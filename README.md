@@ -1,19 +1,26 @@
-# Palo Alto Networks Cybersecurity News Filtered by Media and Spokespersons
+📋 Table of Contents
 
-This README is updated every 6 hours with the latest Palo Alto Networks news mentioning key spokespersons or from selected media.
+- [National Outlets](#national-outlets)
+- [Trade Outlets](#trade-outlets)
+- [Palo Alto Networks News](#palo-alto-networks-news)
 
-# 📰 Palo Alto Networks News from Selected Media
+## National Outlets
 
-_Last updated: 2025-06-03 16:18:29 UTC_
+This section covers national media outlets monitored for Palo Alto Networks news.
 
-| Publication + Date | Headline | Summary |
-|---|---|---|
+## Trade Outlets
+
+This section covers trade and specialist publications monitored for Palo Alto Networks news.
+
+## Palo Alto Networks News
+
 | BBC News | _No relevant Palo Alto news found._ | |
 | Bloomberg (UK) | _No relevant Palo Alto news found._ | |
 | Business Insider | _No relevant Palo Alto news found._ | |
 | Financial Times | _No relevant Palo Alto news found._ | |
 | Forbes | _No relevant Palo Alto news found._ | |
 | Independent | _No relevant Palo Alto news found._ | |
+| PA Media | _No relevant Palo Alto news found._ | |
 | Reuters | _No relevant Palo Alto news found._ | |
 | SC Magazine | _No relevant Palo Alto news found._ | |
 | Sky News | _No relevant Palo Alto news found._ | |
@@ -44,3 +51,4 @@ _Last updated: 2025-06-03 16:18:29 UTC_
 | Palo Alto Networks | _No relevant Palo Alto news found._ | |
 | Palo Alto Networks Firewalls | _No relevant Palo Alto news found._ | |
 | Palo Alto Networks Research | _No relevant Palo Alto news found._ | |
+
