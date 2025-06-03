@@ -1,11 +1,12 @@
 import os
 import feedparser
-import openai
+from openai import OpenAI
 from datetime import datetime
 import re
 import traceback
+from urllib.parse import urlparse
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 topics = {
     'Palo Alto Networks': {
@@ -28,7 +29,7 @@ def summarize(text):
         f"{text}\n\nSummary:"
     )
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=200,
@@ -36,44 +37,60 @@ def summarize(text):
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        return f"[Error in summarization: {e}]"
+        return f"[Error: {e}]"
 
 def clean_html(text):
     return re.sub('<[^<]+?>', '', text)
 
+def extract_source_and_date(entry):
+    parsed_url = urlparse(entry.link)
+    source = parsed_url.netloc.replace("www.", "")
+    pub_date = entry.get("published", "")[:16]
+    return f"{source} {pub_date.strip()}"
+
 def fetch_and_summarize():
     os.makedirs("news", exist_ok=True)
-    output = [f"# 📰 Palo Alto Networks News Summary\n\n_Last updated: {datetime.utcnow().isoformat()} UTC_\n"]
+    output = [f"_Last updated: {datetime.utcnow().isoformat()} UTC_\n"]
+    output.append("| Source | Title | Summary |")
+    output.append("|--------|-------|---------|")
 
-    for title, data in topics.items():
-        print(f"Fetching RSS feed for topic: '{title}' from URL: {data['url']}")
-        output.append(f"\n## {title}\n{data['desc']}\n")
+    for data in topics.values():
         feed = feedparser.parse(data['url'])
         entries = feed.entries[:5]
 
-        if not entries:
-            print(f"No articles found for topic: {title}")
-            output.append("_No articles found._\n")
-            continue
-
         for entry in entries:
+            source_date = extract_source_and_date(entry)
             summary_text = clean_html(entry.get('summary', '')) or entry.get('title', '')
-            print(f"Summarizing article: {entry.title}")
             summarized = summarize(summary_text)
-            print(f"Summary for '{entry.title}': {summarized}")
-            output.append(f"- **[{entry.title}]({entry.link})**\n  - {summarized}\n")
+            title = entry.title.strip().replace("|", "-")
+            link = entry.link.strip()
+            output.append(f"| {source_date} | [{title}]({link}) | {summarized} |")
 
-    with open("news/paloalto_news.md", "w", encoding="utf-8") as f:
-        f.write("\n".join(output))
-    print("News summary file written successfully.")
+    markdown = "\n".join(output)
+    
+    # Save to dedicated file
+    with open("news/paloalto_news_section.md", "w", encoding="utf-8") as f:
+        f.write(markdown)
+
+    # Replace section in README
+    with open("README.md", "r", encoding="utf-8") as f:
+        readme = f.read()
+
+    new_readme = re.sub(
+        r"(<!-- NEWS_START -->)(.*?)(<!-- NEWS_END -->)",
+        f"\\1\n\n{markdown}\n\n\\3",
+        readme,
+        flags=re.DOTALL
+    )
+
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(new_readme)
 
 if __name__ == "__main__":
     try:
-        print("Starting fetch_and_summarize()")
         fetch_and_summarize()
-        print("fetch_and_summarize() completed successfully")
     except Exception as e:
-        print("❌ Script failed with an error:")
+        print("❌ Script failed:")
         print(e)
         traceback.print_exc()
         exit(2)
