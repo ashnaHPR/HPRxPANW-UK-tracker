@@ -1,11 +1,22 @@
-# 📰 Daily Palo Alto News Scraper
+# 🛡️ Palo Alto Networks News Bot
 
-This repository contains an automated GitHub Actions workflow that scrapes daily news articles related to **Palo Alto** and publishes a summarized digest.
+This GitHub Action automatically fetches and summarizes daily news related to Palo Alto Networks, including:
 
-## 🔧 How It Works
+- 📰 General company news
+- 🔥 Firewall technology updates
+- 🧠 Threat intelligence from Unit 42
 
-- ✅ Uses Python with `newspaper3k`, `BeautifulSoup`, and `OpenAI` (optional for summarization).
-- 🕒 Runs daily at 8 AM UTC.
-- 📄 Updates `news/paloalto_news.md` with new headlines and summaries.
+## ⏱️ Schedule
 
-## 📁 File Structure
+- Runs **daily at 12:00 UTC**
+- Outputs to [`news/paloalto_news.md`](news/paloalto_news.md)
+
+## 💡 Features
+
+- Pulls from curated RSS feeds (Google News + Unit 42)
+- Uses OpenAI GPT-4 for clean, concise summaries
+- Keeps your repo updated with the latest in cybersecurity trends
+
+## 🔐 Setup
+
+1. Go to **Repository Settings → Secrets** and add:
