@@ -46,25 +46,32 @@ def fetch_and_summarize():
     output = [f"# 📰 Palo Alto Networks News Summary\n\n_Last updated: {datetime.utcnow().isoformat()} UTC_\n"]
 
     for title, data in topics.items():
+        print(f"Fetching RSS feed for topic: '{title}' from URL: {data['url']}")
         output.append(f"\n## {title}\n{data['desc']}\n")
         feed = feedparser.parse(data['url'])
         entries = feed.entries[:5]
 
         if not entries:
+            print(f"No articles found for topic: {title}")
             output.append("_No articles found._\n")
             continue
 
         for entry in entries:
             summary_text = clean_html(entry.get('summary', '')) or entry.get('title', '')
+            print(f"Summarizing article: {entry.title}")
             summarized = summarize(summary_text)
+            print(f"Summary for '{entry.title}': {summarized}")
             output.append(f"- **[{entry.title}]({entry.link})**\n  - {summarized}\n")
 
     with open("news/paloalto_news.md", "w", encoding="utf-8") as f:
         f.write("\n".join(output))
+    print("News summary file written successfully.")
 
 if __name__ == "__main__":
     try:
+        print("Starting fetch_and_summarize()")
         fetch_and_summarize()
+        print("fetch_and_summarize() completed successfully")
     except Exception as e:
         print("❌ Script failed with an error:")
         print(e)
