@@ -1,3 +1,7 @@
+# 📰 Palo Alto Networks News from Selected Media
+
+_Last updated: 2025-06-05 11:58:55 UTC_
+
 📋 Table of Contents
 
 - [National Outlets](#national-outlets)
@@ -14,48 +18,68 @@ This section covers trade and specialist publications monitored for Palo Alto Ne
 
 ## Palo Alto Networks News
 
-| _N/A_ | BBC News | _No relevant Palo Alto news found._ | |
-| _N/A_ | Bloomberg (UK) | _No relevant Palo Alto news found._ | |
-| _N/A_ | Business Insider | _No relevant Palo Alto news found._ | |
-| _N/A_ | Financial Times | _No relevant Palo Alto news found._ | |
-| _N/A_ | Forbes | _No relevant Palo Alto news found._ | |
-| _N/A_ | Independent | _No relevant Palo Alto news found._ | |
-| _N/A_ | PA Media | _No relevant Palo Alto news found._ | |
-| _N/A_ | Reuters | _No relevant Palo Alto news found._ | |
-| _N/A_ | SC Magazine | _No relevant Palo Alto news found._ | |
-| _N/A_ | Sky News | _No relevant Palo Alto news found._ | |
-| _N/A_ | TechCrunch | _No relevant Palo Alto news found._ | |
-| _N/A_ | The Daily Telegraph | _No relevant Palo Alto news found._ | |
-| _N/A_ | The Guardian | _No relevant Palo Alto news found._ | |
-| _N/A_ | The Register | _No relevant Palo Alto news found._ | |
-| _N/A_ | TechRadar Pro | _No relevant Palo Alto news found._ | |
-| _N/A_ | Computer Weekly | _No relevant Palo Alto news found._ | |
-| _N/A_ | Verdict | _No relevant Palo Alto news found._ | |
-| _N/A_ | WIRED | _No relevant Palo Alto news found._ | |
-| _N/A_ | ZDNet UK | _No relevant Palo Alto news found._ | |
-| _N/A_ | The Stack | _No relevant Palo Alto news found._ | |
-| _N/A_ | Tech Monitor | _No relevant Palo Alto news found._ | |
-| _N/A_ | IT Pro | _No relevant Palo Alto news found._ | |
-| _N/A_ | Tech Forge | _No relevant Palo Alto news found._ | |
-| _N/A_ | Digit | _No relevant Palo Alto news found._ | |
-| _N/A_ | Intelligent CIO Europe | _No relevant Palo Alto news found._ | |
-| _N/A_ | Digitalisation World | _No relevant Palo Alto news found._ | |
-| _N/A_ | Silicon UK | _No relevant Palo Alto news found._ | |
-| _N/A_ | UKTN | _No relevant Palo Alto news found._ | |
-| _N/A_ | Information Age | _No relevant Palo Alto news found._ | |
-| _N/A_ | Diginomica | _No relevant Palo Alto news found._ | |
-| _N/A_ | TechRepublic | _No relevant Palo Alto news found._ | |
-| _N/A_ | Computing | _No relevant Palo Alto news found._ | |
-| _N/A_ | The Next Web | _No relevant Palo Alto news found._ | |
-| _N/A_ | The Record | _No relevant Palo Alto news found._ | |
-| _N/A_ | CNBC | _No relevant Palo Alto news found._ | |
+| Date | Publication | Headline | Summary |
+|---|---|---|---|
+| N/A | BBC News | _No relevant Palo Alto news found._ | |
+| N/A | Bloomberg (UK) | _No relevant Palo Alto news found._ | |
+| N/A | Business Insider | _No relevant Palo Alto news found._ | |
+| N/A | Financial Times | _No relevant Palo Alto news found._ | |
+| N/A | Forbes | _No relevant Palo Alto news found._ | |
+| N/A | Independent | _No relevant Palo Alto news found._ | |
+| N/A | PA Media | _No relevant Palo Alto news found._ | |
+| N/A | Reuters | _No relevant Palo Alto news found._ | |
+| N/A | SC Magazine | _No relevant Palo Alto news found._ | |
+| N/A | Sky News | _No relevant Palo Alto news found._ | |
+| N/A | TechCrunch | _No relevant Palo Alto news found._ | |
+| N/A | The Daily Telegraph | _No relevant Palo Alto news found._ | |
+| N/A | The Guardian | _No relevant Palo Alto news found._ | |
+| N/A | The Register | _No relevant Palo Alto news found._ | |
+| N/A | TechRadar Pro | _No relevant Palo Alto news found._ | |
+| N/A | Computer Weekly | _No relevant Palo Alto news found._ | |
+| N/A | Verdict | _No relevant Palo Alto news found._ | |
+| N/A | WIRED | _No relevant Palo Alto news found._ | |
+| N/A | ZDNet UK | _No relevant Palo Alto news found._ | |
+| N/A | The Stack | _No relevant Palo Alto news found._ | |
+| N/A | Tech Monitor | _No relevant Palo Alto news found._ | |
+| N/A | IT Pro | _No relevant Palo Alto news found._ | |
+| N/A | Tech Forge | _No relevant Palo Alto news found._ | |
+| N/A | Digit | _No relevant Palo Alto news found._ | |
+| N/A | Intelligent CIO Europe | _No relevant Palo Alto news found._ | |
+| N/A | Digitalisation World | _No relevant Palo Alto news found._ | |
+| N/A | Silicon UK | _No relevant Palo Alto news found._ | |
+| N/A | UKTN | _No relevant Palo Alto news found._ | |
+| N/A | Information Age | _No relevant Palo Alto news found._ | |
+| N/A | Diginomica | _No relevant Palo Alto news found._ | |
+| N/A | TechRepublic | _No relevant Palo Alto news found._ | |
+| N/A | Computing | _No relevant Palo Alto news found._ | |
+| N/A | The Next Web | _No relevant Palo Alto news found._ | |
+| N/A | The Record | _No relevant Palo Alto news found._ | |
+| N/A | CNBC | _No relevant Palo Alto news found._ | |
 | Jun 05, 2025 | Palo Alto Networks | [Palo Alto Networks CEO Nikesh Arora joins Uber’s board of directors - Moneycontrol](https://news.google.com/rss/articles/CBMiwgFBVV95cUxNWmZIbUdsci1tMmE3Q044X2I0N2xSdExpTGplN0pnMUM2NzJ3Skc3RFFaWjlvcEJKSUNpWGFmWkh0WmhScGUyRndDcGJfenFodTU3TmZRRHdvd0xMQjVBTGJQbDhvNHVxZjBsc1hXVnFPWlcwbFVBcDVmQ0pEWUpUM0FtTzhPb2lybkJ5b3hPd2k1UTVvNDh3ZGtKenR0VkZTRms0NWFaSXQwSEdMa05QbV80cW1JV1lWNzloaXB4RVVKQdIBxwFBVV95cUxQZmRFQllvRFRjUGIwcFA2QmduNFdoaTQwZmFmSHJDSloya0tPTmlEVHh3eHJhOFVibHV4NkJWWjVSS3FNWkNqM09lRHk3cld1cWgyZWlraC1lYll0eXFaTFpPcFpmUTNfNFE1aDdFamp5N1Q2b0xWaFRNZkktYUdCaVp5UGpLbWpWYkxLZmhDYW1jME5ESHBBSDFwV2JyaVVqcTdWNUlzOG1zU1VuQWxRbXV4emNEb0dTWUVoM19lXzlsTllhOThB?oc=5) | Palo Alto Networks CEO Nikesh Arora joins Uber’s board of directors&nbsp;&nbsp;Moneycontrol |
+| Jun 03, 2025 | Palo Alto Networks | [CrowdStrike vs. Palo Alto Networks — why Wall Street values these stocks so differently - CNBC](https://news.google.com/rss/articles/CBMivgFBVV95cUxNeDRQc2lTaXRjZ2IyRFNXQWtyUGcwNzZ6UTFvWmwwZU1XSWx2VWJhZXNvQ1dRUkV1WUhtZlA4a2tOcVZvb21rUTlkM0tqZExCVi1oMGFlMVlWaW1kMGRrLVAtbWlxNm9NX2JuMXBTWnpqM3ZScl9ZSGtkdnRNb1ZTY0duWHVEVEg1c3pHTWFOVFZPMFEzWnA0bUhzVnF1ajR2XzR1VnhjcS11Q2xNM0tXQkZKYnlOSENWY1dFcDdn?oc=5) | CrowdStrike vs. Palo Alto Networks — why Wall Street values these stocks so differently&nbsp;&nbsp;CNBC |
 | Jun 05, 2025 | Palo Alto Networks | [Uber names Palo Alto Networks chairman and CEO Nikesh Arora to board - TipRanks](https://news.google.com/rss/articles/CBMiswFBVV95cUxQVldPNDA0cTZXS2plWVpqVkl1T0tiVkRkYy13MXoydGZhR1V5RC1fV1kyLWFReG5sRDFQajhEUHlUMzhFekZNTmkyeHdzRVZPNUROVlJuazlXNjFEd2RBNjZPa3ZwTzNyaWZPaDA4bWFacHFGZGlLMjJJUV85UWR4N04xdndHakI0UXZCQjlXb1Exc2xTQWw4SFNRcERTeEhrNm9Wd2FBelVYa29FamxoWE1yVQ?oc=5) | Uber names Palo Alto Networks chairman and CEO Nikesh Arora to board&nbsp;&nbsp;TipRanks |
 | Jun 04, 2025 | Palo Alto Networks | [Palo Alto Networks CEO Joins Uber Board - The Information](https://news.google.com/rss/articles/CBMihwFBVV95cUxNOVBNaTZqUC1Pb0ZaenF1ajBycVhWcDFreVp1NURoRkllTHZmWHJVYTZ5Y3p0aExxVHJQeGZFN2hGc21CY2piNWJkb3YtUTNqeEZmVU5SMDQ1OHJPblVFV21VZXBROUVKd214OTdwQVc1QjdTLTRGTzJEOHJNbUtid0poQzFEY2M?oc=5) | Palo Alto Networks CEO Joins Uber Board&nbsp;&nbsp;The Information |
+| May 20, 2025 | Palo Alto Networks | [Cybersecurity is in a pivotal moment with AI, says Palo Alto Networks CEO - CNBC](https://news.google.com/rss/articles/CBMipwFBVV95cUxPdUphUlpTcmtrTXAxR29TOVI4bnNJbVZxc25Rb3JKUksxMEFyMXJLMldQWHZyTDRCR3ZkSUZ5ZElkZi1mdTFuaE1hMFF6VmtPekt0QTMzOURJT3BIVmRwd1dFZDJmNENjdUNqdDVldlo0QXlHa052WVFEZWtwN0pSNjZZd21OV1d5LTZvTml1b3JsckRsRDVsRjlOdnZBQm5qLTZWSzdVWdIBrAFBVV95cUxQN3hUaDhpMXhfdVg5dGdzMFFwdUJDeWF5Z3dRdEkyQTZTSXVqQ0ZuX0lZRmxCck5kQnl5NHVmSmVENTJVVlZSRE1mX1lPZmN1OXlHbEtrbFBUZTdlX3VUV1M1MEtqT0o5STJrRnZUdkJCNUVOWnhPU0dRV04wTTNnMHdzUkhNc1BFTnhuWEg5NGJ3eVVEb19NNEJtM1pTNkxBQTFMaDJydDIyOGtE?oc=5) | Cybersecurity is in a pivotal moment with AI, says Palo Alto Networks CEO&nbsp;&nbsp;CNBC |
+| May 20, 2025 | Palo Alto Networks | [Palo Alto Networks beats on earnings and revenue, misses on gross margin - CNBC](https://news.google.com/rss/articles/CBMiekFVX3lxTE9vcjd1U2xvLUp3ZE9Ua3RLYktVVlQ0cmtsWkZYMXFBbzdhQ0w2Y0d0OWtwN0NIcERFeW5welk0UnN5cXRETVNXTUFuLUx4ZjUyZ05ObEJJNERwMTFwVzB2SHZnczVOQnhmdzNDd1hjRUh3cHEtTVQ2c0x30gF_QVVfeXFMTzNLZ3dkQVVaSWpDQVdpeEdEa1l6UXZwRmFOQzRjbjV3TElCamxyNWpPQUVPRER4aHlCZzZKUklkQVRnNlRyOHlWUHZmN3RoWFNTdU1GcXdBd0xxcTFsR3ZlY0otclNvVXBPbS1MTzdKN2JTZ1NyaWhmaE1ic0w5Zw?oc=5) | Palo Alto Networks beats on earnings and revenue, misses on gross margin&nbsp;&nbsp;CNBC |
 | Jun 05, 2025 | Palo Alto Networks | [Palo Alto Networks' Chairman & CEO Nikesh Arora joins Uber's Board of Directors - Storyboard18](https://news.google.com/rss/articles/CBMixgFBVV95cUxOZkowUXlYSFlUVFJLZlF3YzQyZjdybFBlMUgzZ2U5eVNkUzBfRjBmQzJSV2NjRG91WnJwQlhmM0JKYmNBaVVXRlRkSFZmTnI4MUc0V3o2M0F2MWJhV0tHMGQ1eTdQLUZtS3ZfY0UxZmlWRTJ0d1BpSzhybkt1bDRSNlpWWjZweGlEX0JBeGdFOXdyeV9HLVlaTGhuY1V4YTB6QXVZMGtxOGxWVjlyS0tFRHltOVNwWXF5X3R1aFZ4Vk9QMHhpZ0HSAcsBQVVfeXFMTTlNSk0xS1NTZ0x3Z2gxNGdHOUo2ZGFWQ0xFRUVwT0E4enhjVFlBN2pRWV9FQm1fLXBKRXFKMHEzWkktM3hOTEttU1lvT2swMS1ROVV2Unp3Y3BUUDJvdnhqbmpPQzAyU0l5VWhLVE9MbEVaMERhcnlybks2dUllZXEyeER2RGQ1bEJzUW8tMXpjZVE1aGpjVVZUS0pobUFZTDBkTmppSk1TelBydldVYklwazhYU2pnem1UbEplUU5NVlNjTXJMRWNVQk0?oc=5) | Palo Alto Networks' Chairman & CEO Nikesh Arora joins Uber's Board of Directors&nbsp;&nbsp;Storyboard18 |
 | Jun 05, 2025 | Palo Alto Networks | [Nikesh Arora's Influence at Palo Alto Networks (PANW) | PANW Stock News - GuruFocus](https://news.google.com/rss/articles/CBMiqAFBVV95cUxPX2dxQzhHRmhVamhKYjlkak5wUFBaNzVSU3pEVXV5aHQwTjJPd0U2QVlFVlZveUNQVHhEZUJNdVlnbzNKOFRuNklxQjhNR00zb3B1N0NseUFQOUlDTllKdzBWMFZqVXJYX0U2OHk4Z205cHB6QzB4RU5IMl96eVozcTk0VFluNGt3dWZYMi05bTRQVzkyUmNTTTZybkZySXJWYzFKZmxwc2w?oc=5) | Nikesh Arora's Influence at Palo Alto Networks (PANW) | PANW Stock News&nbsp;&nbsp;GuruFocus |
 | Jun 05, 2025 | Palo Alto Networks | [Nikesh Arora, CEO of Palo Alto Networks, appointed to Uber's Board of Directors - People Matters - HR News](https://news.google.com/rss/articles/CBMiyAFBVV95cUxOOGRFakZIOUNPOFBYdExkWDNrdi1jSlBmdWFGelRwcVNVOTVKek96TmVOVGptbi03NWhjMVhTUUJPWFpabVhPUWRRb0VpMGhPT0dMTXgyckZObHdJb0ZCRlM3QnZZTFdhYncyYlZfN0pBRUhBZU0zTl9QY0JmbEFKLW5mZ3hBOEE1REVfUHpFalp1cnNUVDgxREtWaUhnb2JaMG9JVjFLZDFGMUVGZWtUNWdBYVJsbFBsWm1GMVBzRHFfTUZoZ3hxYdIBxwFBVV95cUxNN0RMeEFRYmlPRHI4NWkyQ2NHeGFnS2FMLWtiQ00wT3paYmw2RnZfVHNFTFdEbEpQWk5xTVRXS3FpYW1hYXk4TlFzYTVPZE1PejR6MkNjUlZPdF9tOURtNjZaeWpzR2pSMmxGTXpzaTJPOVdQbm9TalRLR3VHSVg4c1FEaUQxLTFwY2NPRmNHRFVkV0QwSlNlNVVKbzVJbTVqREpWTmg2eW9YYnVkX1Y0MjdKRWJfTTBKNURPMGc4dlZpR1RzQnFn?oc=5) | Nikesh Arora, CEO of Palo Alto Networks, appointed to Uber's Board of Directors&nbsp;&nbsp;People Matters - HR News |
+| Jun 03, 2025 | Palo Alto Networks | [Palo Alto Networks’ Unit 42 Extortion and Ransomware Trends Report reveals aggressive new tactics and escalation of threat actor collaboration – Intelligent CISO - Intelligent CISO](https://news.google.com/rss/articles/CBMikwJBVV95cUxQZzBhQV85REZKN3IyZGpKLWxuaVhMdjFJVXdTVkVPVzRUTXlqbGd5V3BrbTV3ZDJmZW9UaDl1Mkt6aGVtSVkyeXJtZzFReUhFMGJKa2VtNFRtNVpTRDJNUF8wV1NNd0d2M3k3WENfdmdBT3RkNmcyei1QRm5wNm90SFk5T2dOZ0JrbnBnTHFsbmFPSW1vUzRYWVdCM242RHdZTFRQekJMLWs3VngyMUFVWXVvdzVvZ2RWNExUWFlUVFhkMElSN0tDRmdzU3NtNXQ2Y19Yb1htemF6empHYTZuOVA0Rk5YbGFSajduSnRMcUxFV2xRVUVsc0V1ek1jMS02ZzI2bzNBd2dOYnJoc2NVS0hRQQ?oc=5) | Palo Alto Networks’ Unit 42 Extortion and Ransomware Trends Report reveals aggressive new tactics and escalation of threat actor collaboration – Intelligent CISO&nbsp;&nbsp;Intelligent CISO |
+| May 20, 2025 | Palo Alto Networks | [Palo Alto Networks CEO Nikesh Arora: SIEM’s Days Are Numbered - CRN Magazine](https://news.google.com/rss/articles/CBMioAFBVV95cUxNZVJDRGZ0YUlhNEVSUi1kTDlWa05NcC01WnVWT1BQT2NaWU9zbXNGMkxNRThYaVdFRXVuY2lVYm5pYU5tUUhHd19xU1lYaGhKczNWcm9rVmR4SlYzdkV2cEdSN1o0V2Z3a3R4NkZ0M0l2dEJ0d3hyUXFRcDRFNTB0SmRIcXBwdHRYZE8ydERobWZGR1VxRGtib2k5TGtVWGpI?oc=5) | Palo Alto Networks CEO Nikesh Arora: SIEM’s Days Are Numbered&nbsp;&nbsp;CRN Magazine |
 | Jun 04, 2025 | Palo Alto Networks | [Palo Alto Networks, Inc. to Host Earnings Call - ACCESS Newswire](https://news.google.com/rss/articles/CBMipAFBVV95cUxONDZQZHpJRTUzMGpvNVlmWHRsMTdwNnVQem5LNUU4aFI4d285VDVvX09yUGE1YWVOUGdXemhOa05DQkU5V3RzaEsxOXFVQjBMOFpWZUx1VjFEM1NxU0w2Q1BBNkQxcnc3VjVibUN2elFYaTV4RHJMeUNHYXROci0td3RDU29DQ1FRRnhrS1B0NkZfdmR4bUVXQlRNYVBFYWM5bFkzNw?oc=5) | Palo Alto Networks, Inc. to Host Earnings Call&nbsp;&nbsp;ACCESS Newswire |
-| _N/A_ | Palo Alto Networks Firewalls | _No relevant Palo Alto news found._ | |
-| _N/A_ | Palo Alto Networks Research | _No relevant Palo Alto news found._ | |
+| Jun 03, 2025 | Palo Alto Networks | [Palo Alto Networks To Present At Bank Of America Conference; Webcast At 11:40 AM ET - Nasdaq](https://news.google.com/rss/articles/CBMipAFBVV95cUxQVk5WMDRSVVdyZGFCYmF0Y0l5aXMtOGhaYjJCTGlmbkxwZGJ3N3VTV3NzNlpQMjJnaXZHUkNWM1Y2SlJURE5WYTFKQ090SGUwbUdmNWtYeW04U3Rwc2M4TDd4X3A4d0NzallhTHdqa29nWXFPQjNnd21rTXJTX0ZFQ0c0Q001V3d3QjRwMGRkeDV0Um0wLXJOaVdDOXcxOUxZNm5QMQ?oc=5) | Palo Alto Networks To Present At Bank Of America Conference; Webcast At 11:40 AM ET&nbsp;&nbsp;Nasdaq |
+| Jun 02, 2025 | Palo Alto Networks | [Palo Alto Networks, Inc.'s (NASDAQ:PANW) Stock Has Fared Decently: Is the Market Following Strong Financials? - Yahoo Finance](https://news.google.com/rss/articles/CBMigAFBVV95cUxOLWgwTzEya2UzZFBVRjE3VHdwT2V3dE1BUFpJZEJYeEpSeUM4Y3phLTlqVHJYMFhyWktWRzJxX1VxeU1fak5HbGY5SV95ckFpTXEwbjcyYzNIQ3k0TDJDOWtWbExIbVMtdkZlMEotQU4temJkenFHb1ppQng3T0VqYg?oc=5) | Palo Alto Networks, Inc.'s (NASDAQ:PANW) Stock Has Fared Decently: Is the Market Following Strong Financials?&nbsp;&nbsp;Yahoo Finance |
+| Jun 04, 2025 | Palo Alto Networks | [Goldman Sachs Reaffirms Buy on Palo Alto Networks, Inc. (PANW), Cites NGS ARR Growth - Insider Monkey](https://news.google.com/rss/articles/CBMiwAFBVV95cUxPMnloV01pQmg1NHJZd2t4TWRvdWcxRWdRTzAtQXM5dlNibHZVcUdRZEI1VWRqYWtKTGRpNjF5TjJIekF6MTV0VVlJMVlRVUpfVTd4cGF0RjJZaE43eFA1aHk3S25uNEM4dlByZ3pFc3EwcUtlRjNxNlFDVW0zYjEzUC1ibXdsVzBlUVdMMXVFWUtnRWIxaDIwZVppMWpqcXpVdm5HV0dOckQxdFZFVU1CdjZ5SVE1Z3VzcFFVX2VDcmfSAcgBQVVfeXFMTnNpSnhaVDJwYkxWR0JaODdpV1dTSklCc200TEFTZmxsT2tDbEJMVTYxSHd6d2Q1YzBUb0d1dlp5dHJIWVVYOWJjTWR6SzJCUG55NDVreDNQYXhvQU41amNGdnFDczB4YTZqdFR5cGYtZVl3RkVmVzNqdjdFU0NFRDN6eTJGZk5vNHM2U3p4ak45Q2Z5NUhVQjVkamtwRWFFQ2dscURqbkJJOU1VbXlZUERPYzNJNEpmdVp4YVpmYjJjX2lQWHM0MGo?oc=5) | Goldman Sachs Reaffirms Buy on Palo Alto Networks, Inc. (PANW), Cites NGS ARR Growth&nbsp;&nbsp;Insider Monkey |
+| Jun 03, 2025 | Palo Alto Networks | [Is Palo Alto Networks Stock Outperforming The S&P 500? - Barchart.com](https://news.google.com/rss/articles/CBMinwFBVV95cUxQQzFWUldia2FodVljcEliWFVZSElEb0owbjFnVVdzWEFEMXZvS1QwN3NVRFJxa1lBRm1QbVhlZmZXU3JLbXpyZzBvZmpWWVJuWWtldDU4WmFyNkRZUFViY0JmdDZDZnlkVkZsY0p6UWR1cVROclVVT05EVXh3MWJ4Ql9Uckk5Q1gzYnhqUElQblhxRjQzVGtHTk5nUDF3ZUE?oc=5) | Is Palo Alto Networks Stock Outperforming The S&amp;P 500?&nbsp;&nbsp;Barchart.com |
+| Feb 19, 2025 | Palo Alto Networks Firewalls | [Palo Alto Networks warns of another firewall vulnerability under attack by hackers - TechCrunch](https://news.google.com/rss/articles/CBMiuAFBVV95cUxNa0hzV0IwRDBBcEVlMC1TQW5YRDlvVDRfcUJacndMbllOc0gzTjV5WDFRTlgzTm1zUllKdTlVNDF2akoxdmlfR09VbnVIeEh3Znl5RHN0Vzg2VmsycllucjZBOTFNQkVYWW5GanZFSjdEZmpwT1JrcmlHYVY0REUwNG5NVUl3blFqZ0FqaHFUbThQMkJGV2tLTE03UTRoeTB5QTlacnFNQ01xUWlDcXY3Qno5MzluMVk2?oc=5) | Palo Alto Networks warns of another firewall vulnerability under attack by hackers&nbsp;&nbsp;TechCrunch |
+| Jan 23, 2025 | Palo Alto Networks Firewalls | [Palo Alto Networks firewalls have UEFI flaws, Secure Boot bypasses - csoonline.com](https://news.google.com/rss/articles/CBMisgFBVV95cUxQQU5EU000cHJHVzFKa1ZEOWtyby1rQktMZ1MtcFRnLUNkYk1UMW5OdFBxSWpZWkczcG02WEl3SDRiUlgxWk1hU1ZPQl9LcW4tVFZDVU9DZUNQTHBrNmxDb0x5bjFuR1k3cDFwd3RrMzBtMDNPakVKeTdXUWhMeGVLTGtvR21Ja0NuRG5kUE85QjRZZ0JzV3dnYVNYMFZpc1RNbXBaR0VaRVFoNTFucjNmQTJB?oc=5) | Palo Alto Networks firewalls have UEFI flaws, Secure Boot bypasses&nbsp;&nbsp;csoonline.com |
+| Nov 21, 2024 | Palo Alto Networks Firewalls | [Palo Alto Networks warns hackers are breaking into its customers’ firewalls — again - TechCrunch](https://news.google.com/rss/articles/CBMitgFBVV95cUxPT1RUaXZEQ1lmeXlhR3FsRURQcUhzTEl3VU9SQ1d0Z1lmSk9mYlppTnhDTzlpbS1FM0o2a2o3S2hka244NGVjSE1MX09SYU5WaG9GQ1UwTUhxZXpObTVYeEtTZ0tDUkh4bnQtTTRDbE5paFdBMUJ5amdIQ0F5eTJJTzlnX1UyVXROWmtTbDRGM1NvT3R5STZpRWlQdkY2cXA0SzhXYUtpSkFMZ3VMTS1LWmJ0S3RzZw?oc=5) | Palo Alto Networks warns hackers are breaking into its customers’ firewalls — again&nbsp;&nbsp;TechCrunch |
+| Feb 18, 2025 | Palo Alto Networks Firewalls | [Palo Alto Networks Confirms Exploitation of Firewall Vulnerability - SecurityWeek](https://news.google.com/rss/articles/CBMinAFBVV95cUxPaGVDN3BMTDJ0RWplMnRaWnhXSW5QcGNiUWNnb0J0WUdMQy1fN3RtRHF6YVp0dVdpRG1pTm94QW51b1VHSUtRa0UzN01pQVpmeTdrdEtRVmVTS3BNSENxOGJ1Ykpnd1E2bUh5a0RIb29ORXZsa1o0dUMzNHhtZk1pQWRnN29qREFIX0o1RmtfclMtR2dfcFZDbXh5ZnPSAaIBQVVfeXFMT0dlbTVGNE1CelZGRzcyNW1zRVU2TUdabXJEU28wVFdSbmp4eklxNVdkek1wcW1rRUxaNnZiRS1tREQwenAxc015RS1WSHdpN05tS29KcllyWU1ScDE2V2c0Z2dpaEdLcnh5am1JUDQzWk12ME55aGxUTjBKNkpBbjl2cEkwY1dFWHVZLTFZUWlwamh0dllsbnN4ZGVyZUl4dE5B?oc=5) | Palo Alto Networks Confirms Exploitation of Firewall Vulnerability&nbsp;&nbsp;SecurityWeek |
+| Nov 15, 2024 | Palo Alto Networks Firewalls | [Mystery Palo Alto Networks hijack-my-firewall zero-day now officially under exploit - theregister.com](https://news.google.com/rss/articles/CBMigAFBVV95cUxPUE54d3VQczJXRWVIVzN5aFI1RlZ3UXZjSVlpWlJxTHdaTXg1bEJNWmNaN0dlMnhDUkdrZThiY09uaC1tTXkweDB5ME83WEZXSkJHdHdDWUllYUNGVXNBTjJGQTVyV0NueUUzZ0tnZ1Rxa2JPRWFXYkxTTzF2MGhEetIBhgFBVV95cUxOZl9WMHFLRGNoVjBVTXo5cTdLemNSM2t6Vi1LVGZRaWpJYTJwVkNUQWtnVGZvWTJKa0E1R1lwQkJZbF9CaFJlZjBFSnhiQ0pvRkZldE9KcXBCQ2IyX1FkSGhjYUlSZExOODVHZmVyWjR0ZEN2eTlPX3E5RTdVaUtIaHpua0VPUQ?oc=5) | Mystery Palo Alto Networks hijack-my-firewall zero-day now officially under exploit&nbsp;&nbsp;theregister.com |
+| Dec 30, 2024 | Palo Alto Networks Firewalls | [Palo Alto Networks Patches Firewall Zero-Day Exploited for DoS Attacks - SecurityWeek](https://news.google.com/rss/articles/CBMiogFBVV95cUxPako3RHRxSWsyZlRwMl94LVlqVmpmZm0xUVhsQ2JEOFVfeW1Vel90X3NxOE9BUmlMdXVBVXNGV3dXb2Q2c1VCcnZqVVZvNk5LSV9RUG5UVHRGMzFQUDFPYXZLYVpoSDR4dzRQYV9ZOEljSEZPMnF5Ulo2OERYaEVrM1NUNVkzd2VORkJ5WEdFZ2tYZ3RmVXo5OVFHcUtQVVZ4RnfSAacBQVVfeXFMUE11cGdHdVM5TUNOSi1iUXV4Qm1GQkVGTzNWWW5TVUFBaUoxaUphLWpVYUZaT1ZSN1BOd2wza3UtQkx4Q1ZKNHdtVmx1M3B3WFhpMlppclpMSmVQUlpGVDVVVkNYajFtMlpCZXM2QXZCXzlUS0tKT1c1d0NHd3NfVUVIQVQyWXB3LWEwdU9CazRxUXZaSUJvUlJzd2tiTFd4RUV5MVBMdE0?oc=5) | Palo Alto Networks Patches Firewall Zero-Day Exploited for DoS Attacks&nbsp;&nbsp;SecurityWeek |
+| Feb 13, 2025 | Palo Alto Networks Firewalls | [Palo Alto Networks Patches Potentially Serious Firewall Vulnerability - SecurityWeek](https://news.google.com/rss/articles/CBMioAFBVV95cUxQMVlEWkQ2cGNyQU0td0NkcUlJc2Y4SEJsWjZlOTRlaTJuMURsS1M4RDVrWVd2Q3pJaTRoQl9BakhpMmRzRk4wc3VoLWJERjR1SFJmbVByV19HdFpIRWN0LWlsMGFEejdwcnZfSEM4VTBydVhlYVRvdWNKODNUUVZickN2bDNMeEU5Z2t4TldiLWpPdTZWcVVvdlBYeVE4ejhP0gGmAUFVX3lxTFB5akhUNzZ2OTdmNWl0NmE5VTNBOU44UERvdnl4dDRhUnpEUFpSVUpvSk9adTJHNE55Qk9ZRW9NSUdkQ05XUFJHM2RkWENOMGpvNzluVnMxQTZoVzBfQ2NRUms4UFlXbzRXMjZOWjdEZUpHZkxObFpoNnhfWUJ5S01XWGNvdUtCdWxtdjVfa1FDakl5WG9TZmNiamM0WngzTFBJZU0zeUE?oc=5) | Palo Alto Networks Patches Potentially Serious Firewall Vulnerability&nbsp;&nbsp;SecurityWeek |
+| Jan 24, 2025 | Palo Alto Networks Firewalls | [Palo Alto Networks Addresses Impact of BIOS, Bootloader Vulnerabilities on Its Firewalls - SecurityWeek](https://news.google.com/rss/articles/CBMiuAFBVV95cUxNRmNZd2Q1NFNVRjFhNXRQOWdrTlJxa0tTWGpsU2o2RENCdk5oVktBVUtRclpZODY3RDhYOHpkUzl0bWlIdENlejBaS1RlRkdJR3V0Z0diclBXcEh4ZWZjbHU3Z0xOWkNCbHFqc3psRGRDVGpKQmZmdkl4SFpzTkt5SVA3ZVgtX19zempvVFFCT0huUElOY1NyR05zelEyOUdEVDBCWmhMYk1LMEVjamZZU0xheU9EWm9h0gG-AUFVX3lxTE9rbmkzWEVNWmtnQVdZWGhDR0c2ZzY4M21XMXpUTDZJUDVjYU1tanJObkI3NU11Qjk5U1NIa0RQckU1enRUSGNMYWtZdllyY2VsdXhRVnlpNmdsM0Z4dmRhUzFxMjE4SHMyVmxPRVdmS3Vmb0o4R3VESU1rQl9OTVRJU0ZkSWRwLVJZVlh6S0U3eEE3RUQxTmE3aGlZR1h1Y08tV193enFmclQ5RkhENDVlRUdfTmFMOTVMN1F2TVE?oc=5) | Palo Alto Networks Addresses Impact of BIOS, Bootloader Vulnerabilities on Its Firewalls&nbsp;&nbsp;SecurityWeek |
+| Nov 15, 2024 | Palo Alto Networks Firewalls | [Palo Alto Networks Confirms New Firewall Zero-Day Exploitation - SecurityWeek](https://news.google.com/rss/articles/CBMilwFBVV95cUxNQmYwRWotT1JLT2FIN1pKRk14VHYwMjZXMURaaENLeW42bXNIZWcyQmdURzVObHNLdFkwTmQwYTdmYTdwSXUwT0hCUVRsRERIdUJEelRvaVYyWkZuMHc1eFFNTmFqSWN0THZrRm5YVlI0NUd2Zm5EcXgtZzJNSTdQREdqejhEZ1BkQ09OdkFHVU1xSkd0dlpr0gGcAUFVX3lxTE5jRV85Mlg0OVItVzNRZGU2NU84MXJCQXZNc3AyR3lCZXRhMHR2b1lYVHEwdjlsaXJaOUJnbVlwNFVMNkhLMUNjNDIxU3F6ak05cTdEZjdkb0JpZUlfak9oYVN4T2Y0QXZZUE15Z1FqQzE0c3NRQ0NjMWxQUE5GeHFRV3liaXdLMjM3bFgxMUlzT3NIU1Fuc24wWVNyMQ?oc=5) | Palo Alto Networks Confirms New Firewall Zero-Day Exploitation&nbsp;&nbsp;SecurityWeek |
+| Apr 09, 2025 | Palo Alto Networks Research | [How Prompt Attacks Exploit GenAI and How to Fight Back](https://unit42.paloaltonetworks.com/new-frontier-of-genai-threats-a-comprehensive-guide-to-prompt-attacks/) | GenAI boosts productivity but also poses security risks. Palo Alto Networks has a new whitepaper about prompt-based threats and how to defend against them.
+The post How Prompt Attacks Exploit GenAI and How to Fight Back appeared first on Unit 42. |
 
