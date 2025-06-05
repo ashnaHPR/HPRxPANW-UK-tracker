@@ -1,11 +1,11 @@
 import feedparser
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 import pytz
 
 # Define BST timezone (+1 hour from UTC)
 BST = pytz.timezone('Europe/London')
 
-# Your full topics dictionary
+# Full list of RSS feeds
 topics = { 
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
     'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
@@ -43,52 +43,56 @@ topics = {
     'The Record': 'https://therecord.media/feed/',
     'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
 
-    # Palo Alto specific feeds
+    # Palo Alto-specific feeds
     'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Firewalls': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Research': 'https://unit42.paloaltonetworks.com/feed/',
 }
 
+# Spokespersons to check for (lowercase for case-insensitive matching)
+spokespersons = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
+
 def is_today_bst(pub_date):
     """Check if the published date is today in BST."""
     if not pub_date:
         return False
-    # Convert published date to datetime
     try:
         dt_utc = datetime(*pub_date[:6], tzinfo=timezone.utc)
     except Exception:
         return False
-    # Convert to BST
     dt_bst = dt_utc.astimezone(BST)
     now_bst = datetime.now(BST)
     return dt_bst.date() == now_bst.date()
 
 def contains_spokesperson(text):
-    """Case-insensitive check if 'Sam Rubin' is in the text."""
+    """Check if any spokesperson is mentioned in the text (case-insensitive)."""
     if not text:
         return False
-    return 'sam rubin' in text.lower()
+    text_lower = text.lower()
+    return any(name in text_lower for name in spokespersons)
 
 articles = []
 
 for publication, feed_url in topics.items():
     d = feedparser.parse(feed_url)
     for entry in d.entries:
-        # Check if article is published today BST
         if hasattr(entry, 'published_parsed') and is_today_bst(entry.published_parsed):
-            # Check for Sam Rubin in content or summary or description (case-insensitive)
-            content_fields = []
-            if hasattr(entry, 'content'):
-                content_fields.extend([c.value for c in entry.content if hasattr(c, 'value')])
+            # Combine all content fields
+            content_parts = []
+
+            if hasattr(entry, 'title'):
+                content_parts.append(entry.title)
             if hasattr(entry, 'summary'):
-                content_fields.append(entry.summary)
+                content_parts.append(entry.summary)
             if hasattr(entry, 'description'):
-                content_fields.append(entry.description)
+                content_parts.append(entry.description)
+            if hasattr(entry, 'content'):
+                content_parts.extend([c.value for c in entry.content if hasattr(c, 'value')])
 
-            content_combined = ' '.join(content_fields).lower()
+            full_content = ' '.join(content_parts).lower()
 
-            # Collect article info if 'Sam Rubin' mentioned or any article for Palo Alto feeds
-            if contains_spokesperson(content_combined) or publication.startswith('Palo Alto Networks') or publication != 'Palo Alto Networks':
+            # Filter: Include only Palo Alto feeds or if spokesperson mentioned
+            if publication.startswith('Palo Alto Networks') or contains_spokesperson(full_content):
                 articles.append({
                     'publication': publication,
                     'title': entry.title,
