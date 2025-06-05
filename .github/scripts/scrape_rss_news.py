@@ -85,6 +85,8 @@ def fetch_and_generate_news():
     now_str = now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')
     cutoff = now_utc - timedelta(days=1)
 
+    print(f"Fetching news feeds at {now_str} (cutoff {cutoff.strftime('%Y-%m-%d %H:%M:%S')})")
+
     header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_str}_\n\n"
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
 
@@ -93,53 +95,45 @@ def fetch_and_generate_news():
     paloalto_rows = []
 
     for pub_name, feed_url in topics.items():
+        print(f"\nParsing feed from: {pub_name} ({feed_url})")
         feed = feedparser.parse(feed_url)
+        print(f"  Found {len(feed.entries)} entries")
 
         for entry in feed.entries:
-            # Parse published date safely
             published = None
             if 'published_parsed' in entry and entry.published_parsed:
                 published = datetime(*entry.published_parsed[:6])
             elif 'updated_parsed' in entry and entry.updated_parsed:
                 published = datetime(*entry.updated_parsed[:6])
             else:
-                continue  # Skip if no valid date
+                print("  Skipping entry with no date")
+                continue
 
             if published < cutoff:
-                continue  # Skip old articles
+                continue
 
-            # Collect all possible text fields into one blob for searching
             text_content = ""
-
             if 'title' in entry:
                 text_content += entry.title + " "
-
             if 'summary' in entry:
                 text_content += clean_html(entry.summary) + " "
-
             if 'content' in entry and len(entry.content) > 0:
                 for c in entry.content:
                     text_content += clean_html(c.value) + " "
 
-            # Clean headline and summary for display
-            headline = clean_html(entry.title) if 'title' in entry else "No title"
-            summary = clean_html(entry.summary) if 'summary' in entry else ""
-
-            # Check if article mentions Palo Alto Networks or spokespersons
             if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
                 continue
 
-            # Format date string
-            date_str = published.strftime('%Y-%m-%d')
+            headline = clean_html(entry.title) if 'title' in entry else "No title"
+            summary = clean_html(entry.summary) if 'summary' in entry else ""
 
-            # Markdown escape pipe '|' characters
-            headline = headline.replace('|', '\\|')
-            summary = summary.replace('|', '\\|')
+            date_str = published.strftime('%Y-%m-%d')
             pub_display = pub_name.replace('|', '\\|')
+
+            print(f"  Including article: {headline[:60]}... ({date_str})")
 
             row = f"| {date_str} | {pub_display} | [{headline}]({entry.link}) | {summary} |"
 
-            # Sort into tables by category
             if pub_name in national_outlets:
                 national_rows.append(row)
             elif pub_name in trade_outlets:
@@ -147,32 +141,27 @@ def fetch_and_generate_news():
             else:
                 paloalto_rows.append(row)
 
-    # Build full markdown content
     content = header
 
     if national_rows:
-        content += "## National Media\n\n"
-        content += table_header + "\n".join(sorted(national_rows, reverse=True)) + "\n\n"
+        content += "## National Media\n\n" + table_header + "\n".join(sorted(national_rows, reverse=True)) + "\n\n"
     else:
         content += "## National Media\n\nNo recent articles found.\n\n"
 
     if trade_rows:
-        content += "## Trade Media\n\n"
-        content += table_header + "\n".join(sorted(trade_rows, reverse=True)) + "\n\n"
+        content += "## Trade Media\n\n" + table_header + "\n".join(sorted(trade_rows, reverse=True)) + "\n\n"
     else:
         content += "## Trade Media\n\nNo recent articles found.\n\n"
 
     if paloalto_rows:
-        content += "## Palo Alto Specific News\n\n"
-        content += table_header + "\n".join(sorted(paloalto_rows, reverse=True)) + "\n\n"
+        content += "## Palo Alto Specific News\n\n" + table_header + "\n".join(sorted(paloalto_rows, reverse=True)) + "\n\n"
     else:
         content += "## Palo Alto Specific News\n\nNo recent articles found.\n\n"
 
-    # Write README.md (assumes script runs in repo root)
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
 
-    print("README.md updated with latest news.")
+    print(f"\nREADME.md updated with {len(national_rows) + len(trade_rows) + len(paloalto_rows)} articles.")
 
 if __name__ == "__main__":
     fetch_and_generate_news()
