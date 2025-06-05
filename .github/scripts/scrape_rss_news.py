@@ -1,12 +1,13 @@
-import os
 import feedparser
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo  # Python 3.9+
 
+# Media feeds
 topics = {
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
-    'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',  # Podcast feed, no obvious main RSS
-    'Business Insider': 'https://www.insider.co.uk/news/?service=rss',
+    'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
+    'Business Insider': 'https://www.insider.co.uk/?service=rss',
     'Financial Times': 'https://www.ft.com/?format=rss',
     'Forbes': 'https://www.forbes.com/investing/feed2/',
     'Independent': 'https://www.independent.co.uk/news/rss',
@@ -56,7 +57,7 @@ spokespersons = [
 
 national_outlets = [
     'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
-    'Forbes', 'Independent', 'PA Media News Articles', 'PA Media Publications', 'Reuters', 'Sky News',
+    'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
     'The Daily Telegraph', 'The Guardian', 'The Times', 'The Register',
     'WIRED', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC'
 ]
@@ -78,14 +79,17 @@ def contains_spokesperson(text):
     return any(name.lower() in text_lower for name in spokespersons)
 
 def contains_palo_alto(text):
+    # Exact phrase "palo alto networks" case insensitive
     return "palo alto networks" in text.lower()
 
 def fetch_and_generate_news():
-    now_utc = datetime.utcnow()
-    now_str = now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')
-    cutoff = now_utc - timedelta(days=1)
+    bst = ZoneInfo("Europe/London")
 
-    print(f"Fetching news feeds at {now_str} (cutoff {cutoff.strftime('%Y-%m-%d %H:%M:%S')})")
+    now_bst = datetime.now(bst)
+    now_str = now_bst.strftime('%Y-%m-%d %H:%M:%S %Z')
+    cutoff = now_bst - timedelta(days=1)
+
+    print(f"Fetching news feeds at {now_str} (cutoff {cutoff.strftime('%Y-%m-%d %H:%M:%S %Z')})")
 
     header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_str}_\n\n"
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
@@ -102,9 +106,9 @@ def fetch_and_generate_news():
         for entry in feed.entries:
             published = None
             if 'published_parsed' in entry and entry.published_parsed:
-                published = datetime(*entry.published_parsed[:6])
+                published = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).astimezone(bst)
             elif 'updated_parsed' in entry and entry.updated_parsed:
-                published = datetime(*entry.updated_parsed[:6])
+                published = datetime(*entry.updated_parsed[:6], tzinfo=timezone.utc).astimezone(bst)
             else:
                 print("  Skipping entry with no date")
                 continue
@@ -121,6 +125,7 @@ def fetch_and_generate_news():
                 for c in entry.content:
                     text_content += clean_html(c.value) + " "
 
+            # Filter for Palo Alto Networks or spokesperson mentions
             if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
                 continue
 
