@@ -24,7 +24,7 @@ jobs:
           pip install feedparser python-dotenv
 
       - name: Run RSS news fetcher
-        run: python .github/workflows/.github/scripts/scrape_rss_news.py
+        run: python .github/scripts/scrape_rss_news.py
 
       - name: Commit and push news file
         run: |
