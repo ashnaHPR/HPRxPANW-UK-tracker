@@ -1,4 +1,4 @@
-# 📰 Palo Alto Networks News from Selected Media
+# 📰 Palo Alto Networks News 
 
 _Last updated: 2025-06-05 12:20:01 UTC_
 
