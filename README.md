@@ -1,5 +1,7 @@
 # Today's News Articles
 
+## 📌 Palo Alto Networks Mentions
+
 | Date (BST) | Publication | Title | Summary |
 |------------|-------------|-------|---------|
 | 2025-06-05 21:28:00 BST | Palo Alto Networks | [Palo Alto's Arora to join Uber's board - Times of India](https://news.google.com/rss/articles/CBMivwFBVV95cUxPdmFQeUFrWFRSajVMMGl5SWllOEZFYkpiUTdwWHF6SHRVejNKQWVjSHZKcGRCbXJyWDJBbklSZGh1OUREc2JsS3lQRjYtaHhxUE9jLS1iY3VkMUZTTzdBU1RBSkZzZEdDdm1MczNNT29KRzZlTlp6UFJ1eW5nekhRdUVJXzZncXlxN3lMVDBnMzFxWWZnel9Xb1U3Z3psOWVEajZBUjU4Nm9xZ3RVb1BFMTNiYmJkejZjSmJsRU5ud9IBxAFBVV95cUxQMklydXFDbmdEakMzVVQxUE9VdmJCVkRpNWdNdEtZWlJBV0hSRUJZZmNPa1VKUy1HNTZEd3dHYmJJUW42S2JFODFZUlUzWVp2U1l3Mk5lUEdKaXg0aGUxcEk1WEZLNFRhV1ZPQnpONlNndF9mVzc3Q185dTdBLWtwSmdqM1hxbFNrN2JWV3NiVzdael9NRE00TXJiSmUwa09iZXhEOERlNHJ5WEl2Mk9KSndLcS11THg4RGQ5Ym40Y1E4WlND?oc=5) | <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPdmFQeUFrWFRSajVMMGl5SWllOEZFYkpiUTdwWHF6SHRVejNKQWVjSHZKcGRCbXJyWDJBbklSZGh1OUREc2JsS3lQRjYtaHhxUE9jLS1iY3VkMUZTTzdBU1RBSkZzZEdDdm1MczNNT2... |
@@ -15,3 +17,13 @@
 | 2025-06-05 10:15:28 BST | Palo Alto Networks | [Palo Alto Networks CEO Nikesh Arora joins Uber’s board of directors - Moneycontrol](https://news.google.com/rss/articles/CBMiwgFBVV95cUxNWmZIbUdsci1tMmE3Q044X2I0N2xSdExpTGplN0pnMUM2NzJ3Skc3RFFaWjlvcEJKSUNpWGFmWkh0WmhScGUyRndDcGJfenFodTU3TmZRRHdvd0xMQjVBTGJQbDhvNHVxZjBsc1hXVnFPWlcwbFVBcDVmQ0pEWUpUM0FtTzhPb2lybkJ5b3hPd2k1UTVvNDh3ZGtKenR0VkZTRms0NWFaSXQwSEdMa05QbV80cW1JV1lWNzloaXB4RVVKQdIBxwFBVV95cUxQZmRFQllvRFRjUGIwcFA2QmduNFdoaTQwZmFmSHJDSloya0tPTmlEVHh3eHJhOFVibHV4NkJWWjVSS3FNWkNqM09lRHk3cld1cWgyZWlraC1lYll0eXFaTFpPcFpmUTNfNFE1aDdFamp5N1Q2b0xWaFRNZkktYUdCaVp5UGpLbWpWYkxLZmhDYW1jME5ESHBBSDFwV2JyaVVqcTdWNUlzOG1zU1VuQWxRbXV4emNEb0dTWUVoM19lXzlsTllhOThB?oc=5) | <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNWmZIbUdsci1tMmE3Q044X2I0N2xSdExpTGplN0pnMUM2NzJ3Skc3RFFaWjlvcEJKSUNpWGFmWkh0WmhScGUyRndDcGJfenFodTU3TmZRRHdvd0xMQjVBTGJQbDhvNHVxZjBsc1hXVn... |
 | 2025-06-05 08:47:43 BST | Palo Alto Networks | [Uber appoints Palo Alto CEO Nikesh Arora to board - The Economic Times](https://news.google.com/rss/articles/CBMiuwFBVV95cUxPOW1TQVUtUm9VY1Y5T2dBaVh6UHRnSzhxQ1ZydTJXbmZWa083V1hPREI3MTZKYmdlTDM1aDk4SDM1eHhPc0QxU08zWS1lR29vc3g2ZjA1WFVRRDB4bXlYRi1mdnptXzRobVJsaFEzbFVTT00wUG43V3VOazhMd2pxYXNTRTM2UkpsVVFWdWVXWkt5WnZPd2ZGb1JWYkVGYU5qYUR0ZG1DcDVNZm1IeDVaWHlQcl9lRjNCcTdB0gHAAUFVX3lxTFBBSU9KLTduQ1hWUmY1dnI1UFhfT0lDZi1XTTJWVWZKMzBhQUpSX0llanBuWUZPeXByU3NfdUtINVNlZkNINFhvR1NSQVBha0hPTTF3WlZDek9Pdm5URFJBVVdqTGY4WXExeWlKXzVtakFRR0lsaHBlVmJldExxUXA4a1J2SENkdU9DWEFyaFFwZTRrMHZSU2JaQWk4MmE5RjR2eG8zOEhYdUhyY1BJc1FJRV91MlNDTGg0SzBsMVdIdQ?oc=5) | <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPOW1TQVUtUm9VY1Y5T2dBaVh6UHRnSzhxQ1ZydTJXbmZWa083V1hPREI3MTZKYmdlTDM1aDk4SDM1eHhPc0QxU08zWS1lR29vc3g2ZjA1WFVRRDB4bXlYRi1mdnptXzRobVJsaFEzbF... |
 | 2025-06-05 00:32:11 BST | Palo Alto Networks | [Palo Alto Networks CEO Joins Uber Board - The Information](https://news.google.com/rss/articles/CBMihwFBVV95cUxNOVBNaTZqUC1Pb0ZaenF1ajBycVhWcDFreVp1NURoRkllTHZmWHJVYTZ5Y3p0aExxVHJQeGZFN2hGc21CY2piNWJkb3YtUTNqeEZmVU5SMDQ1OHJPblVFV21VZXBROUVKd214OTdwQVc1QjdTLTRGTzJEOHJNbUtid0poQzFEY2M?oc=5) | <a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNOVBNaTZqUC1Pb0ZaenF1ajBycVhWcDFreVp1NURoRkllTHZmWHJVYTZ5Y3p0aExxVHJQeGZFN2hGc21CY2piNWJkb3YtUTNqeEZmVU5SMDQ1OHJPblVFV21VZXBROUVKd214OTdwQV... |
+
+---
+## 📰 National Media Mentions (Spokespersons)
+
+_No articles found._
+
+---
+## 📘 Trade Media Mentions (Spokespersons)
+
+_No articles found._
