@@ -6,7 +6,7 @@ import pytz
 BST = pytz.timezone('Europe/London')
 
 # Full list of RSS feeds
-topics = { 
+topics = {
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
     'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
     'Business Insider': 'https://www.insider.co.uk/?service=rss',
@@ -49,8 +49,12 @@ topics = {
     'Palo Alto Networks Research': 'https://unit42.paloaltonetworks.com/feed/',
 }
 
-# Spokespersons to check for (lowercase for case-insensitive matching)
+# Spokespersons
 spokespersons = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
+
+# Classification of publications
+national_sources = {'BBC News', 'Reuters', 'Financial Times', 'The Guardian', 'The Daily Telegraph', 'Sky News', 'Independent', 'PA Media', 'Bloomberg (UK)', 'CNBC', 'Business Insider', 'Forbes'}
+# Everything else not in PANW or national will be treated as trade
 
 def is_today_bst(pub_date):
     """Check if the published date is today in BST."""
@@ -71,13 +75,16 @@ def contains_spokesperson(text):
     text_lower = text.lower()
     return any(name in text_lower for name in spokespersons)
 
-articles = []
+# Article buckets
+panw_articles = []
+national_articles = []
+trade_articles = []
 
+# Parse feeds
 for publication, feed_url in topics.items():
     d = feedparser.parse(feed_url)
     for entry in d.entries:
         if hasattr(entry, 'published_parsed') and is_today_bst(entry.published_parsed):
-            # Combine all content fields
             content_parts = []
 
             if hasattr(entry, 'title'):
@@ -91,9 +98,20 @@ for publication, feed_url in topics.items():
 
             full_content = ' '.join(content_parts).lower()
 
-            # Filter: Include only Palo Alto feeds or if spokesperson mentioned
-            if publication.startswith('Palo Alto Networks') or contains_spokesperson(full_content):
-                articles.append({
+            # Determine category
+            include = False
+            if publication.startswith('Palo Alto Networks'):
+                include = True
+                target_list = panw_articles
+            elif contains_spokesperson(full_content):
+                if publication in national_sources:
+                    target_list = national_articles
+                else:
+                    target_list = trade_articles
+                include = True
+
+            if include:
+                target_list.append({
                     'publication': publication,
                     'title': entry.title,
                     'link': entry.link,
@@ -101,21 +119,31 @@ for publication, feed_url in topics.items():
                     'summary': entry.get('summary', '')[:200] + '...' if entry.get('summary') else '',
                 })
 
-# Sort articles by published date descending
-articles.sort(key=lambda x: x['published'], reverse=True)
+# Sort by date descending
+panw_articles.sort(key=lambda x: x['published'], reverse=True)
+national_articles.sort(key=lambda x: x['published'], reverse=True)
+trade_articles.sort(key=lambda x: x['published'], reverse=True)
 
-# Prepare README content
-readme_content = "# Today's News Articles\n\n"
-if articles:
-    readme_content += "| Date (BST) | Publication | Title | Summary |\n"
-    readme_content += "|------------|-------------|-------|---------|\n"
+# Build markdown tables
+def build_table(title, articles):
+    if not articles:
+        return f"## {title}\n\n_No articles found._\n"
+    table = f"## {title}\n\n"
+    table += "| Date (BST) | Publication | Title | Summary |\n"
+    table += "|------------|-------------|-------|---------|\n"
     for art in articles:
-        readme_content += f"| {art['published']} | {art['publication']} | [{art['title']}]({art['link']}) | {art['summary']} |\n"
-else:
-    readme_content += "No articles found for today.\n"
+        table += f"| {art['published']} | {art['publication']} | [{art['title']}]({art['link']}) | {art['summary']} |\n"
+    return table
+
+readme_content = "# Today's News Articles\n\n"
+readme_content += build_table("📌 Palo Alto Networks Mentions", panw_articles)
+readme_content += "\n---\n"
+readme_content += build_table("📰 National Media Mentions (Spokespersons)", national_articles)
+readme_content += "\n---\n"
+readme_content += build_table("📘 Trade Media Mentions (Spokespersons)", trade_articles)
 
 # Write to README.md
 with open('README.md', 'w', encoding='utf-8') as f:
     f.write(readme_content)
 
-print(f"README.md updated with {len(articles)} articles.")
+print(f"README.md updated with {len(panw_articles) + len(national_articles) + len(trade_articles)} articles.")
