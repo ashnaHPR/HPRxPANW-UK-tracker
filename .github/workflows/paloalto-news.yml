@@ -2,8 +2,8 @@ name: Update Palo Alto News
 
 on:
   schedule:
-    - cron: '0 * * * *'   # runs every hour, adjust as needed
-  workflow_dispatch:      # manual trigger option
+    - cron: '0 * * * *'   # Runs every hour
+  workflow_dispatch:      # Allows manual trigger
 
 jobs:
   update-news:
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install feedparser
+          pip install feedparser pytz
 
       - name: Run news scraper script
         run: python .github/scripts/scrape_rss_news.py
@@ -33,4 +33,4 @@ jobs:
           git add README.md
           git commit -m "📥 Update Palo Alto news" || echo "No changes to commit"
           git pull --rebase origin main || echo "No changes to pull"
-          git push origin main
+          git push origin main || echo "Nothing to push"
