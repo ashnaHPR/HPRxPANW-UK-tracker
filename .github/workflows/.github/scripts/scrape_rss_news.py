@@ -11,7 +11,7 @@ topics = {
     'Financial Times': 'https://www.ft.com/?format=rss',
     'Forbes': 'https://www.forbes.com/investing/feed2/',
     'Independent': 'https://www.independent.co.uk/news/rss',
-    'PA Media': 'https://www.pamediagroup.com/feed/',  # example feed, replace if needed
+    'PA Media': 'https://www.pamediagroup.com/feed/',
     'Reuters': 'http://feeds.reuters.com/reuters/topNews',
     'SC Magazine': 'https://www.scmagazine.com/home/feed/rss/',
     'Sky News': 'https://feeds.skynews.com/feeds/rss/home.xml',
@@ -39,7 +39,7 @@ topics = {
     'Computing': 'https://www.computing.co.uk/rss',
     'The Next Web': 'https://thenextweb.com/feed/',
     'The Record': 'https://therecord.media/feed/',
-    'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',  # Added CNBC to Nationals
+    'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
 
     # Palo Alto specific feeds
     'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
@@ -54,7 +54,6 @@ spokespersons = [
     "Tim Erridge"
 ]
 
-# Define outlets for sections
 national_outlets = [
     'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
     'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
@@ -76,23 +75,17 @@ def clean_html(text):
 
 def contains_spokesperson(text):
     text_lower = text.lower()
-    for name in spokespersons:
-        if name.lower() in text_lower:
-            return True
-    return False
+    return any(name.lower() in text_lower for name in spokespersons)
 
 def contains_palo_alto(text):
     return "palo alto networks" in text.lower()
 
 def fetch_and_generate_news():
-    os.makedirs("news", exist_ok=True)
     now_utc = datetime.utcnow()
     now_str = now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')
-    cutoff = now_utc - timedelta(days=1)  # Only keep last 24 hours
+    cutoff = now_utc - timedelta(days=1)
 
     header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_str}_\n\n"
-
-    # Markdown table headers
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
 
     national_rows = []
@@ -101,54 +94,4 @@ def fetch_and_generate_news():
 
     for pub_name, feed_url in topics.items():
         feed = feedparser.parse(feed_url)
-        for entry in feed.entries[:20]:
-            title = entry.get('title', '')
-            summary = clean_html(entry.get('summary', ''))
-            combined_text = f"{title} {summary}"
-
-            # Date filtering: check published_parsed exists and is within last 24h
-            if hasattr(entry, 'published_parsed'):
-                entry_date = datetime(*entry.published_parsed[:6])
-                if entry_date < cutoff:
-                    continue
-            else:
-                # If no published date, skip entry to be safe
-                continue
-
-            # Filter news: mention Palo Alto or spokespersons
-            if not (contains_palo_alto(combined_text) or contains_spokesperson(combined_text)):
-                continue
-
-            published_fmt = entry_date.strftime("%b %d, %Y")
-            title_md = f"[{title}]({entry.link})"
-
-            row = f"| {published_fmt} | {pub_name} | {title_md} | {summary} |\n"
-
-            if pub_name in national_outlets:
-                national_rows.append(row)
-            elif pub_name in trade_outlets:
-                trade_rows.append(row)
-            else:
-                paloalto_rows.append(row)
-
-    # Compose README content with three tables
-    output = [header]
-
-    output.append("## National Outlets\n\n")
-    output.append(table_header)
-    output.extend(national_rows if national_rows else ["| | | _No relevant news found._ | |\n"])
-
-    output.append("\n## Trade Outlets\n\n")
-    output.append(table_header)
-    output.extend(trade_rows if trade_rows else ["| | | _No relevant news found._ | |\n"])
-
-    output.append("\n## Palo Alto Networks News\n\n")
-    output.append(table_header)
-    output.extend(paloalto_rows if paloalto_rows else ["| | | _No relevant news found._ | |\n"])
-
-    readme_path = "README.md"
-    with open(readme_path, "w", encoding="utf-8") as f:
-        f.write("".join(output))
-
-if __name__ == "__main__":
-    fetch_and_generate_news()
+        source_name = geta_
