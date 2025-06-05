@@ -5,68 +5,19 @@ from datetime import datetime, timedelta
 
 # Media feeds
 topics = {
-    'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
-    'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
-    'Business Insider': 'https://www.businessinsider.com/rss',
-    'Financial Times': 'https://www.ft.com/?format=rss',
-    'Forbes': 'https://www.forbes.com/investing/feed2/',
-    'Independent': 'https://www.independent.co.uk/news/rss',
-    'PA Media': 'https://www.pamediagroup.com/feed/',
-    'Reuters': 'http://feeds.reuters.com/reuters/topNews',
-    'SC Magazine': 'https://www.scmagazine.com/home/feed/rss/',
-    'Sky News': 'https://feeds.skynews.com/feeds/rss/home.xml',
-    'TechCrunch': 'http://feeds.feedburner.com/TechCrunch/',
-    'The Daily Telegraph': 'https://www.telegraph.co.uk/rss.xml',
-    'The Guardian': 'https://www.theguardian.com/uk/rss',
-    'The Register': 'https://www.theregister.com/headlines.atom',
-    'TechRadar Pro': 'https://www.techradar.com/rss',
-    'Computer Weekly': 'https://www.computerweekly.com/rss/allarticles.xml',
-    'Verdict': 'https://www.verdict.co.uk/feed/',
-    'WIRED': 'https://www.wired.com/feed/rss',
-    'ZDNet UK': 'https://www.zdnet.com/news/rss.xml',
-    'The Stack': 'https://thestack.technology/feed/',
-    'Tech Monitor': 'https://techmonitor.ai/feed/',
-    'IT Pro': 'https://www.itpro.co.uk/rss',
-    'Tech Forge': 'https://techforge.co/feed/',
-    'Digit': 'https://www.digit.in/rss',
-    'Intelligent CIO Europe': 'https://www.intelligentcio.com/feed/',
-    'Digitalisation World': 'https://www.digitalisationworld.com/rss.xml',
-    'Silicon UK': 'https://silicon.uk/feed/',
-    'UKTN': 'https://uktoday.news/feed/',
-    'Information Age': 'https://www.information-age.com/feed/',
-    'Diginomica': 'https://diginomica.com/feed/',
-    'TechRepublic': 'https://www.techrepublic.com/rssfeeds/articles/',
-    'Computing': 'https://www.computing.co.uk/rss',
-    'The Next Web': 'https://thenextweb.com/feed/',
-    'The Record': 'https://therecord.media/feed/',
-    'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
-
-    # Palo Alto specific feeds
-    'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
-    'Palo Alto Networks Firewalls': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
-    'Palo Alto Networks Research': 'https://unit42.paloaltonetworks.com/feed/',
+    # (Same as yours)
 }
 
 spokespersons = [
-    "Anna Chung",
-    "Carla Baker",
-    "Scott McKinnon",
-    "Tim Erridge"
+    "Anna Chung", "Carla Baker", "Scott McKinnon", "Tim Erridge"
 ]
 
 national_outlets = [
-    'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
-    'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
-    'The Daily Telegraph', 'The Guardian', 'The Times', 'The Register',
-    'WIRED', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC'
+    # (Same as yours)
 ]
 
 trade_outlets = [
-    'SC Magazine', 'TechCrunch', 'TechRadar Pro', 'Computer Weekly',
-    'Verdict', 'The Stack', 'Tech Monitor', 'IT Pro', 'Tech Forge',
-    'Digit', 'Intelligent CIO Europe', 'Digitalisation World',
-    'Silicon UK', 'UKTN', 'Information Age', 'Diginomica',
-    'TechRepublic', 'Computing', 'Think Digital Partners'
+    # (Same as yours)
 ]
 
 def clean_html(text):
@@ -74,8 +25,7 @@ def clean_html(text):
     return re.sub('<[^<]+?>', '', text).strip()
 
 def contains_spokesperson(text):
-    text_lower = text.lower()
-    return any(name.lower() in text_lower for name in spokespersons)
+    return any(name.lower() in text.lower() for name in spokespersons)
 
 def contains_palo_alto(text):
     return "palo alto networks" in text.lower()
@@ -90,47 +40,38 @@ def fetch_and_generate_news():
     header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_str}_\n\n"
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
 
-    national_rows = []
-    trade_rows = []
-    paloalto_rows = []
+    national_rows, trade_rows, paloalto_rows = [], [], []
 
     for pub_name, feed_url in topics.items():
-        print(f"\nParsing feed from: {pub_name} ({feed_url})")
+        print(f"\nParsing feed: {pub_name}")
         feed = feedparser.parse(feed_url)
         print(f"  Found {len(feed.entries)} entries")
 
         for entry in feed.entries:
             published = None
-            if 'published_parsed' in entry and entry.published_parsed:
+            if hasattr(entry, 'published_parsed') and entry.published_parsed:
                 published = datetime(*entry.published_parsed[:6])
-            elif 'updated_parsed' in entry and entry.updated_parsed:
+            elif hasattr(entry, 'updated_parsed') and entry.updated_parsed:
                 published = datetime(*entry.updated_parsed[:6])
             else:
-                print("  Skipping entry with no date")
                 continue
 
             if published < cutoff:
                 continue
 
-            text_content = ""
-            if 'title' in entry:
-                text_content += entry.title + " "
-            if 'summary' in entry:
-                text_content += clean_html(entry.summary) + " "
-            if 'content' in entry and len(entry.content) > 0:
-                for c in entry.content:
-                    text_content += clean_html(c.value) + " "
+            text_content = ' '.join([
+                clean_html(getattr(entry, 'title', '')),
+                clean_html(getattr(entry, 'summary', '')),
+                *[clean_html(c.value) for c in getattr(entry, 'content', []) if hasattr(c, 'value')]
+            ])
 
             if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
                 continue
 
-            headline = clean_html(entry.title) if 'title' in entry else "No title"
-            summary = clean_html(entry.summary) if 'summary' in entry else ""
-
+            headline = clean_html(getattr(entry, 'title', 'No title'))
+            summary = clean_html(getattr(entry, 'summary', ''))
             date_str = published.strftime('%Y-%m-%d')
             pub_display = pub_name.replace('|', '\\|')
-
-            print(f"  Including article: {headline[:60]}... ({date_str})")
 
             row = f"| {date_str} | {pub_display} | [{headline}]({entry.link}) | {summary} |"
 
@@ -146,22 +87,25 @@ def fetch_and_generate_news():
     if national_rows:
         content += "## National Media\n\n" + table_header + "\n".join(sorted(national_rows, reverse=True)) + "\n\n"
     else:
-        content += "## National Media\n\nNo recent articles found.\n\n"
+        content += "## National Media\n\n_No recent articles found._\n\n"
 
     if trade_rows:
         content += "## Trade Media\n\n" + table_header + "\n".join(sorted(trade_rows, reverse=True)) + "\n\n"
     else:
-        content += "## Trade Media\n\nNo recent articles found.\n\n"
+        content += "## Trade Media\n\n_No recent articles found._\n\n"
 
     if paloalto_rows:
         content += "## Palo Alto Specific News\n\n" + table_header + "\n".join(sorted(paloalto_rows, reverse=True)) + "\n\n"
     else:
-        content += "## Palo Alto Specific News\n\nNo recent articles found.\n\n"
+        content += "## Palo Alto Specific News\n\n_No recent articles found._\n\n"
+
+    # ✅ Always ensure the README has a change (even if no new articles)
+    content += f"\n<!-- Auto-update timestamp: {now_str} -->\n"
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"\nREADME.md updated with {len(national_rows) + len(trade_rows) + len(paloalto_rows)} articles.")
+    print(f"✅ README.md updated with {len(national_rows) + len(trade_rows) + len(paloalto_rows)} articles.")
 
 if __name__ == "__main__":
     fetch_and_generate_news()
