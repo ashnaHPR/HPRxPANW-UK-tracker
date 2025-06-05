@@ -7,11 +7,12 @@ from datetime import datetime, timedelta
 topics = {
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
     'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
-    'Business Insider': 'https://www.businessinsider.com/rss',
+    'Business Insider': 'https://www.insider.co.uk/news/?service=rss',
     'Financial Times': 'https://www.ft.com/?format=rss',
     'Forbes': 'https://www.forbes.com/investing/feed2/',
     'Independent': 'https://www.independent.co.uk/news/rss',
-    'PA Media': 'https://www.pamediagroup.com/feed/',
+    'PA Media News Articles': 'https://api.pa.web.scotcourts.gov.uk/web/rss/NewsArticles',
+    'PA Media Publications': 'https://api.pa.web.scotcourts.gov.uk/web/rss/Publications',
     'Reuters': 'http://feeds.reuters.com/reuters/topNews',
     'SC Magazine': 'https://www.scmagazine.com/home/feed/rss/',
     'Sky News': 'https://feeds.skynews.com/feeds/rss/home.xml',
@@ -42,7 +43,7 @@ topics = {
     'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
 
     # Palo Alto specific feeds
-    'Palo Alto Networks Google News': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
+    'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Firewalls': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Research': 'https://unit42.paloaltonetworks.com/feed/',
 }
@@ -57,7 +58,7 @@ spokespersons = [
 
 national_outlets = [
     'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
-    'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
+    'Forbes', 'Independent', 'PA Media News Articles', 'PA Media Publications', 'Reuters', 'Sky News',
     'The Daily Telegraph', 'The Guardian', 'The Times', 'The Register',
     'WIRED', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC'
 ]
@@ -122,7 +123,6 @@ def fetch_and_generate_news():
                 for c in entry.content:
                     text_content += clean_html(c.value) + " "
 
-            # Check for Palo Alto Networks or spokesperson mentions
             if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
                 continue
 
