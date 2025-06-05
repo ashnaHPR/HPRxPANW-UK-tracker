@@ -1,7 +1,7 @@
 import os
 import feedparser
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # Media feeds
 topics = {
@@ -68,13 +68,13 @@ def contains_spokesperson(text):
 def contains_palo_alto(text):
     return "palo alto networks" in text.lower()
 
-def generate_readme_content(news_table_md):
+def generate_readme_content(news_table_md, last_updated_header):
+    # Define National and Trade outlets (split)
     national_outlets = [
         'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
         'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
         'The Daily Telegraph', 'The Guardian', 'The Times', 'The Register',
-        'Wired', 'ZDNet UK', 'The Next Web', 'The Record',
-        'CNBC'  
+        'WIRED', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC'
     ]
 
     trade_outlets = [
@@ -104,60 +104,53 @@ def generate_readme_content(news_table_md):
         "## Palo Alto Networks News\n\n" + news_table_md + "\n"
     )
 
-    return toc + national_section + trade_section + palo_alto_section
+    return last_updated_header + toc + national_section + trade_section + palo_alto_section
 
 def fetch_and_generate_news():
     os.makedirs("news", exist_ok=True)
     now_utc = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
-    header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_utc}_\n\n"
+    last_updated_header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_utc}_\n\n"
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
 
-    output = [header, table_header]
-
-    now = datetime.utcnow()
-    one_day_ago = now - timedelta(days=1)
+    output = [table_header]
 
     for pub_name, feed_url in topics.items():
-        print(f"\nFetching feed from: {pub_name}")
         feed = feedparser.parse(feed_url)
         filtered_entries = []
 
         for entry in feed.entries[:20]:  # check up to 20 recent articles
-            try:
-                published_dt = datetime(*entry.published_parsed[:6])
-            except Exception:
-                print(f"  Skipped (no valid date): {entry.get('title', '')}")
-                continue
-
-            if published_dt < one_day_ago:
-                print(f"  Skipped (older than 24h): {entry.get('title', '')}")
-                continue
-
             title = entry.get('title', '')
             summary = clean_html(entry.get('summary', ''))
             combined_text = f"{title} {summary}"
 
+            # Filtering rules:
+            # For all feeds, match if mentions Palo Alto Networks or spokespersons
             if contains_palo_alto(combined_text) or contains_spokesperson(combined_text):
-                print(f"  Matched: {title}")
-                filtered_entries.append((entry, published_dt))
-            else:
-                print(f"  Skipped (no mention): {title}")
+                filtered_entries.append(entry)
 
         if not filtered_entries:
-            output.append(f"| _N/A_ | {pub_name} | _No relevant Palo Alto news found._ | |\n")
+            output.append(f"| N/A | {pub_name} | _No relevant Palo Alto news found._ | |\n")
             continue
 
-        for entry, published_dt in filtered_entries:
+        for entry in filtered_entries:
             description = clean_html(entry.get('summary', '')) or ''
-            published_fmt = published_dt.strftime("%b %d, %Y")
+            published = entry.get('published', '') or entry.get('updated', '')
+            try:
+                dt_obj = datetime(*entry.published_parsed[:6])
+                published_fmt = dt_obj.strftime("%b %d, %Y")
+            except Exception:
+                published_fmt = published or "Unknown date"
+
             title_md = f"[{entry.title}]({entry.link})"
             output.append(f"| {published_fmt} | {pub_name} | {title_md} | {description} |\n")
 
+    # Write news markdown file with proper line breaks (preserves table)
     with open("news/paloalto_news.md", "w", encoding="utf-8") as f:
-        f.write("".join(output))
+        f.writelines(output)
 
-    news_table_md = "".join(output[2:])  # skip header lines for insertion into section
-    readme_content = generate_readme_content(news_table_md)
+    # Prepare README content, including last updated header
+    news_table_md = "".join(output)
+    readme_content = generate_readme_content(news_table_md, last_updated_header)
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme_content)
