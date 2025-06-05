@@ -40,6 +40,9 @@ topics = {
     'The Next Web': 'https://thenextweb.com/feed/',
     'The Record': 'https://therecord.media/feed/',
 
+    # Added CNBC feed
+    'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
+
     # Palo Alto specific feeds
     'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Firewalls': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
@@ -114,6 +117,7 @@ def fetch_and_generate_news():
     output = [header, table_header]
 
     for pub_name, feed_url in topics.items():
+        print(f"\nFetching feed from: {pub_name}")
         feed = feedparser.parse(feed_url)
         filtered_entries = []
 
@@ -122,15 +126,12 @@ def fetch_and_generate_news():
             summary = clean_html(entry.get('summary', ''))
             combined_text = f"{title} {summary}"
 
-            # Filtering rules:
-            if 'Palo Alto Networks' in pub_name:
-                # For Palo Alto-specific feeds, filter by spokespersons only
-                if contains_spokesperson(combined_text):
-                    filtered_entries.append(entry)
+            # Filter articles mentioning Palo Alto or spokespersons for ALL feeds
+            if contains_palo_alto(combined_text) or contains_spokesperson(combined_text):
+                print(f"  Matched: {title}")
+                filtered_entries.append(entry)
             else:
-                # For general media, filter if mentions Palo Alto or spokespersons
-                if contains_palo_alto(combined_text) or contains_spokesperson(combined_text):
-                    filtered_entries.append(entry)
+                print(f"  Skipped: {title}")
 
         if not filtered_entries:
             output.append(f"| {pub_name} | _No relevant Palo Alto news found._ | |\n")
