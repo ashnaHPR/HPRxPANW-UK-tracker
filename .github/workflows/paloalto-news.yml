@@ -24,7 +24,7 @@ jobs:
           pip install feedparser
 
       - name: Run news scraper script
-        run: python scripts/scrape_rss_news.py
+        run: python .github/scripts/scrape_rss_news.py
 
       - name: Commit and push changes
         run: |
