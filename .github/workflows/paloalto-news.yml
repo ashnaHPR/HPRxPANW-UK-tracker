@@ -2,8 +2,8 @@ name: Update Palo Alto News
 
 on:
   schedule:
-    - cron: '0 * * * *'   # Runs every hour
-  workflow_dispatch:      # Allows manual trigger
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:     # Allows manual trigger
 
 jobs:
   update-news:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          ref: main  # Explicitly checkout the main branch
 
       - name: Set up Python
         uses: actions/setup-python@v4
