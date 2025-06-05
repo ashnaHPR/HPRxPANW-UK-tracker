@@ -3,9 +3,6 @@ import feedparser
 import re
 from datetime import datetime, timedelta
 
-# Ensure the working directory is the repo root so README.md updates correctly
-os.chdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
-
 # Media feeds
 topics = {
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
@@ -86,7 +83,7 @@ def contains_palo_alto(text):
 def fetch_and_generate_news():
     now_utc = datetime.utcnow()
     now_str = now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')
-    cutoff = now_utc - timedelta(hours=24)
+    cutoff = now_utc - timedelta(days=1)
 
     header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_str}_\n\n"
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
@@ -97,42 +94,85 @@ def fetch_and_generate_news():
 
     for pub_name, feed_url in topics.items():
         feed = feedparser.parse(feed_url)
+
         for entry in feed.entries:
-            published_parsed = getattr(entry, 'published_parsed', None)
-            if not published_parsed:
-                continue
-            published_dt = datetime(*published_parsed[:6])
+            # Parse published date safely
+            published = None
+            if 'published_parsed' in entry and entry.published_parsed:
+                published = datetime(*entry.published_parsed[:6])
+            elif 'updated_parsed' in entry and entry.updated_parsed:
+                published = datetime(*entry.updated_parsed[:6])
+            else:
+                continue  # Skip if no valid date
 
-            if published_dt < cutoff:
-                continue
+            if published < cutoff:
+                continue  # Skip old articles
 
-            title = clean_html(entry.title) if 'title' in entry else ""
+            # Collect all possible text fields into one blob for searching
+            text_content = ""
+
+            if 'title' in entry:
+                text_content += entry.title + " "
+
+            if 'summary' in entry:
+                text_content += clean_html(entry.summary) + " "
+
+            if 'content' in entry and len(entry.content) > 0:
+                for c in entry.content:
+                    text_content += clean_html(c.value) + " "
+
+            # Clean headline and summary for display
+            headline = clean_html(entry.title) if 'title' in entry else "No title"
             summary = clean_html(entry.summary) if 'summary' in entry else ""
-            combined_text = f"{title} {summary}"
 
-            # Check for Palo Alto Networks mentions or spokesperson mentions
-            if contains_palo_alto(combined_text) or contains_spokesperson(combined_text):
-                row = f"| {published_dt.strftime('%Y-%m-%d %H:%M')} | {pub_name} | [{title}]({entry.link}) | {summary[:200]}... |"
+            # Check if article mentions Palo Alto Networks or spokespersons
+            if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
+                continue
 
-                if pub_name in national_outlets:
-                    national_rows.append(row)
-                elif pub_name in trade_outlets:
-                    trade_rows.append(row)
-                else:
-                    paloalto_rows.append(row)
+            # Format date string
+            date_str = published.strftime('%Y-%m-%d')
 
-    # Combine sections with separate tables
+            # Markdown escape pipe '|' characters
+            headline = headline.replace('|', '\\|')
+            summary = summary.replace('|', '\\|')
+            pub_display = pub_name.replace('|', '\\|')
+
+            row = f"| {date_str} | {pub_display} | [{headline}]({entry.link}) | {summary} |"
+
+            # Sort into tables by category
+            if pub_name in national_outlets:
+                national_rows.append(row)
+            elif pub_name in trade_outlets:
+                trade_rows.append(row)
+            else:
+                paloalto_rows.append(row)
+
+    # Build full markdown content
     content = header
-    if national_rows:
-        content += "## National Media\n\n" + table_header + "\n".join(national_rows) + "\n\n"
-    if trade_rows:
-        content += "## Trade Media\n\n" + table_header + "\n".join(trade_rows) + "\n\n"
-    if paloalto_rows:
-        content += "## Palo Alto Specific Media\n\n" + table_header + "\n".join(paloalto_rows) + "\n\n"
 
-    # Write to README.md
+    if national_rows:
+        content += "## National Media\n\n"
+        content += table_header + "\n".join(sorted(national_rows, reverse=True)) + "\n\n"
+    else:
+        content += "## National Media\n\nNo recent articles found.\n\n"
+
+    if trade_rows:
+        content += "## Trade Media\n\n"
+        content += table_header + "\n".join(sorted(trade_rows, reverse=True)) + "\n\n"
+    else:
+        content += "## Trade Media\n\nNo recent articles found.\n\n"
+
+    if paloalto_rows:
+        content += "## Palo Alto Specific News\n\n"
+        content += table_header + "\n".join(sorted(paloalto_rows, reverse=True)) + "\n\n"
+    else:
+        content += "## Palo Alto Specific News\n\nNo recent articles found.\n\n"
+
+    # Write README.md (assumes script runs in repo root)
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
+
+    print("README.md updated with latest news.")
 
 if __name__ == "__main__":
     fetch_and_generate_news()
