@@ -2,52 +2,35 @@ name: Update Palo Alto News
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # Runs every 2 hours
-  workflow_dispatch:
-
-permissions:
-  contents: write  # ✅ Needed to commit and push README.md
+    - cron: '0 * * * *'   # runs every hour, adjust as needed
+  workflow_dispatch:      # manual trigger option
 
 jobs:
-  fetch-news:
+  update-news:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install feedparser python-dotenv
+          pip install feedparser
 
-      - name: Run RSS news fetcher
-        run: python .github/scripts/scrape_rss_news.py
+      - name: Run news scraper script
+        run: python scripts/scrape_rss_news.py
 
-      - name: Debug - Show README content
-        run: |
-          echo "===== README.md (Preview) ====="
-          cat README.md || echo "README.md not found"
-          echo "================================"
-
-      - name: Commit and push README.md
+      - name: Commit and push changes
         run: |
           git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-
-          git fetch origin main
-          git checkout main
-
-          # Safely pull the latest changes
-          git stash
-          git pull origin main --rebase
-          git stash pop || echo "No local changes to pop"
-
+          git config --global user.email "github-actions@github.com"
           git add README.md
-          git diff --cached --quiet || git commit -m "📥 Update Palo Alto news"
+          git commit -m "📥 Update Palo Alto news" || echo "No changes to commit"
+          git pull --rebase origin main || echo "No changes to pull"
           git push origin main
