@@ -1,50 +1,13 @@
+import os
 import feedparser
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo  # Python 3.9+
 
-# Media feeds
 topics = {
-    'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
-    'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
-    'Business Insider': 'https://www.insider.co.uk/?service=rss',
-    'Financial Times': 'https://www.ft.com/?format=rss',
-    'Forbes': 'https://www.forbes.com/investing/feed2/',
-    'Independent': 'https://www.independent.co.uk/news/rss',
-    'PA Media': 'https://api.pa.web.scotcourts.gov.uk/web/rss/NewsArticles',
-    'Reuters': 'http://feeds.reuters.com/reuters/topNews',
-    'SC Magazine': 'https://www.scmagazine.com/home/feed/rss/',
-    'Sky News': 'https://feeds.skynews.com/feeds/rss/home.xml',
-    'TechCrunch': 'http://feeds.feedburner.com/TechCrunch/',
-    'The Daily Telegraph': 'https://www.telegraph.co.uk/rss.xml',
-    'The Guardian': 'https://www.theguardian.com/uk/rss',
-    'The Register': 'https://www.theregister.com/headlines.atom',
-    'TechRadar Pro': 'https://www.techradar.com/rss',
-    'Computer Weekly': 'https://www.computerweekly.com/rss/allarticles.xml',
-    'Verdict': 'https://www.verdict.co.uk/feed/',
-    'WIRED': 'https://www.wired.com/feed/rss',
-    'ZDNet UK': 'https://www.zdnet.com/news/rss.xml',
-    'The Stack': 'https://thestack.technology/feed/',
-    'Tech Monitor': 'https://techmonitor.ai/feed/',
+    # ... all your other feeds ...
     'IT Pro': 'https://www.itpro.com/uk/feeds/articletype/news',
-    'Tech Forge': 'https://techforge.co/feed/',
-    'Digit': 'https://www.digit.in/rss',
-    'Intelligent CIO Europe': 'https://www.intelligentcio.com/feed/',
-    'Digitalisation World': 'https://www.digitalisationworld.com/rss.xml',
-    'Silicon UK': 'https://silicon.uk/feed/',
-    'UKTN': 'https://uktoday.news/feed/',
-    'Information Age': 'https://www.information-age.com/feed/',
-    'Diginomica': 'https://diginomica.com/feed/',
-    'TechRepublic': 'https://www.techrepublic.com/rssfeeds/articles/',
-    'Computing': 'https://www.computing.co.uk/rss',
-    'The Next Web': 'https://thenextweb.com/feed/',
-    'The Record': 'https://therecord.media/feed/',
-    'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
-
-    # Palo Alto specific feeds
-    'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
-    'Palo Alto Networks Firewalls': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
-    'Palo Alto Networks Research': 'https://unit42.paloaltonetworks.com/feed/',
+    # ... rest of your feeds ...
 }
 
 spokespersons = [
@@ -59,7 +22,7 @@ national_outlets = [
     'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
     'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
     'The Daily Telegraph', 'The Guardian', 'The Times', 'The Register',
-    'WIRED', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC'
+    'WIRED', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC', 'IT Pro'
 ]
 
 trade_outlets = [
@@ -71,7 +34,6 @@ trade_outlets = [
 ]
 
 def clean_html(text):
-    """Remove HTML tags from text."""
     return re.sub('<[^<]+?>', '', text).strip()
 
 def contains_spokesperson(text):
@@ -79,12 +41,12 @@ def contains_spokesperson(text):
     return any(name.lower() in text_lower for name in spokespersons)
 
 def contains_palo_alto(text):
-    # Exact phrase "palo alto networks" case insensitive
+    # Match exact "palo alto networks" phrase (case insensitive)
     return "palo alto networks" in text.lower()
 
 def fetch_and_generate_news():
-    bst = ZoneInfo("Europe/London")
-
+    # Use BST timezone for datetime filtering
+    bst = ZoneInfo('Europe/London')
     now_bst = datetime.now(bst)
     now_str = now_bst.strftime('%Y-%m-%d %H:%M:%S %Z')
     cutoff = now_bst - timedelta(days=1)
@@ -104,15 +66,22 @@ def fetch_and_generate_news():
         print(f"  Found {len(feed.entries)} entries")
 
         for entry in feed.entries:
+            # Get publish date with timezone awareness
             published = None
             if 'published_parsed' in entry and entry.published_parsed:
-                published = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).astimezone(bst)
+                published = datetime(*entry.published_parsed[:6], tzinfo=ZoneInfo('UTC')).astimezone(bst)
             elif 'updated_parsed' in entry and entry.updated_parsed:
-                published = datetime(*entry.updated_parsed[:6], tzinfo=timezone.utc).astimezone(bst)
+                published = datetime(*entry.updated_parsed[:6], tzinfo=ZoneInfo('UTC')).astimezone(bst)
             else:
                 print("  Skipping entry with no date")
                 continue
 
+            # Debug print to check article dates and titles for IT Pro or others
+            if pub_name == "IT Pro":
+                print(f"  IT Pro Article: {entry.title}")
+                print(f"    Published (BST): {published}")
+
+            # Filter to last 24 hours in BST
             if published < cutoff:
                 continue
 
@@ -125,7 +94,7 @@ def fetch_and_generate_news():
                 for c in entry.content:
                     text_content += clean_html(c.value) + " "
 
-            # Filter for Palo Alto Networks or spokesperson mentions
+            # Check if article mentions "Palo Alto Networks" or a spokesperson
             if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
                 continue
 
@@ -166,7 +135,8 @@ def fetch_and_generate_news():
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"\nREADME.md updated with {len(national_rows) + len(trade_rows) + len(paloalto_rows)} articles.")
+    total = len(national_rows) + len(trade_rows) + len(paloalto_rows)
+    print(f"\nREADME.md updated with {total} articles.")
 
 if __name__ == "__main__":
     fetch_and_generate_news()
