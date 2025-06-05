@@ -2,11 +2,11 @@ name: Update Palo Alto News
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */2 * * *'  # Runs every 2 hours
   workflow_dispatch:
 
 permissions:
-  contents: write  
+  contents: write  # ✅ Needed to commit and push README.md
 
 jobs:
   fetch-news:
@@ -31,15 +31,23 @@ jobs:
 
       - name: Debug - Show README content
         run: |
-          echo "===== README.md ====="
+          echo "===== README.md (Preview) ====="
           cat README.md || echo "README.md not found"
-          echo "======================"
+          echo "================================"
 
       - name: Commit and push README.md
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git pull --rebase origin main || true
+
+          git fetch origin main
+          git checkout main
+
+          # Safely pull the latest changes
+          git stash
+          git pull origin main --rebase
+          git stash pop || echo "No local changes to pop"
+
           git add README.md
           git diff --cached --quiet || git commit -m "📥 Update Palo Alto news"
-          git push
+          git push origin main
