@@ -39,8 +39,6 @@ topics = {
     'Computing': 'https://www.computing.co.uk/rss',
     'The Next Web': 'https://thenextweb.com/feed/',
     'The Record': 'https://therecord.media/feed/',
-
-    # Added CNBC feed
     'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
 
     # Palo Alto specific feeds
@@ -76,7 +74,7 @@ def generate_readme_content(news_table_md):
         'BBC News', 'Bloomberg (UK)', 'Business Insider', 'Financial Times',
         'Forbes', 'Independent', 'PA Media', 'Reuters', 'Sky News',
         'The Daily Telegraph', 'The Guardian', 'The Times', 'The Register',
-        'Wired', 'ZDNet UK', 'The Next Web', 'The Record'
+        'Wired', 'ZDNet UK', 'The Next Web', 'The Record', 'CNBC'
     ]
 
     trade_outlets = [
