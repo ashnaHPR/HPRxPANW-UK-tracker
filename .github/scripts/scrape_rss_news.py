@@ -3,16 +3,14 @@ import feedparser
 import re
 from datetime import datetime, timedelta
 
-# Media feeds
 topics = {
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
-    'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
+    'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',  # Podcast feed, no obvious main RSS
     'Business Insider': 'https://www.insider.co.uk/news/?service=rss',
     'Financial Times': 'https://www.ft.com/?format=rss',
     'Forbes': 'https://www.forbes.com/investing/feed2/',
     'Independent': 'https://www.independent.co.uk/news/rss',
-    'PA Media News Articles': 'https://api.pa.web.scotcourts.gov.uk/web/rss/NewsArticles',
-    'PA Media Publications': 'https://api.pa.web.scotcourts.gov.uk/web/rss/Publications',
+    'PA Media': 'https://api.pa.web.scotcourts.gov.uk/web/rss/NewsArticles',
     'Reuters': 'http://feeds.reuters.com/reuters/topNews',
     'SC Magazine': 'https://www.scmagazine.com/home/feed/rss/',
     'Sky News': 'https://feeds.skynews.com/feeds/rss/home.xml',
@@ -27,7 +25,7 @@ topics = {
     'ZDNet UK': 'https://www.zdnet.com/news/rss.xml',
     'The Stack': 'https://thestack.technology/feed/',
     'Tech Monitor': 'https://techmonitor.ai/feed/',
-    'IT Pro': 'https://www.itpro.co.uk/rss',
+    'IT Pro': 'https://www.itpro.com/uk/feeds/articletype/news',
     'Tech Forge': 'https://techforge.co/feed/',
     'Digit': 'https://www.digit.in/rss',
     'Intelligent CIO Europe': 'https://www.intelligentcio.com/feed/',
