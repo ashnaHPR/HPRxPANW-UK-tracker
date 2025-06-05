@@ -1,7 +1,9 @@
+import os
 import feedparser
 import re
 from datetime import datetime, timedelta
 
+# Media feeds
 topics = {
     'BBC News': 'https://feeds.bbci.co.uk/news/rss.xml',
     'Bloomberg (UK)': 'https://www.bloomberg.com/feed/podcast/uk.xml',
@@ -40,7 +42,7 @@ topics = {
     'CNBC': 'https://www.cnbc.com/id/100003114/device/rss/rss.html',
 
     # Palo Alto specific feeds
-    'Palo Alto Networks': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
+    'Palo Alto Networks Google News': 'https://news.google.com/rss/search?q="Palo+Alto+Networks"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Firewalls': 'https://news.google.com/rss/search?q="Palo+Alto+firewall"&hl=en-US&gl=US&ceid=US:en',
     'Palo Alto Networks Research': 'https://unit42.paloaltonetworks.com/feed/',
 }
@@ -49,7 +51,8 @@ spokespersons = [
     "Anna Chung",
     "Carla Baker",
     "Scott McKinnon",
-    "Tim Erridge"
+    "Tim Erridge",
+    "Sam Rubin"
 ]
 
 national_outlets = [
@@ -83,6 +86,8 @@ def fetch_and_generate_news():
     now_str = now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')
     cutoff = now_utc - timedelta(days=1)
 
+    print(f"Fetching news feeds at {now_str} (cutoff {cutoff.strftime('%Y-%m-%d %H:%M:%S')})")
+
     header = f"# 📰 Palo Alto Networks News from Selected Media\n\n_Last updated: {now_str}_\n\n"
     table_header = "| Date | Publication | Headline | Summary |\n|---|---|---|---|\n"
 
@@ -91,7 +96,10 @@ def fetch_and_generate_news():
     paloalto_rows = []
 
     for pub_name, feed_url in topics.items():
+        print(f"\nParsing feed from: {pub_name} ({feed_url})")
         feed = feedparser.parse(feed_url)
+        print(f"  Found {len(feed.entries)} entries")
+
         for entry in feed.entries:
             published = None
             if 'published_parsed' in entry and entry.published_parsed:
@@ -99,6 +107,7 @@ def fetch_and_generate_news():
             elif 'updated_parsed' in entry and entry.updated_parsed:
                 published = datetime(*entry.updated_parsed[:6])
             else:
+                print("  Skipping entry with no date")
                 continue
 
             if published < cutoff:
@@ -113,13 +122,17 @@ def fetch_and_generate_news():
                 for c in entry.content:
                     text_content += clean_html(c.value) + " "
 
+            # Check for Palo Alto Networks or spokesperson mentions
             if not (contains_palo_alto(text_content) or contains_spokesperson(text_content)):
                 continue
 
             headline = clean_html(entry.title) if 'title' in entry else "No title"
             summary = clean_html(entry.summary) if 'summary' in entry else ""
+
             date_str = published.strftime('%Y-%m-%d')
             pub_display = pub_name.replace('|', '\\|')
+
+            print(f"  Including article: {headline[:60]}... ({date_str})")
 
             row = f"| {date_str} | {pub_display} | [{headline}]({entry.link}) | {summary} |"
 
@@ -135,22 +148,22 @@ def fetch_and_generate_news():
     if national_rows:
         content += "## National Media\n\n" + table_header + "\n".join(sorted(national_rows, reverse=True)) + "\n\n"
     else:
-        content += "## National Media\n\n_No recent articles found._\n\n"
+        content += "## National Media\n\nNo recent articles found.\n\n"
 
     if trade_rows:
         content += "## Trade Media\n\n" + table_header + "\n".join(sorted(trade_rows, reverse=True)) + "\n\n"
     else:
-        content += "## Trade Media\n\n_No recent articles found._\n\n"
+        content += "## Trade Media\n\nNo recent articles found.\n\n"
 
     if paloalto_rows:
         content += "## Palo Alto Specific News\n\n" + table_header + "\n".join(sorted(paloalto_rows, reverse=True)) + "\n\n"
     else:
-        content += "## Palo Alto Specific News\n\n_No recent articles found._\n\n"
+        content += "## Palo Alto Specific News\n\nNo recent articles found.\n\n"
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"README.md updated with {len(national_rows) + len(trade_rows) + len(paloalto_rows)} articles.")
+    print(f"\nREADME.md updated with {len(national_rows) + len(trade_rows) + len(paloalto_rows)} articles.")
 
 if __name__ == "__main__":
     fetch_and_generate_news()
