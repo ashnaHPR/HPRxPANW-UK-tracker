@@ -26,6 +26,16 @@ jobs:
       - name: Run RSS news fetcher
         run: python .github/scripts/scrape_rss_news.py
 
+      # ✅ DEBUG: Show changes made to README.md (if any)
+      - name: Check for changes in README.md
+        run: |
+          echo "==== git status ===="
+          git status
+          echo "==== git diff ===="
+          git diff README.md || true
+          echo "==== Top of README.md ===="
+          head -n 20 README.md || true
+
       - name: Commit and push news file
         run: |
           git config --global user.name "github-actions"
