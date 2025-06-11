@@ -4,7 +4,7 @@
 
 | Date (BST) | Publication | Title | Summary |
 |------------|-------------|-------|---------|
-| 2025-06-11 11:07:10 BST | Palo Alto Networks | [5 Cybersecurity Stocks You Can Buy and Hold for the Next Decade - The Globe and Mail](https://news.google.com/rss/articles/CBMi4wFBVV95cUxNX3BwS0hFS3Y0WXJZT1VmcUN0c0NoZ2NXREo2bHNzNDQtUjFOUFNBZ0VqOWtQa2kwbWVuakhLTDdXUXZNb3JRbWZUS1BaSHlXVjdiaXdXdll3REkycFo4cWNxOHRlWTNFVUYzQXdxUklzYV9hMVY0ejBqS0xSOXlOalFrY2hZdDRPQnZxSzhTVzNRUnpxVkRnbUxKUS1QZmQ4bHZQZXdYRTZKaHJIOU1YZXlwdXAyaTdhc25IdmNWUFNZa29xYW9kOFYzaGNLTDRKa2VXWUhIUHBvX1ZiS1pmUVFuTQ?oc=5) | <a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxNX3BwS0hFS3Y0WXJZT1VmcUN0c0NoZ2NXREo2bHNzNDQtUjFOUFNBZ0VqOWtQa2kwbWVuakhLTDdXUXZNb3JRbWZUS1BaSHlXVjdiaXdXdll3REkycFo4cWNxOHRlWTNFVUYzQXdxUk... |
+| 2025-06-11 11:07:54 BST | Palo Alto Networks | [5 Cybersecurity Stocks You Can Buy and Hold for the Next Decade - The Globe and Mail](https://news.google.com/rss/articles/CBMi5AFBVV95cUxQNzU3Qkg4QjVQbGVuUjZuLXpMVHFpUXZuZWw1UE1xejRJVU5XV3BmQlpyWXNXRGRzaHJKeHdXaEtDbE1ZeWhiYkdvREFRUXV0SFRjSl9kWnZZamtYT0NOajhCQ1Fqdkp6Ykx4SGNhRnZoU0VPZUpLM2JvdkpYeEwzSC1nYkdleDVFMmJJRm9WSUd2WElpaldJZzFhUkxyeW5heWVWcHI3TGdhWjhHNllUaG1WM2hUcDVRRzRQZFlNZXp3azhmREprbGRuajZVWll2VmxSRUV4dEFzVFJYSlNxMW56d3o?oc=5) | <a href="https://news.google.com/rss/articles/CBMi5AFBVV95cUxQNzU3Qkg4QjVQbGVuUjZuLXpMVHFpUXZuZWw1UE1xejRJVU5XV3BmQlpyWXNXRGRzaHJKeHdXaEtDbE1ZeWhiYkdvREFRUXV0SFRjSl9kWnZZamtYT0NOajhCQ1Fqdkp6Ykx4SGNhRn... |
 
 ---
 ## 📰 National Media Mentions (Spokespersons)
