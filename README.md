@@ -2,12 +2,7 @@
 
 ## 📌 Palo Alto Networks Mentions
 
-| Date (BST) | Publication | Title | Summary |
-|------------|-------------|-------|---------|
-| 2025-06-13 16:30:00 BST | Palo Alto Networks | [Palo Alto Networks: High-Quality Comes At Too Steep A Cost (NASDAQ:PANW) - Seeking Alpha](https://news.google.com/rss/articles/CBMinwFBVV95cUxOcFoyWkJZZkxURTNwa25uVndBSWd4WlhYb3E5MHlXeldvdnRyS3lSQ3ZfaHA0WTJEUGc5SVVDdGw3RWJFY3Bkb2ZBNjBHRHM4czgwUF82dEVyR2FqR1ZjOXhzT1QwN0liQTJIekVrcFd6aE9MTHhLVlJZQVYyN3pnc2dQdFZlQ3Y3S3dsaVFyYjhhWXJWMVhoMmFRTjBSUnM?oc=5) | <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOcFoyWkJZZkxURTNwa25uVndBSWd4WlhYb3E5MHlXeldvdnRyS3lSQ3ZfaHA0WTJEUGc5SVVDdGw3RWJFY3Bkb2ZBNjBHRHM4czgwUF82dEVyR2FqR1ZjOXhzT1QwN0liQTJIekVrcF... |
-| 2025-06-13 11:00:42 BST | Palo Alto Networks Research | [Serverless Tokens in the Cloud: Exploitation and Detections](https://unit42.paloaltonetworks.com/serverless-authentication-cloud/) | <p>Understand the mechanics of serverless authentication: three simulated attacks across major CSPs offer effective approaches for application developers.</p>
-<p>The post <a href="https://unit42.paloa... |
-| 2025-06-13 05:57:10 BST | Palo Alto Networks | [Palo Alto Networks expands cloud presence in Asia-Pacific and Japan to strengthen cybersecurity - ET CISO](https://news.google.com/rss/articles/CBMi_gFBVV95cUxPZXBwMjQ4NHJpRGJTLTQxb2xwMEludzFDb3hQcUhfWDRkb1FaNE1iN1F4OHBURDdJNkd0SFNRTHd6NmIwQXo2cDVqYXg5bm8tZmJqNVVPQlhwMVpKanVqaFotQU1Ic2FIazRXUWVyN2dFdEVBRUotYUQ5dVNRdWRvOFlaR2UwNmhyUlZmOHFPUVQ3TDhQQVkxcW03OTJxZjlCbTU5U1NfNHNILUp0WEp3Q05FaVZUXzRuUkI5TWZKc19FZVFOSUlycTFxZkNHQVBsUk01a2xJRnNGVHdWZHgxMlBtSVVUd3cyNVIxQWd1OHlRYVJOTHV3US0xUUQtZ9IBgwJBVV95cUxNenp6eWgzam9zNTNjb3FQN0QzbVBMeDFZOXZQNXZFYXJieUNWRFFYaGY4QXUtdFUzaUlMMlFuU3BKUGw4THRfZGlpSmxwVzJWX1BqaHpGbXdON09jS2tRTG15QlkyeFQ4WlNqdkc1Q1Z3cVVwY2NHczlzU3dhbHNBNTV4YXEyYWdaTmNBNG9LWEk4RDRJOEcwZ0Y2UERVcnRqUm5aUnNFZGtFR2trb3BVWHoxb3c3RlVjS1JxNnV4T2lHNHo2cHhwV3JvZmcwU0J1aHFicVNMeTNWcFI3NFl2cW5BaGhUaHcwdXpEUXRFN1RobXduQlpMcnRpM1phQ01KeVkw?oc=5) | <a href="https://news.google.com/rss/articles/CBMi_gFBVV95cUxPZXBwMjQ4NHJpRGJTLTQxb2xwMEludzFDb3hQcUhfWDRkb1FaNE1iN1F4OHBURDdJNkd0SFNRTHd6NmIwQXo2cDVqYXg5bm8tZmJqNVVPQlhwMVpKanVqaFotQU1Ic2FIazRXUWVyN2... |
+_No articles found._
 
 ---
 ## 📰 National Media Mentions (Spokespersons)
