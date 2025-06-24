@@ -4,7 +4,7 @@
 
 | Date (BST) | Publication | Title | Summary |
 |------------|-------------|-------|---------|
-| 2025-06-24 10:00:36 BST | Palo Alto Networks | [Palo Alto Report Flags AI Security Risks in 2025 Landscape - SME Street](https://news.google.com/rss/articles/CBMinwFBVV95cUxQWTNOa2JOS3d4NUo2UjFnOHdsNlFyM2t2RVFwZTlhWUY4WXpOd0V3OUdlOHVXTFZmbld2bW52bi1aNmI3TklSRjJkWTFtNmNMb3VoaWV2ZVlDSERJVVhCOVJpeEZPUFFUOUpGeVlnSk9MdEVPa3BrYV9lbURaQUNQOEVTSTlqNWduTDJuRTRmbmd1MFFuSEUwVUhsRmhjRmc?oc=5) | <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQWTNOa2JOS3d4NUo2UjFnOHdsNlFyM2t2RVFwZTlhWUY4WXpOd0V3OUdlOHVXTFZmbld2bW52bi1aNmI3TklSRjJkWTFtNmNMb3VoaWV2ZVlDSERJVVhCOVJpeEZPUFFUOUpGeVlnSk... |
+| 2025-06-24 10:03:00 BST | Palo Alto Networks | [Palo Alto: 10% of a company’s 66 GenAI apps are high-risk on average - ET CISO](https://news.google.com/rss/articles/CBMizAFBVV95cUxOWU80M0c5TE5YN3NzZnpNMS01UTRlOUg2bGFEekIxb0JzMzl2TEVMRTdYenZPUDlRUmlqNmJmRkl6V0dqYWVkNkhyZDJqbEx1azZQRk5KYWtpZW11bFM2TzNZcDdvYmlhaUpUTlZTRmhyQTNJVnNGTlVHRlpNekl3MTRmbGVoOUFqY29PSHRCRmZvZE9Pd1VPTG50a2hveC1mMjRnQWVubFV0N1lQamZQSG82dWtEc2dNNG1SVy1wam5XWTJKTG1qU1BPbFLSAdIBQVVfeXFMT0l3VDhKR25uUURsQXcxRV9nbVEydEllakIzSExaelg5a3BpcTR3bkJVOHVMRDNxYnJ6TG4wM1M5c1VOTGNQTGM2ckdsU05Ea1REYUI1eVc0a2FaTEVpVDJXcGxnOFBLN1pXYkU2d1BIbFBjYzZJX1F4NklNMG1vOVE0N2RGN0FtYk84S2FVWjhTNElIMmI4bUtNYWlaQUNSQkppcnFpSW9iTXNvMjFSVTRseVdDakhnQlFIRzROMXhyNGZtUGFPLWFOUXVIYWdXUkN3?oc=5) | <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOWU80M0c5TE5YN3NzZnpNMS01UTRlOUg2bGFEekIxb0JzMzl2TEVMRTdYenZPUDlRUmlqNmJmRkl6V0dqYWVkNkhyZDJqbEx1azZQRk5KYWtpZW11bFM2TzNZcDdvYmlhaUpUTlZTRm... |
 
 ---
 ## 📰 National Media Mentions (Spokespersons)
