@@ -1,96 +1,74 @@
-import os
 import requests
 from datetime import datetime, timezone
 import pytz
 
-# BST timezone for datetime conversions
+# BST timezone
 BST = pytz.timezone('Europe/London')
 
-# Spokespersons list (case insensitive)
-spokespersons = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
+# Your GNews API key from GitHub secrets or local testing
+API_KEY = "d304220708e1b37ac194616353216bf9"  # Replace with your secret or env var in production
 
-# National publication titles (case insensitive)
-national_titles = [
-    'BBC', 'Bloomberg', 'Business Insider', 'Forbes', 'Financial Times', 'Reuters',
-    'Sky News', 'The Telegraph', 'The Times', 'The Independent', 'PA Media',
-    'City AM', 'Irish Examiner', 'Irish Independent', 'Irish Times', 'MoneyWeek',
-    'Sunday Times (Ireland)', 'Economist', 'The Guardian', 'BBC Radio 4', 'BBC Radio 5 Live',
-    'Channel 5', 'CNET', 'CNN International', 'Computer Business Review', 'Computerworld UK',
-    'Daily Express', 'Daily Mail', 'Daily Mirror', 'Evening Standard', 'The i',
-    'International Business Times UK', 'ITV News', 'Metro', 'The Observer', 'The Sun',
-    'The Sun on Sunday', 'Sunday Express', 'Sunday Mirror', 'Wall Street Journal',
-    'Business Post', 'Newstalk', 'RTÉ News'
+# Domains list (you gave me a lot, here they all are)
+all_domains = [
+    "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
+    "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
+    "pa.media", "cityam.com", "computerweekly.com", "raconteur.net", "techcrunch.com",
+    "theregister.com", "techradar.com", "insight.scmagazineuk.com", "verdict.co.uk",
+    "wired.com", "zdnet.com", "itpro.com", "csoonline.com", "infosecurity-magazine.com",
+    "techmonitor.ai", "capacitymedia.com", "cybermagazine.com", "digitalisationworld.com",
+    "channelfutures.com", "accountancyage.com", "financialresearch.gov", "businesspost.ie",
+    "cio.com", "directoroffinance.com", "emeafinance.com", "finextra.com", "finance-monthly.com",
+    "ffnews.com", "fintech.global", "fstech.co.uk", "gtreview.com", "government-transformation.com",
+    "gpsj.co.uk", "ifamagazine.com", "ismg.io", "insuranceday.com", "intelligentciso.com",
+    "ifre.com", "irishexaminer.com", "independent.ie", "irishtechnews.ie", "irishtimes.com",
+    "techforge.pub", "digit-software.com", "intelligentcio.com", "silicon.co.uk", "information-age.com",
+    "diginomica.com", "techrepublic.com", "computing.co.uk", "thenextweb.com", "moneyweek.com",
+    "politico.eu", "professionaladviser.com", "publicfinanceinternational.org", "publicsectorexecutive.com",
+    "publicsectorfocus.com", "publicsectornetwork.co.uk", "publicsectordigital.com", "publicservicemagazine.com",
+    "rte.ie", "spglobal.com", "structuredcreditinvestor.com", "thetimes.co.ie", "techcentral.ie",
+    "europeanfinancialreview.com", "thestack.technology", "thinkdigitalpartners.com", "uktech.news",
+    "wealthandfinance-intl.com", "economist.com", "theguardian.com", "channel5.com", "cnet.com",
+    "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk", "dailymail.co.uk",
+    "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk", "itv.com", "metro.co.uk",
+    "theguardian.com/observer", "thesun.co.uk", "thesundaytimes.co.uk", "wsj.com", "healthcare-outlook.com",
+    "digitalhealth.net", "digitalhealthnews.com", "healthcarebusinessoutlook.com", "healthtechdigital.com",
+    "pathfinderinternational.co.uk", "housing-technology.com", "themj.co.uk", "ukauthority.com",
+    "schoolsweek.co.uk", "insights.talintpartners.com", "tes.com", "timeshighereducation.com",
+    "ictforeducation.co.uk", "educationbusinessuk.net", "researchprofessionalnews.com", "telecoms.com",
+    "lightreading.com", "totaltele.com", "telecomtv.com", "developingtelecoms.com", "telecomstechnews.com",
+    "mobile-magazine.com", "mobileworldlive.com", "mobileeurope.co.uk", "iot-now.com", "manufacturingdigital.com",
+    "themanufacturer.com", "mpemagazine.co.uk", "manufacturingmanagement.co.uk", "businessandindustrytoday.co.uk",
+    "industryeurope.com", "logisticsbusiness.com", "logisticsit.com", "ipesearch.co.uk", "mfg-outlook.com",
+    "manufacturing-today.com", "ukmfg.tv", "uk-manufacturing-online.co.uk", "am-online.com", "autoexpress.co.uk",
+    "auto-retail.co.uk", "automotivelogisticsmagazine.com", "automotivemanufacturingsolutions.com",
+    "automotiveworld.com", "automotivetestingtechnologyinternational.com", "connectedtechnologysolutions.co.uk",
+    "moveelectric.com", "ciltuk.org.uk", "evo.co.uk", "motortrader.com", "just-auto.com", "autofutures.tv",
+    "motoringresearch.com", "theengineer.co.uk", "fiercepharma.com", "hsj.co.uk", "hospitaltimes.co.uk",
+    "pbiforum.net", "pharma-iq.com", "pharmaceutical-technology.com", "intelligentcxo.com", "cxtoday.com",
+    "cxnetwork.com", "cxm.co.uk", "cxomagazine.com", "channellife.co.uk", "channelweb.co.uk", "it-sp.eu",
+    "computerweekly.com/microscope", "pcr-online.biz", "pcpro.co.uk", "channelpro.co.uk", "cloudpro.co.uk",
+    "iteuropa.com", "siliconrepublic.com", "irishtechnews.ie", "techcentral.ie", "businesspostgroup.com",
+    "newstalk.com", "irishexaminer.com", "irishtimes.com", "independent.ie", "thetimes.com/world/ireland",
+    "rte.ie"
 ]
 
-# National domains (full list from you, cleaned and lowercased)
-national_domains = {
-    'bbc.co.uk', 'bloomberg.com', 'businessinsider.com', 'forbes.com', 'ft.com',
-    'reuters.com', 'news.sky.com', 'telegraph.co.uk', 'thetimes.com', 'independent.co.uk',
-    'pa.media', 'cityam.com', 'irishexaminer.com', 'independent.ie', 'irishtechnews.ie',
-    'irishtimes.com', 'moneyweek.com', 'sundaytimes.co.uk', 'economist.com',
-    'theguardian.com', 'bbc.co.uk', 'channel5.com', 'cnet.com', 'edition.cnn.com',
-    'cbronline.com', 'computerworld.com', 'express.co.uk', 'dailymail.co.uk',
-    'mirror.co.uk', 'standard.co.uk', 'inews.co.uk', 'ibtimes.co.uk', 'itv.com',
-    'metro.co.uk', 'theguardian.com/observer', 'thesun.co.uk', 'thesundaytimes.co.uk',
-    'wsj.com', 'businesspost.ie', 'newstalk.com', 'rte.ie', 'thetimes.co.ie',
-    'irishindependent.ie'
-}
+# National publication titles you gave (case insensitive)
+national_titles = [
+    "BBC", "Bloomberg", "Business Insider", "Forbes", "Financial Times", "Reuters",
+    "Sky News", "The Telegraph", "The Times", "The Independent", "PA Media", "City AM",
+    "Irish Examiner", "Irish Independent", "Irish Times", "MoneyWeek", "Sunday Times (Ireland)",
+    "Economist", "The Guardian", "BBC Radio 4", "BBC Radio 5 Live", "Channel 5", "CNET",
+    "CNN International", "Computer Business Review", "Computerworld UK", "Daily Express",
+    "Daily Mail", "Daily Mirror", "Evening Standard", "The i", "International Business Times UK",
+    "ITV News", "Metro", "The Observer", "The Sun", "The Sun on Sunday", "Sunday Express",
+    "Sunday Mirror", "Wall Street Journal", "Business Post", "Newstalk", "RTÉ News"
+]
 
-# Full domains list (including trade + national)
-all_domains = {
-    'bbc.co.uk', 'bloomberg.com', 'businessinsider.com', 'forbes.com', 'ft.com',
-    'reuters.com', 'news.sky.com', 'telegraph.co.uk', 'thetimes.com', 'independent.co.uk',
-    'pa.media', 'cityam.com', 'computerweekly.com', 'raconteur.net', 'techcrunch.com',
-    'theregister.com', 'techradar.com', 'insight.scmagazineuk.com', 'verdict.co.uk',
-    'wired.com', 'zdnet.com', 'itpro.com', 'csoonline.com', 'infosecurity-magazine.com',
-    'techmonitor.ai', 'capacitymedia.com', 'cybermagazine.com', 'digitalisationworld.com',
-    'channelfutures.com', 'accountancyage.com', 'financialresearch.gov', 'businesspost.ie',
-    'cio.com', 'directoroffinance.com', 'emeafinance.com', 'finextra.com', 'finance-monthly.com',
-    'ffnews.com', 'fintech.global', 'fstech.co.uk', 'gtreview.com', 'government-transformation.com',
-    'gpsj.co.uk', 'ifamagazine.com', 'ismg.io', 'insuranceday.com', 'intelligentciso.com',
-    'ifre.com', 'irishexaminer.com', 'independent.ie', 'irishtechnews.ie', 'irishtimes.com',
-    'techforge.pub', 'digit-software.com', 'intelligentcio.com', 'silicon.co.uk', 'information-age.com',
-    'diginomica.com', 'techrepublic.com', 'computing.co.uk', 'thenextweb.com', 'moneyweek.com',
-    'politico.eu', 'professionaladviser.com', 'publicfinanceinternational.org', 'publicsectorexecutive.com',
-    'publicsectorfocus.com', 'publicsectornetwork.co.uk', 'publicsectordigital.com', 'publicservicemagazine.com',
-    'rte.ie', 'spglobal.com', 'structuredcreditinvestor.com', 'thetimes.co.ie', 'techcentral.ie',
-    'europeanfinancialreview.com', 'thestack.technology', 'thinkdigitalpartners.com', 'uktech.news',
-    'wealthandfinance-intl.com', 'economist.com', 'theguardian.com', 'bbc.co.uk', 'channel5.com',
-    'cnet.com', 'edition.cnn.com', 'cbronline.com', 'computerworld.com', 'express.co.uk',
-    'dailymail.co.uk', 'mirror.co.uk', 'standard.co.uk', 'inews.co.uk', 'ibtimes.co.uk',
-    'itv.com', 'metro.co.uk', 'theguardian.com/observer', 'thesun.co.uk', 'thesundaytimes.co.uk',
-    'express.co.uk', 'mirror.co.uk', 'wsj.com', 'healthcare-outlook.com', 'digitalhealth.net',
-    'digitalhealthnews.com', 'healthcarebusinessoutlook.com', 'healthtechdigital.com',
-    'pathfinderinternational.co.uk', 'housing-technology.com', 'themj.co.uk', 'ukauthority.com',
-    'schoolsweek.co.uk', 'insights.talintpartners.com', 'tes.com', 'timeshighereducation.com',
-    'ictforeducation.co.uk', 'educationbusinessuk.net', 'researchprofessionalnews.com',
-    'telecoms.com', 'lightreading.com', 'totaltele.com', 'telecomtv.com', 'developingtelecoms.com',
-    'telecomstechnews.com', 'mobile-magazine.com', 'mobileworldlive.com', 'mobileeurope.co.uk',
-    'iot-now.com', 'manufacturingdigital.com', 'themanufacturer.com', 'mpemagazine.co.uk',
-    'manufacturingmanagement.co.uk', 'businessandindustrytoday.co.uk', 'industryeurope.com',
-    'logisticsbusiness.com', 'logisticsit.com', 'ipesearch.co.uk', 'mfg-outlook.com',
-    'manufacturing-today.com', 'ukmfg.tv', 'uk-manufacturing-online.co.uk', 'am-online.com',
-    'autoexpress.co.uk', 'auto-retail.co.uk', 'automotivelogisticsmagazine.com',
-    'automotivemanufacturingsolutions.com', 'automotiveworld.com',
-    'automotivetestingtechnologyinternational.com', 'connectedtechnologysolutions.co.uk',
-    'moveelectric.com', 'ciltuk.org.uk', 'evo.co.uk', 'motortrader.com', 'just-auto.com',
-    'autofutures.tv', 'motoringresearch.com', 'theengineer.co.uk', 'fiercepharma.com',
-    'hsj.co.uk', 'hospitaltimes.co.uk', 'pbiforum.net', 'pharma-iq.com',
-    'pharmaceutical-technology.com', 'intelligentcxo.com', 'cxtoday.com', 'cxnetwork.com',
-    'cxm.co.uk', 'cxomagazine.com', 'channellife.co.uk', 'channelweb.co.uk', 'it-sp.eu',
-    'computerweekly.com/microscope', 'pcr-online.biz', 'pcpro.co.uk', 'channelpro.co.uk',
-    'cloudpro.co.uk', 'iteuropa.com', 'siliconrepublic.com', 'irishtechnews.ie', 'techcentral.ie',
-    'businesspostgroup.com', 'newstalk.com', 'irishexaminer.com', 'irishtimes.com',
-    'independent.ie', 'thetimes.com/world/ireland', 'rte.ie'
-}
-
-# GNews API key from environment variable
-GNEWS_API_KEY = os.getenv('GNEWS_API_KEY')
-if not GNEWS_API_KEY:
-    raise ValueError("Missing GNEWS_API_KEY environment variable")
+# Spokespersons list
+spokespersons = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
 
 def is_today_bst(published_str):
-    """Return True if the published date is today (BST)."""
+    """Check if the published date (string ISO format) is today BST"""
     try:
         dt_utc = datetime.fromisoformat(published_str.replace('Z', '+00:00'))
     except Exception:
@@ -100,91 +78,116 @@ def is_today_bst(published_str):
     return dt_bst.date() == now_bst.date()
 
 def contains_spokesperson(text):
-    """Check if text contains any spokesperson (case insensitive)."""
     if not text:
         return False
     text_lower = text.lower()
-    return any(name in text_lower for name in spokespersons)
+    return any(sp in text_lower for sp in spokespersons)
 
-def classify_article(title, domain):
+def classify_article(publication_title, domain):
+    # Check if domain in national domain list
     domain = domain.lower()
-    if domain in national_domains:
-        return 'national'
-    # Also check title for national publication keywords
-    for nat_title in national_titles:
-        if nat_title.lower() in title.lower():
-            return 'national'
-    return 'trade'
+    is_national_domain = any(domain.endswith(nd) for nd in all_domains)
+    is_national_title = any(nt.lower() in publication_title.lower() for nt in national_titles)
 
-def clean_domain(source_name, url):
-    # Attempt to extract domain from URL if missing
-    if source_name:
-        return source_name.lower()
-    if url:
-        try:
-            from urllib.parse import urlparse
-            return urlparse(url).netloc.lower()
-        except:
-            return ''
-    return ''
+    if is_national_domain or is_national_title:
+        return "national"
+    else:
+        return "trade"
 
-# Query string for GNews API
-query_terms = '"Palo Alto Networks" OR "Palo Alto" OR "Unit 42"'
+def fetch_articles():
+    panw_articles = []
+    national_articles = []
+    trade_articles = []
 
-# Today date ISO format for 'from' param
-today_date = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    # Keywords to search for in GNews API
+    query_keywords = ['Palo Alto', 'Palo Alto Networks', 'Unit 42']
 
-url = f"https://gnews.io/api/v4/search?q={query_terms}&lang=en&from={today_date}&max=100&token={GNEWS_API_KEY}"
+    # Max articles per request to avoid quota issues
+    max_articles = 100
 
-print(f"Fetching articles from: {url}")
+    # GNews API endpoint
+    base_url = "https://gnews.io/api/v4/search"
 
-response = requests.get(url)
-if response.status_code != 200:
-    raise Exception(f"GNews API Error: {response.status_code} {response.text}")
-
-data = response.json()
-articles = data.get('articles', [])
-
-print(f"Found {len(articles)} articles from GNews")
-
-national_articles = []
-trade_articles = []
-
-for entry in articles:
-    title = entry.get('title', '') or ''
-    description = entry.get('description', '') or ''
-    content = (title + " " + description).lower()
-    link = entry.get('url', '')
-    published_at = entry.get('publishedAt', '') or ''
-    source = entry.get('source', {})
-    source_name = source.get('name', '')
-    domain = source.get('domain', '') or clean_domain(source_name, link)
-
-    if not is_today_bst(published_at):
-        continue
-
-    # Check for topics & spokespeople in content (case-insensitive)
-    if any(keyword in content for keyword in ['palo alto', 'unit 42']) or contains_spokesperson(content):
-
-        category = classify_article(title, domain)
-
-        art = {
-            'publication': source_name or domain,
-            'title': title,
-            'link': link,
-            'published': datetime.fromisoformat(published_at.replace('Z', '+00:00')).astimezone(BST).strftime('%Y-%m-%d %H:%M:%S %Z'),
-            'summary': (description[:200] + '...') if description else '',
+    for keyword in query_keywords:
+        params = {
+            'q': keyword,
+            'lang': 'en',
+            'max': max_articles,
+            'token': API_KEY,
+            'in': 'title,description',
+            'sortby': 'publishedAt'
         }
 
-        if category == 'national':
-            national_articles.append(art)
-        else:
-            trade_articles.append(art)
+        resp = requests.get(base_url, params=params)
+        if resp.status_code != 200:
+            print(f"Error fetching articles for {keyword}: {resp.status_code}")
+            continue
+        data = resp.json()
+        if 'articles' not in data:
+            print(f"No articles found for {keyword}")
+            continue
 
-# Sort descending by published date/time
-national_articles.sort(key=lambda x: x['published'], reverse=True)
-trade_articles.sort(key=lambda x: x['published'], reverse=True)
+        for article in data['articles']:
+            pub_date_str = article.get('publishedAt')
+            if not pub_date_str or not is_today_bst(pub_date_str):
+                continue
+
+            # Check if article contains any spokesperson
+            combined_text = (article.get('title','') + ' ' + article.get('description','')).lower()
+            if not (contains_spokesperson(combined_text) or
+                    any(kw.lower() in combined_text for kw in query_keywords)):
+                continue
+
+            # Extract domain from URL
+            url = article.get('url', '')
+            domain = ''
+            try:
+                domain = url.split('/')[2]
+            except Exception:
+                domain = ''
+
+            classification = classify_article(article.get('source', {}).get('name', ''), domain)
+
+            article_data = {
+                'publication': article.get('source', {}).get('name', ''),
+                'title': article.get('title', '').replace('\n',' ').strip(),
+                'link': url,
+                'published': pub_date_str,
+                'summary': article.get('description', '').replace('\n',' ').strip()
+            }
+
+            if classification == 'national':
+                national_articles.append(article_data)
+            else:
+                trade_articles.append(article_data)
+
+            panw_articles.append(article_data)
+
+    return national_articles, trade_articles, panw_articles
 
 def build_markdown_table(title, articles):
     if not articles:
-        return f"## {title}\n\n_No articles found today
+        return f"## {title}\n\n_No articles found today._\n"
+    md = f"## {title}\n\n"
+    md += "| Publication | Title | Published | Summary |\n"
+    md += "|-------------|-------|-----------|---------|\n"
+    for art in articles:
+        md += f"| {art['publication']} | [{art['title']}]({art['link']}) | {art['published']} | {art['summary']} |\n"
+    md += "\n"
+    return md
+
+def main():
+    national_articles, trade_articles, panw_articles = fetch_articles()
+
+    content = "# Palo Alto Networks News Update\n\n"
+    content += f"_Last updated: {datetime.now(BST).strftime('%Y-%m-%d %H:%M:%S %Z')}_\n\n"
+
+    content += build_markdown_table("National Publications", national_articles)
+    content += build_markdown_table("Trade Publications", trade_articles)
+    content += build_markdown_table("All PANW Articles", panw_articles)
+
+    with open("README.md", "w", encoding='utf-8') as f:
+        f.write(content)
+
+if __name__ == "__main__":
+    main()
