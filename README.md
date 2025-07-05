@@ -1,15 +1,13 @@
-# Today's News Articles
+# Palo Alto Networks News Update
 
-## 📌 Palo Alto Networks Mentions
+_Last updated: 2025-07-05 23:33:53 BST_
 
-_No articles found._
+## National Publications
 
----
-## 📰 National Media Mentions (Spokespersons)
+_No articles found today._
+## Trade Publications
 
-_No articles found._
+_No articles found today._
+## All PANW Articles
 
----
-## 📘 Trade Media Mentions (Spokespersons)
-
-_No articles found._
+_No articles found today._
