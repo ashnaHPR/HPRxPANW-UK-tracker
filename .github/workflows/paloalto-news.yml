@@ -2,7 +2,7 @@ name: 📰 Update PANW News Feed
 
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '0 */4 * * *'  # Every 4 hours
   workflow_dispatch:
 
 jobs:
@@ -13,11 +13,11 @@ jobs:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🧾 Debug: List workspace contents
+      - name: 🧾 Debug: Show working directory & file tree
         run: |
-          echo "📂 CURRENT WORKING DIRECTORY: $PWD"
-          echo "🗂️ FILE TREE:"
-          ls -R .
+          echo "📍 Working directory: $PWD"
+          echo "📄 Listing all files:"
+          ls -alR
 
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
@@ -29,5 +29,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install feedparser tldextract pytz requests
 
-      - name: 🚀 Attempt to run scraper
-        run: python ./scrape_rss_news.py
+      - name: 🚀 Run scraper from .github/
+        run: python .github/scrape_rss_news.py
