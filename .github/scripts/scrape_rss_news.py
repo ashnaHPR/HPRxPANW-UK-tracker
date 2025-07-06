@@ -84,21 +84,48 @@ def fetch_articles():
     resp.raise_for_status()
     return resp.json().get('articles', [])
 
-def fetch_google_news_rss(keywords):
+def fetch_google_rss():
     print("🔍 Fetching articles from Google News RSS...")
-    query = '+OR+'.join(keywords).replace(' ', '+')
-    url = f"https://news.google.com/rss/search?q={query}&hl=en-GB&gl=GB&ceid=GB:en"
-    feed = feedparser.parse(url)
+    base_url = "https://news.google.com/rss/search?q="
+    
+    # Combine keywords with OR for Google News query
+    query = ' OR '.join(f'"{k}"' for k in KEYWORDS)
+    
+    encoded_query = quote_plus(query)
+
+    rss_url = base_url + encoded_query + "&hl=en-GB&gl=GB&ceid=GB:en"
+
+    feed = feedparser.parse(rss_url)
+
     articles = []
     for entry in feed.entries:
-        articles.append({
+        if not hasattr(entry, 'published'):
+            continue
+        
+        try:
+            published_struct = entry.published_parsed
+            dt = datetime(*published_struct[:6], tzinfo=pytz.utc).astimezone(BST)
+        except Exception as e:
+            print(f"⚠️ Date parsing error: {e}")
+            continue
+
+        domain = clean_domain(entry.link)
+
+        article = {
+            'date': dt,
+            'domain': domain,
+            'pub': entry.get('source', {}).get('title') if 'source' in entry else domain,
             'title': entry.title,
-            'url': entry.link,
-            'publishedAt': entry.published if 'published' in entry else '',
-            'description': entry.summary if 'summary' in entry else '',
-            'source': {'name': entry.source.title if 'source' in entry else 'Google News'}
-        })
+            'link': entry.link,
+            'summary': entry.get('summary', '')[:200],
+            'publishedAt': dt.isoformat()
+        }
+
+        articles.append(article)
+
+    print(f"✅ Fetched {len(articles)} articles from Google News RSS.")
     return articles
+
 
 def clean_domain(url):
     try:
