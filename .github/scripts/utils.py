@@ -40,5 +40,8 @@ def format_article(a, fallback_time):
     return {
         'date': dt,
         'domain': domain,
-        'pub': a.get('
-
+        'pub': a.get('source', {}).get('name', domain),
+        'title': a.get('title', '').strip(),
+        'summary': a.get('summary', '').strip(),
+        'link': url
+    }
