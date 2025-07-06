@@ -4,14 +4,58 @@ KEYWORDS = ['Palo Alto', 'Palo Alto Networks', 'Unit 42']
 SPOKESPEOPLE = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
 
 # Trimmed example — replace with full list from your original code
-NATIONAL_DOMAINS = {
+# Paste your national domains here:
+national_domains = {
     "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
     "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
     "pa.media", "cityam.com", "irishexaminer.com", "independent.ie", "irishtimes.com",
     "moneyweek.com", "sundaytimes.co.uk", "economist.com", "theguardian.com", "channel5.com",
-    "cnet.com", "edition.cnn.com", "express.co.uk", "dailymail.co.uk", "mirror.co.uk",
-    "standard.co.uk", "inews.co.uk", "ibtimes.co.uk", "itv.com", "metro.co.uk",
-    "thesun.co.uk", "thesundaytimes.co.uk", "wsj.com", "rte.ie", "newstalk.com",
-    "thetimes.co.ie", "irishindependent.ie"
+    "cnet.com", "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk",
+    "dailymail.co.uk", "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk",
+    "itv.com", "metro.co.uk", "theguardian.com/observer", "thesun.co.uk", "thesundaytimes.co.uk",
+    "wsj.com", "businesspost.ie", "newstalk.com", "rte.ie", "thetimes.co.ie", "irishindependent.ie"
 }
+
+all_domains = [
+    "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
+    "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
+    "pa.media", "cityam.com", "computerweekly.com", "raconteur.net", "techcrunch.com",
+    "theregister.com", "techradar.com", "insight.scmagazineuk.com", "verdict.co.uk",
+    "wired.com", "zdnet.com", "itpro.com", "csoonline.com", "infosecurity-magazine.com",
+    "techmonitor.ai", "capacitymedia.com", "cybermagazine.com", "digitalisationworld.com",
+    "channelfutures.com", "accountancyage.com", "financialresearch.gov", "businesspost.ie",
+    "cio.com", "directoroffinance.com", "emeafinance.com", "finextra.com", "finance-monthly.com",
+    "ffnews.com", "fintech.global", "fstech.co.uk", "gtreview.com", "government-transformation.com",
+    "gpsj.co.uk", "ifamagazine.com", "ismg.io", "insuranceday.com", "intelligentciso.com",
+    "ifre.com", "irishexaminer.com", "independent.ie", "irishtechnews.ie", "irishtimes.com",
+    "techforge.pub", "digit-software.com", "intelligentcio.com", "silicon.co.uk", "information-age.com",
+    "diginomica.com", "techrepublic.com", "computing.co.uk", "thenextweb.com", "moneyweek.com",
+    "politico.eu", "professionaladviser.com", "publicfinanceinternational.org", "publicsectorexecutive.com",
+    "publicsectorfocus.com", "publicsectornetwork.co.uk", "publicsectordigital.com", "publicservicemagazine.com",
+    "rte.ie", "spglobal.com", "structuredcreditinvestor.com", "thetimes.co.ie", "techcentral.ie",
+    "europeanfinancialreview.com", "thestack.technology", "thinkdigitalpartners.com", "uktech.news",
+    "wealthandfinance-intl.com", "economist.com", "theguardian.com", "channel5.com", "cnet.com",
+    "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk", "dailymail.co.uk",
+    "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk", "itv.com", "metro.co.uk",
+    "theguardian.com/observer", "thesun.co.uk", "thesundaytimes.co.uk", "wsj.com", "healthcare-outlook.com",
+    "digitalhealth.net", "digitalhealthnews.com", "healthcarebusinessoutlook.com", "healthtechdigital.com",
+    "pathfinderinternational.co.uk", "housing-technology.com", "themj.co.uk", "ukauthority.com",
+    "schoolsweek.co.uk", "insights.talintpartners.com", "tes.com", "timeshighereducation.com",
+    "ictforeducation.co.uk", "educationbusinessuk.net", "researchprofessionalnews.com", "telecoms.com",
+    "lightreading.com", "totaltele.com", "telecomtv.com", "developingtelecoms.com", "telecomstechnews.com",
+    "mobile-magazine.com", "mobileworldlive.com", "mobileeurope.co.uk", "iot-now.com", "manufacturingdigital.com",
+    "themanufacturer.com", "mpemagazine.co.uk", "manufacturingmanagement.co.uk", "businessandindustrytoday.co.uk",
+    "industryeurope.com", "logisticsbusiness.com", "logisticsit.com", "ipesearch.co.uk", "mfg-outlook.com",
+    "manufacturing-today.com", "ukmfg.tv", "uk-manufacturing-online.co.uk", "am-online.com", "autoexpress.co.uk",
+    "auto-retail.co.uk", "automotivelogisticsmagazine.com", "automotivemanufacturingsolutions.com",
+    "automotiveworld.com", "automotivetestingtechnologyinternational.com", "connectedtechnologysolutions.co.uk",
+    "moveelectric.com", "ciltuk.org.uk", "evo.co.uk", "motortrader.com", "just-auto.com", "autofutures.tv",
+    "motoringresearch.com", "theengineer.co.uk", "fiercepharma.com", "hsj.co.uk", "hospitaltimes.co.uk",
+    "pbiforum.net", "pharma-iq.com", "pharmaceutical-technology.com", "intelligentcxo.com", "cxtoday.com",
+    "cxnetwork.com", "cxm.co.uk", "cxomagazine.com", "channellife.co.uk", "channelweb.co.uk", "it-sp.eu",
+    "computerweekly.com/microscope", "pcr-online.biz", "pcpro.co.uk", "channelpro.co.uk", "cloudpro.co.uk",
+    "iteuropa.com", "siliconrepublic.com", "irishtechnews.ie", "techcentral.ie", "businesspostgroup.com",
+    "newstalk.com", "irishexaminer.com", "irishtimes.com", "independent.ie", "thetimes.com/world/ireland",
+    "rte.ie"
+]
 
