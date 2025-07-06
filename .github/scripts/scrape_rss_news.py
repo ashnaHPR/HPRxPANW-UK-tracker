@@ -177,54 +177,53 @@ def write_csv(path, articles):
             ])
 
 def main():
-    print("🚀 Starting news scraping...")
+    print("🔍 Fetching articles from GNews API...")
+    articles_raw_gnews = fetch_articles()
+    
+    print("🔍 Fetching articles from Google News RSS feed...")
+    articles_raw_rss = fetch_google_rss()
+    
+    # Combine articles from both sources
+    articles_raw = articles_raw_gnews + articles_raw_rss
 
-    # Fetch articles from GNews API
-    articles_raw = fetch_articles()
-
-    # Fetch Google RSS feed articles
-    rss_articles_raw = fetch_google_rss()
-
-    # Combine both sources
-    combined_articles_raw = articles_raw + rss_articles_raw
-
-    # Format articles (parse dates, clean domains, etc.)
-    articles = [format_article(a) for a in combined_articles_raw if a.get('publishedAt')]
+    # Format articles (convert date strings to datetime objects etc.)
+    articles = [format_article(a) for a in articles_raw if a.get('publishedAt')]
 
     today = now.date()
-
+    
     # Filter articles published today and matching keywords or spokespeople
-    today_articles = [a for a in articles if a['date'].date() == today and (
-        any(k.lower() in a['title'].lower() for k in KEYWORDS) or
-        any(sp in (a['title'] + a['summary']).lower() for sp in spokespeople)
-    )]
+    today_articles = [
+        a for a in articles if a['date'].date() == today and (
+            any(k.lower() in a['title'].lower() for k in KEYWORDS) or
+            any(sp in (a['title'] + a['summary']).lower() for sp in spokespeople)
+        )
+    ]
 
-    # Classify today's articles by domain type
+    # Split today's articles into national and trade based on domain
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
 
-    # Prepare weekly and monthly caches
+    # Filter for weekly and monthly coverage
     weekly = [a for a in articles if a['date'].date() >= today - timedelta(days=7)]
     monthly = [a for a in articles if a['date'].date() >= today - timedelta(days=30)]
 
-    # Build markdown content
+    # Build markdown content for README
     md = "# 🔐 Palo Alto Networks Coverage\n\n"
     md += build_md_table("📌 All PANW Mentions Today", today_articles)
     md += build_md_table("📰 National Coverage", national_today)
     md += build_md_table("📘 Trade Coverage", trade_today)
 
-    # Add the technical summary
-    md += """
-
+    # Append technical summary to the markdown
+    TECHNICAL_SUMMARY = """
 ---
 
 ## Technical Summary
 
 This repository hosts an automated news coverage tracker for Palo Alto Networks, implemented in Python and integrated with GitHub Actions for continuous operation.
 
-The system queries the GNews API and Google RSS feeds every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
+The system queries the GNews API every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
 
-Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's README.md. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
+Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's `README.md`. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
 
 Key technical highlights include:
 
@@ -235,13 +234,15 @@ Key technical highlights include:
 
 This setup provides an efficient, scalable, and transparent solution for real-time media intelligence tailored to Palo Alto Networks’ coverage needs.
 """
+    md += TECHNICAL_SUMMARY
 
-    # Write the README.md
+    # Write README.md
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(md)
 
-    # Write weekly and monthly CSV summary files
+    # Write weekly and monthly CSV summaries
     write_csv("summaries/weekly/summary.csv", weekly)
     write_csv("summaries/monthly/summary.csv", monthly)
 
-    print("✅ README.md and summary CSVs updated successfully.")
+    print("✅ README.md, weekly and monthly CSVs updated.")
+
