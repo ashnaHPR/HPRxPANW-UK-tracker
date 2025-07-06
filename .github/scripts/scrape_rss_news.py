@@ -1,77 +1,20 @@
-import requests
-from datetime import datetime, timedelta
-import pytz
-import os
-import csv
-import feedparser  # for parsing RSS feeds
-from urllib.parse import urlparse
+# scrape_rss_news.py
 
-API_KEY = os.getenv('GNEWS_API_KEY')
+import requests, feedparser, os, csv, time, pytz
+from datetime import datetime, timedelta
+from urllib.parse import quote_plus
+from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
+from scripts.utils import clean_domain, classify_domain, escape_md, deduplicate_articles, format_article
+from scripts.logger import logging
+
+API_KEY = os.getenv("GNEWS_API_KEY")
 assert API_KEY, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
 
 BST = pytz.timezone('Europe/London')
 now = datetime.now(BST)
 
-KEYWORDS = ['Palo Alto', 'Palo Alto Networks', 'Unit 42']
-spokespeople = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
-
-# Paste your national domains here:
-national_domains = {
-    "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
-    "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
-    "pa.media", "cityam.com", "irishexaminer.com", "independent.ie", "irishtimes.com",
-    "moneyweek.com", "sundaytimes.co.uk", "economist.com", "theguardian.com", "channel5.com",
-    "cnet.com", "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk",
-    "dailymail.co.uk", "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk",
-    "itv.com", "metro.co.uk", "theguardian.com/observer", "thesun.co.uk", "thesundaytimes.co.uk",
-    "wsj.com", "businesspost.ie", "newstalk.com", "rte.ie", "thetimes.co.ie", "irishindependent.ie"
-}
-
-all_domains = [
-    "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
-    "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
-    "pa.media", "cityam.com", "computerweekly.com", "raconteur.net", "techcrunch.com",
-    "theregister.com", "techradar.com", "insight.scmagazineuk.com", "verdict.co.uk",
-    "wired.com", "zdnet.com", "itpro.com", "csoonline.com", "infosecurity-magazine.com",
-    "techmonitor.ai", "capacitymedia.com", "cybermagazine.com", "digitalisationworld.com",
-    "channelfutures.com", "accountancyage.com", "financialresearch.gov", "businesspost.ie",
-    "cio.com", "directoroffinance.com", "emeafinance.com", "finextra.com", "finance-monthly.com",
-    "ffnews.com", "fintech.global", "fstech.co.uk", "gtreview.com", "government-transformation.com",
-    "gpsj.co.uk", "ifamagazine.com", "ismg.io", "insuranceday.com", "intelligentciso.com",
-    "ifre.com", "irishexaminer.com", "independent.ie", "irishtechnews.ie", "irishtimes.com",
-    "techforge.pub", "digit-software.com", "intelligentcio.com", "silicon.co.uk", "information-age.com",
-    "diginomica.com", "techrepublic.com", "computing.co.uk", "thenextweb.com", "moneyweek.com",
-    "politico.eu", "professionaladviser.com", "publicfinanceinternational.org", "publicsectorexecutive.com",
-    "publicsectorfocus.com", "publicsectornetwork.co.uk", "publicsectordigital.com", "publicservicemagazine.com",
-    "rte.ie", "spglobal.com", "structuredcreditinvestor.com", "thetimes.co.ie", "techcentral.ie",
-    "europeanfinancialreview.com", "thestack.technology", "thinkdigitalpartners.com", "uktech.news",
-    "wealthandfinance-intl.com", "economist.com", "theguardian.com", "channel5.com", "cnet.com",
-    "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk", "dailymail.co.uk",
-    "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk", "itv.com", "metro.co.uk",
-    "theguardian.com/observer", "thesun.co.uk", "thesundaytimes.co.uk", "wsj.com", "healthcare-outlook.com",
-    "digitalhealth.net", "digitalhealthnews.com", "healthcarebusinessoutlook.com", "healthtechdigital.com",
-    "pathfinderinternational.co.uk", "housing-technology.com", "themj.co.uk", "ukauthority.com",
-    "schoolsweek.co.uk", "insights.talintpartners.com", "tes.com", "timeshighereducation.com",
-    "ictforeducation.co.uk", "educationbusinessuk.net", "researchprofessionalnews.com", "telecoms.com",
-    "lightreading.com", "totaltele.com", "telecomtv.com", "developingtelecoms.com", "telecomstechnews.com",
-    "mobile-magazine.com", "mobileworldlive.com", "mobileeurope.co.uk", "iot-now.com", "manufacturingdigital.com",
-    "themanufacturer.com", "mpemagazine.co.uk", "manufacturingmanagement.co.uk", "businessandindustrytoday.co.uk",
-    "industryeurope.com", "logisticsbusiness.com", "logisticsit.com", "ipesearch.co.uk", "mfg-outlook.com",
-    "manufacturing-today.com", "ukmfg.tv", "uk-manufacturing-online.co.uk", "am-online.com", "autoexpress.co.uk",
-    "auto-retail.co.uk", "automotivelogisticsmagazine.com", "automotivemanufacturingsolutions.com",
-    "automotiveworld.com", "automotivetestingtechnologyinternational.com", "connectedtechnologysolutions.co.uk",
-    "moveelectric.com", "ciltuk.org.uk", "evo.co.uk", "motortrader.com", "just-auto.com", "autofutures.tv",
-    "motoringresearch.com", "theengineer.co.uk", "fiercepharma.com", "hsj.co.uk", "hospitaltimes.co.uk",
-    "pbiforum.net", "pharma-iq.com", "pharmaceutical-technology.com", "intelligentcxo.com", "cxtoday.com",
-    "cxnetwork.com", "cxm.co.uk", "cxomagazine.com", "channellife.co.uk", "channelweb.co.uk", "it-sp.eu",
-    "computerweekly.com/microscope", "pcr-online.biz", "pcpro.co.uk", "channelpro.co.uk", "cloudpro.co.uk",
-    "iteuropa.com", "siliconrepublic.com", "irishtechnews.ie", "techcentral.ie", "businesspostgroup.com",
-    "newstalk.com", "irishexaminer.com", "irishtimes.com", "independent.ie", "thetimes.com/world/ireland",
-    "rte.ie"
-]
-
 def fetch_articles():
-    print("🔍 Fetching articles from GNews...")
+    logging.info("🔍 Fetching GNews articles...")
     url = "https://gnews.io/api/v4/search"
     params = {
         'q': ' OR '.join(f'"{k}"' for k in KEYWORDS),
@@ -80,90 +23,54 @@ def fetch_articles():
         'max': 100,
         'token': API_KEY
     }
-    resp = requests.get(url, params=params)
-    resp.raise_for_status()
-    return resp.json().get('articles', [])
+
+    for attempt in range(3):
+        resp = requests.get(url, params=params)
+        if resp.status_code == 429:
+            logging.warning("⏳ Rate limited by GNews. Retrying...")
+            time.sleep(60 * (attempt + 1))
+            continue
+        try:
+            resp.raise_for_status()
+            return resp.json().get('articles', [])
+        except Exception as e:
+            logging.error(f"GNews API error: {e}")
+            return []
+    return []
 
 def fetch_google_rss():
-    print("🔍 Fetching articles from Google News RSS...")
-    base_url = "https://news.google.com/rss/search?q="
-    
-    # Combine keywords with OR for Google News query
-    query = ' OR '.join(f'"{k}"' for k in KEYWORDS)
-    
-    encoded_query = quote_plus(query)
-
-    rss_url = base_url + encoded_query + "&hl=en-GB&gl=GB&ceid=GB:en"
-
-    feed = feedparser.parse(rss_url)
-
+    logging.info("🔍 Fetching Google RSS articles...")
+    query = quote_plus(' OR '.join(f'"{k}"' for k in KEYWORDS))
+    url = f"https://news.google.com/rss/search?q={query}&hl=en-GB&gl=GB&ceid=GB:en"
+    feed = feedparser.parse(url)
     articles = []
     for entry in feed.entries:
-        if not hasattr(entry, 'published'):
-            continue
-        
+        if not hasattr(entry, 'published'): continue
         try:
-            published_struct = entry.published_parsed
-            dt = datetime(*published_struct[:6], tzinfo=pytz.utc).astimezone(BST)
-        except Exception as e:
-            print(f"⚠️ Date parsing error: {e}")
+            dt = datetime(*entry.published_parsed[:6], tzinfo=pytz.utc).astimezone(BST)
+        except Exception:
             continue
-
-        domain = clean_domain(entry.link)
-
-        article = {
-            'date': dt,
-            'domain': domain,
-            'pub': entry.get('source', {}).get('title') if 'source' in entry else domain,
+        articles.append({
+            'publishedAt': dt.isoformat(),
             'title': entry.title,
-            'link': entry.link,
             'summary': entry.get('summary', '')[:200],
-            'publishedAt': dt.isoformat()
-        }
-
-        articles.append(article)
-
-    print(f"✅ Fetched {len(articles)} articles from Google News RSS.")
+            'link': entry.link,
+            'domain': clean_domain(entry.link),
+            'source': {'name': clean_domain(entry.link)}
+        })
     return articles
-
-
-def clean_domain(url):
-    try:
-        domain = urlparse(url).netloc.lower()
-        return domain[4:] if domain.startswith('www.') else domain
-    except:
-        return ""
-
-def classify_domain(domain):
-    return "national" if domain in national_domains else "trade"
-
-def format_article(a):
-    try:
-        # Try to parse the published date from ISO format (GNews API style)
-        dt = datetime.fromisoformat(a['publishedAt'].replace('Z', '+00:00')).astimezone(BST)
-    except Exception:
-        # If it fails (e.g., from RSS feed), just use current time
-        dt = now
-
-    # Get the domain from the URL safely (RSS might have 'link' instead of 'url')
-    url = a.get('url') or a.get('link') or ''
-    domain = clean_domain(url)
-
-    return {
-        'date': dt,
-        'domain': domain,
-        'pub': a['source']['name'],
-        'title': a['title'].strip(),
-        'link': url,
-        'summary': (a.get('description') or '')[:200]
-    }
 
 def build_md_table(title, articles):
     if not articles:
         return f"## {title}\n\n_No articles found._\n\n"
     s = f"## {title}\n\n| Date | Publication | Title | Summary |\n|------|-------------|--------|---------|\n"
-    for a in articles:
-        s += f"| {a['date'].strftime('%Y-%m-%d %H:%M')} | {a['pub']} | [{a['title']}]({a['link']}) | {a['summary']} |\n"
+    for a in sorted(articles, key=lambda x: x['date'], reverse=True):
+        s += (
+            f"| {a['date'].strftime('%Y-%m-%d %H:%M')} "
+            f"| {escape_md(a['pub'])} "
+            f"| [{escape_md(a['title'])}]({a['link']}) "
+            f"| {escape_md(a['summary'])} |\n"
+        )
     return s + "\n"
 
 def write_csv(path, articles):
@@ -171,78 +78,58 @@ def write_csv(path, articles):
     with open(path, "w", newline='', encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(['Date', 'Publication', 'Title', 'Link', 'Summary'])
-        for a in articles:
-            writer.writerow([
-                a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']
-            ])
+        for a in sorted(articles, key=lambda x: x['date'], reverse=True):
+            writer.writerow([a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']])
 
 def main():
-    print("🔍 Fetching articles from GNews API...")
-    articles_raw_gnews = fetch_articles()
-    
-    print("🔍 Fetching articles from Google News RSS feed...")
-    articles_raw_rss = fetch_google_rss()
-    
-    # Combine articles from both sources
-    articles_raw = articles_raw_gnews + articles_raw_rss
-
-    # Format articles (convert date strings to datetime objects etc.)
-    articles = [format_article(a) for a in articles_raw if a.get('publishedAt')]
-
+    raw = fetch_articles() + fetch_google_rss()
+    formatted = [format_article(a, now) for a in deduplicate_articles(raw) if a.get('publishedAt')]
     today = now.date()
-    
-    # Filter articles published today and matching keywords or spokespeople
+
     today_articles = [
-        a for a in articles if a['date'].date() == today and (
+        a for a in formatted if a['date'].date() == today and (
             any(k.lower() in a['title'].lower() for k in KEYWORDS) or
-            any(sp in (a['title'] + a['summary']).lower() for sp in spokespeople)
+            any(sp in (a['title'] + a['summary']).lower() for sp in SPOKESPEOPLE)
         )
     ]
-
-    # Split today's articles into national and trade based on domain
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
+    weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
+    monthly = [a for a in formatted if a['date'].date() >= today - timedelta(days=30)]
 
-    # Filter for weekly and monthly coverage
-    weekly = [a for a in articles if a['date'].date() >= today - timedelta(days=7)]
-    monthly = [a for a in articles if a['date'].date() >= today - timedelta(days=30)]
-
-    # Build markdown content for README
-    md = "# 🔐 Palo Alto Networks Coverage\n\n"
+    md = f"# 🔐 Palo Alto Networks Coverage\n\n_Last updated: {now.strftime('%Y-%m-%d %H:%M %Z')}_\n\n"
     md += build_md_table("📌 All PANW Mentions Today", today_articles)
     md += build_md_table("📰 National Coverage", national_today)
     md += build_md_table("📘 Trade Coverage", trade_today)
 
-    # Append technical summary to the markdown
-    TECHNICAL_SUMMARY = """
+    md += """
 ---
 
 ## Technical Summary
 
-This repository hosts an automated news coverage tracker for Palo Alto Networks, implemented in Python and integrated with GitHub Actions for continuous operation.
+This automated tracker monitors media mentions of Palo Alto Networks using Python.
 
-The system queries the GNews API every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
+### Features:
+- Pulls news every 4 hours from GNews API + Google News RSS
+- Filters for keywords & named spokespeople
+- Classifies by publication type (national or trade)
+- Updates `README.md` with markdown tables
+- Outputs weekly/monthly CSVs
+- Fully timezone-aware (BST)
+- GitHub Actions-powered for CI/CD
 
-Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's `README.md`. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
+📌 Keywords: `{}`  
+🧑‍💼 Spokespeople tracked: `{}`  
+📰 National domains: `{}`
 
-Key technical highlights include:
+""".format(', '.join(KEYWORDS), ', '.join(SPOKESPEOPLE), len(NATIONAL_DOMAINS))
 
-- Robust timezone-aware data filtering  
-- Domain-driven source classification for granular insights  
-- Automated CI/CD pipeline with GitHub Actions for scheduled updates  
-- Modular design allowing easy extension with new keywords or sources  
-
-This setup provides an efficient, scalable, and transparent solution for real-time media intelligence tailored to Palo Alto Networks’ coverage needs.
-"""
-    md += TECHNICAL_SUMMARY
-
-    # Write README.md
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(md)
 
-    # Write weekly and monthly CSV summaries
     write_csv("summaries/weekly/summary.csv", weekly)
     write_csv("summaries/monthly/summary.csv", monthly)
+    logging.info("✅ Updated README.md and CSVs.")
 
-    print("✅ README.md, weekly and monthly CSVs updated.")
-
+if __name__ == "__main__":
+    main()
