@@ -5,15 +5,15 @@ import feedparser
 import csv
 import time
 import pytz
+import logging
 from datetime import datetime, timedelta
 from urllib.parse import quote_plus
 
-# Add the scripts directory to sys.path so Python can find config, utils, logger
+# Add scripts directory to Python path to import your modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scripts')))
 
 from config import KEYWORDS, SPOKESPEOPLE, national_domains as NATIONAL_DOMAINS
 from utils import clean_domain, classify_domain, escape_md, deduplicate_articles, format_article
-from logger import logging
 
 API_KEY = os.getenv("GNEWS_API_KEY")
 assert API_KEY, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
@@ -53,7 +53,8 @@ def fetch_google_rss():
     feed = feedparser.parse(url)
     articles = []
     for entry in feed.entries:
-        if not hasattr(entry, 'published'): continue
+        if not hasattr(entry, 'published'):
+            continue
         try:
             dt = datetime(*entry.published_parsed[:6], tzinfo=pytz.utc).astimezone(BST)
         except Exception:
@@ -62,82 +63,4 @@ def fetch_google_rss():
             'publishedAt': dt.isoformat(),
             'title': entry.title,
             'summary': entry.get('summary', '')[:200],
-            'link': entry.link,
-            'domain': clean_domain(entry.link),
-            'source': {'name': clean_domain(entry.link)}
-        })
-    return articles
-
-def build_md_table(title, articles):
-    if not articles:
-        return f"## {title}\n\n_No articles found._\n\n"
-    s = f"## {title}\n\n| Date | Publication | Title | Summary |\n|------|-------------|--------|---------|\n"
-    for a in sorted(articles, key=lambda x: x['date'], reverse=True):
-        s += (
-            f"| {a['date'].strftime('%Y-%m-%d %H:%M')} "
-            f"| {escape_md(a['pub'])} "
-            f"| [{escape_md(a['title'])}]({a['link']}) "
-            f"| {escape_md(a['summary'])} |\n"
-        )
-    return s + "\n"
-
-def write_csv(path, articles):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", newline='', encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(['Date', 'Publication', 'Title', 'Link', 'Summary'])
-        for a in sorted(articles, key=lambda x: x['date'], reverse=True):
-            writer.writerow([a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']])
-
-def main():
-    raw = fetch_articles() + fetch_google_rss()
-    formatted = [format_article(a, now) for a in deduplicate_articles(raw) if a.get('publishedAt')]
-    today = now.date()
-
-    today_articles = [
-        a for a in formatted if a['date'].date() == today and (
-            any(k.lower() in a['title'].lower() for k in KEYWORDS) or
-            any(sp in (a['title'] + a['summary']).lower() for sp in SPOKESPEOPLE)
-        )
-    ]
-    national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
-    trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
-    weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
-    monthly = [a for a in formatted if a['date'].date() >= today - timedelta(days=30)]
-
-    md = f"# 🔐 Palo Alto Networks Coverage\n\n_Last updated: {now.strftime('%Y-%m-%d %H:%M %Z')}_\n\n"
-    md += build_md_table("📌 All PANW Mentions Today", today_articles)
-    md += build_md_table("📰 National Coverage", national_today)
-    md += build_md_table("📘 Trade Coverage", trade_today)
-
-    md += """
----
-
-## Technical Summary
-
-This automated tracker monitors media mentions of Palo Alto Networks using Python.
-
-### Features:
-- Pulls news every 4 hours from GNews API + Google News RSS
-- Filters for keywords & named spokespeople
-- Classifies by publication type (national or trade)
-- Updates `README.md` with markdown tables
-- Outputs weekly/monthly CSVs
-- Fully timezone-aware (BST)
-- GitHub Actions-powered for CI/CD
-
-📌 Keywords: `{}`  
-🧑‍💼 Spokespeople tracked: `{}`  
-📰 National domains: `{}`
-
-""".format(', '.join(KEYWORDS), ', '.join(SPOKESPEOPLE), len(NATIONAL_DOMAINS))
-
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(md)
-
-    write_csv("summaries/weekly/summary.csv", weekly)
-    write_csv("summaries/monthly/summary.csv", monthly)
-    logging.info("✅ Updated README.md and CSVs.")
-
-if __name__ == "__main__":
-    main()
+            'lin
