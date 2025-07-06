@@ -1,5 +1,3 @@
-# scrape_rss_news.py
-
 import sys
 import os
 import requests
