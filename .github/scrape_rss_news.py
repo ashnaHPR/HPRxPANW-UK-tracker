@@ -1,5 +1,3 @@
-# .github/scrape_rss_news.py
-
 import requests
 import feedparser
 import os
@@ -8,8 +6,11 @@ import time
 import pytz
 from datetime import datetime, timedelta
 from urllib.parse import quote_plus
-from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
-from scripts.utils import clean_domain, classify_domain, escape_md, deduplicate_articles, format_article
+from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS, ALL_DOMAINS
+from scripts.utils import (
+    clean_domain, classify_domain, escape_md, deduplicate_articles, format_article,
+    filter_articles_by_keywords_and_spokespeople
+)
 from scripts.logger import logging
 
 API_KEY = os.getenv("GNEWS_API_KEY")
@@ -89,15 +90,19 @@ def write_csv(path, articles):
 
 def main():
     raw = fetch_articles() + fetch_google_rss()
-    formatted = [format_article(a, now) for a in deduplicate_articles(raw) if a.get('publishedAt')]
+
+    allowed_domains = set(NATIONAL_DOMAINS).union(set(ALL_DOMAINS))
+
+    # Filter raw articles by keywords, spokespeople, and domains
+    filtered_raw = filter_articles_by_keywords_and_spokespeople(raw, KEYWORDS, SPOKESPEOPLE, allowed_domains)
+
+    # Deduplicate then format
+    formatted = [format_article(a, now) for a in deduplicate_articles(filtered_raw) if a.get('publishedAt')]
+
     today = now.date()
 
-    today_articles = [
-        a for a in formatted if a['date'].date() == today and (
-            any(k.lower() in a['title'].lower() for k in KEYWORDS) or
-            any(sp in (a['title'] + a['summary']).lower() for sp in SPOKESPEOPLE)
-        )
-    ]
+    today_articles = [a for a in formatted if a['date'].date() == today]
+
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
     weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
@@ -130,12 +135,4 @@ This automated tracker monitors media mentions of Palo Alto Networks using Pytho
 
 """.format(', '.join(KEYWORDS), ', '.join(SPOKESPEOPLE), len(NATIONAL_DOMAINS))
 
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(md)
-
-    write_csv("summaries/weekly/summary.csv", weekly)
-    write_csv("summaries/monthly/summary.csv", monthly)
-    logging.info("✅ Updated README.md and CSVs.")
-
-if __name__ == "__main__":
-    main()
+    with open("RE
