@@ -137,7 +137,7 @@ def clean_domain(url):
 def classify_domain(domain):
     return "national" if domain in national_domains else "trade"
 
-ddef format_article(a):
+def format_article(a):
     try:
         # Try to parse the published date from ISO format (GNews API style)
         dt = datetime.fromisoformat(a['publishedAt'].replace('Z', '+00:00')).astimezone(BST)
