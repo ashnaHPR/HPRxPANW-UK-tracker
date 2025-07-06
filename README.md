@@ -1,13 +1,33 @@
-# Palo Alto Networks News Update
+# 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-07-06 13:48:37 BST_
+## 📌 All PANW Mentions Today
 
-## National Publications
+_No articles found._
 
-_No articles found today._
-## Trade Publications
+## 📰 National Coverage
 
-_No articles found today._
-## All PANW Articles
+_No articles found._
 
-_No articles found today._
+## 📘 Trade Coverage
+
+_No articles found._
+
+
+---
+
+## Technical Summary
+
+This repository hosts an automated news coverage tracker for Palo Alto Networks, implemented in Python and integrated with GitHub Actions for continuous operation.
+
+The system queries the GNews API every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
+
+Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's `README.md`. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
+
+Key technical highlights include:
+
+- Robust timezone-aware data filtering  
+- Domain-driven source classification for granular insights  
+- Automated CI/CD pipeline with GitHub Actions for scheduled updates  
+- Modular design allowing easy extension with new keywords or sources  
+
+This setup provides an efficient, scalable, and transparent solution for real-time media intelligence tailored to Palo Alto Networks’ coverage needs.
