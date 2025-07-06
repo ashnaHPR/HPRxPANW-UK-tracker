@@ -1,5 +1,3 @@
-# scripts/utils.py
-
 import tldextract
 from datetime import datetime
 import pytz
@@ -45,3 +43,23 @@ def format_article(a, fallback_time):
         'summary': a.get('summary', '').strip(),
         'link': url
     }
+
+def filter_articles_by_keywords_and_spokespeople(articles, keywords, spokespeople, allowed_domains):
+    keywords_lower = [k.lower() for k in keywords]
+    spokespeople_lower = [s.lower() for s in spokespeople]
+    filtered = []
+    for a in articles:
+        domain = clean_domain(a.get('link') or a.get('url') or '')
+        if domain not in allowed_domains:
+            continue
+        title = a.get('title', '').lower()
+        summary = a.get('summary', '').lower()
+        # Check if any keyword in title
+        if any(k in title for k in keywords_lower):
+            filtered.append(a)
+            continue
+        # Check if any spoke in title or summary
+        if any(sp in title or sp in summary for sp in spokespeople_lower):
+            filtered.append(a)
+            continue
+    return filtered
