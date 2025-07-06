@@ -1,11 +1,7 @@
-# scripts/config.py
-
 KEYWORDS = ['Palo Alto', 'Palo Alto Networks', 'Unit 42']
 SPOKESPEOPLE = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
 
-# Trimmed example — replace with full list from your original code
-# Paste your national domains here:
-national_domains = {
+NATIONAL_DOMAINS = {
     "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
     "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
     "pa.media", "cityam.com", "irishexaminer.com", "independent.ie", "irishtimes.com",
@@ -16,7 +12,7 @@ national_domains = {
     "wsj.com", "businesspost.ie", "newstalk.com", "rte.ie", "thetimes.co.ie", "irishindependent.ie"
 }
 
-all_domains = [
+ALL_DOMAINS = [
     "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
     "reuters.com", "news.sky.com", "telegraph.co.uk", "thetimes.com", "independent.co.uk",
     "pa.media", "cityam.com", "computerweekly.com", "raconteur.net", "techcrunch.com",
@@ -58,4 +54,3 @@ all_domains = [
     "newstalk.com", "irishexaminer.com", "irishtimes.com", "independent.ie", "thetimes.com/world/ireland",
     "rte.ie"
 ]
-
