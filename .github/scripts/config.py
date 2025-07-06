@@ -8,7 +8,7 @@ NATIONAL_DOMAINS = {
     "moneyweek.com", "sundaytimes.co.uk", "economist.com", "theguardian.com", "channel5.com",
     "cnet.com", "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk",
     "dailymail.co.uk", "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk",
-    "itv.com", "metro.co.uk", "theguardian.com/observer", "thesun.co.uk", "thesundaytimes.co.uk",
+    "itv.com", "metro.co.uk", "thesun.co.uk", "thesundaytimes.co.uk",
     "wsj.com", "businesspost.ie", "newstalk.com", "rte.ie", "thetimes.co.ie", "irishindependent.ie"
 }
 
