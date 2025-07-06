@@ -135,4 +135,12 @@ This automated tracker monitors media mentions of Palo Alto Networks using Pytho
 
 """.format(', '.join(KEYWORDS), ', '.join(SPOKESPEOPLE), len(NATIONAL_DOMAINS))
 
-    with open("RE
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(md)
+
+    write_csv("summaries/weekly/summary.csv", weekly)
+    write_csv("summaries/monthly/summary.csv", monthly)
+    logging.info("✅ Updated README.md and CSVs.")
+
+if __name__ == "__main__":
+    main()
