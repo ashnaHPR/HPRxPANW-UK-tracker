@@ -26,6 +26,8 @@ jobs:
           pip install requests pytz
 
       - name: Run news scraper script
+        env:
+          GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
         run: python .github/scripts/scrape_rss_news.py
 
       - name: Commit and push changes
