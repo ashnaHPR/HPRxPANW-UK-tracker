@@ -1,11 +1,21 @@
 # scrape_rss_news.py
 
-import requests, feedparser, os, csv, time, pytz
+import sys
+import os
+import requests
+import feedparser
+import csv
+import time
+import pytz
 from datetime import datetime, timedelta
 from urllib.parse import quote_plus
-from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
-from scripts.utils import clean_domain, classify_domain, escape_md, deduplicate_articles, format_article
-from scripts.logger import logging
+
+# Add the scripts directory to sys.path so Python can find config, utils, logger
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scripts')))
+
+from config import KEYWORDS, SPOKESPEOPLE, national_domains as NATIONAL_DOMAINS
+from utils import clean_domain, classify_domain, escape_md, deduplicate_articles, format_article
+from logger import logging
 
 API_KEY = os.getenv("GNEWS_API_KEY")
 assert API_KEY, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
