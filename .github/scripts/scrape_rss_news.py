@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 import pytz
 import os
 import csv
-from urllib.parse import urlparse
 import feedparser  # for parsing RSS feeds
+from urllib.parse import urlparse
 
 API_KEY = os.getenv('GNEWS_API_KEY')
 assert API_KEY, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
