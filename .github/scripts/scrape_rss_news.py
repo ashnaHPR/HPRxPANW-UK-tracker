@@ -4,6 +4,7 @@ import pytz
 import os
 import csv
 from urllib.parse import urlparse
+import feedparser  # for parsing RSS feeds
 
 API_KEY = os.getenv('GNEWS_API_KEY')
 assert API_KEY, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
@@ -83,6 +84,22 @@ def fetch_articles():
     resp.raise_for_status()
     return resp.json().get('articles', [])
 
+def fetch_google_news_rss(keywords):
+    print("🔍 Fetching articles from Google News RSS...")
+    query = '+OR+'.join(keywords).replace(' ', '+')
+    url = f"https://news.google.com/rss/search?q={query}&hl=en-GB&gl=GB&ceid=GB:en"
+    feed = feedparser.parse(url)
+    articles = []
+    for entry in feed.entries:
+        articles.append({
+            'title': entry.title,
+            'url': entry.link,
+            'publishedAt': entry.published if 'published' in entry else '',
+            'description': entry.summary if 'summary' in entry else '',
+            'source': {'name': entry.source.title if 'source' in entry else 'Google News'}
+        })
+    return articles
+
 def clean_domain(url):
     try:
         domain = urlparse(url).netloc.lower()
@@ -93,15 +110,24 @@ def clean_domain(url):
 def classify_domain(domain):
     return "national" if domain in national_domains else "trade"
 
-def format_article(a):
-    dt = datetime.fromisoformat(a['publishedAt'].replace('Z', '+00:00')).astimezone(BST)
-    domain = clean_domain(a['url'])
+ddef format_article(a):
+    try:
+        # Try to parse the published date from ISO format (GNews API style)
+        dt = datetime.fromisoformat(a['publishedAt'].replace('Z', '+00:00')).astimezone(BST)
+    except Exception:
+        # If it fails (e.g., from RSS feed), just use current time
+        dt = now
+
+    # Get the domain from the URL safely (RSS might have 'link' instead of 'url')
+    url = a.get('url') or a.get('link') or ''
+    domain = clean_domain(url)
+
     return {
         'date': dt,
         'domain': domain,
         'pub': a['source']['name'],
         'title': a['title'].strip(),
-        'link': a['url'],
+        'link': url,
         'summary': (a.get('description') or '')[:200]
     }
 
@@ -124,37 +150,54 @@ def write_csv(path, articles):
             ])
 
 def main():
+    print("🚀 Starting news scraping...")
+
+    # Fetch articles from GNews API
     articles_raw = fetch_articles()
 
-    articles = [format_article(a) for a in articles_raw if a.get('publishedAt')]
+    # Fetch Google RSS feed articles
+    rss_articles_raw = fetch_google_rss()
+
+    # Combine both sources
+    combined_articles_raw = articles_raw + rss_articles_raw
+
+    # Format articles (parse dates, clean domains, etc.)
+    articles = [format_article(a) for a in combined_articles_raw if a.get('publishedAt')]
 
     today = now.date()
+
+    # Filter articles published today and matching keywords or spokespeople
     today_articles = [a for a in articles if a['date'].date() == today and (
         any(k.lower() in a['title'].lower() for k in KEYWORDS) or
         any(sp in (a['title'] + a['summary']).lower() for sp in spokespeople)
     )]
 
+    # Classify today's articles by domain type
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
 
+    # Prepare weekly and monthly caches
     weekly = [a for a in articles if a['date'].date() >= today - timedelta(days=7)]
     monthly = [a for a in articles if a['date'].date() >= today - timedelta(days=30)]
 
+    # Build markdown content
     md = "# 🔐 Palo Alto Networks Coverage\n\n"
     md += build_md_table("📌 All PANW Mentions Today", today_articles)
     md += build_md_table("📰 National Coverage", national_today)
     md += build_md_table("📘 Trade Coverage", trade_today)
 
-    TECHNICAL_SUMMARY = """
+    # Add the technical summary
+    md += """
+
 ---
 
 ## Technical Summary
 
 This repository hosts an automated news coverage tracker for Palo Alto Networks, implemented in Python and integrated with GitHub Actions for continuous operation.
 
-The system queries the GNews API every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
+The system queries the GNews API and Google RSS feeds every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
 
-Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's `README.md`. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
+Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's README.md. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
 
 Key technical highlights include:
 
@@ -166,17 +209,13 @@ Key technical highlights include:
 This setup provides an efficient, scalable, and transparent solution for real-time media intelligence tailored to Palo Alto Networks’ coverage needs.
 """
 
-    md += TECHNICAL_SUMMARY
-
+    # Write the README.md
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(md)
 
+    # Write weekly and monthly CSV summary files
     write_csv("summaries/weekly/summary.csv", weekly)
     write_csv("summaries/monthly/summary.csv", monthly)
 
-    print("✅ README.md, weekly and monthly CSVs updated.")
-
-
-if __name__ == "__main__":
-    main()
+    print("✅ README.md and summary CSVs updated successfully.")
 
