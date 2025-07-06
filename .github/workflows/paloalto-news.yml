@@ -2,12 +2,15 @@ name: 📰 Update PANW News Feed
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # Every 4 hours
+    - cron: '0 */4 * * *'  # every 4 hours
   workflow_dispatch:
 
 jobs:
   update-news:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}  # 👈 force root directory
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
