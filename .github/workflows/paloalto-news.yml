@@ -2,7 +2,7 @@ name: 📰 Update PANW News Feed
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # Every 4 hours
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,12 +13,11 @@ jobs:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🧾 List contents to debug path issue
+      - name: 🧾 Debug: List workspace contents
         run: |
-          echo "Current working directory:"
-          pwd
-          echo "Repo contents:"
-          ls -R
+          echo "📂 CURRENT WORKING DIRECTORY: $PWD"
+          echo "🗂️ FILE TREE:"
+          ls -R .
 
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
@@ -30,13 +29,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install feedparser tldextract pytz requests
 
-      - name: 🚀 Run scraper
+      - name: 🚀 Attempt to run scraper
         run: python ./scrape_rss_news.py
-
-      - name: 💾 Commit and push if changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md summaries/*
-          git diff --cached --quiet || git commit -m "🔄 Auto-update PANW media summaries"
-          git push
