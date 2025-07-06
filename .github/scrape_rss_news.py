@@ -6,15 +6,14 @@ import time
 import pytz
 from datetime import datetime, timedelta
 from urllib.parse import quote_plus
-from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS, ALL_DOMAINS
-from scripts.utils import (
-    clean_domain, classify_domain, escape_md, deduplicate_articles, format_article,
-    filter_articles_by_keywords_and_spokespeople
-)
+from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
+from scripts.utils import clean_domain, classify_domain, escape_md, deduplicate_articles, format_article
 from scripts.logger import logging
 
-API_KEY = os.getenv("GNEWS_API_KEY")
-assert API_KEY, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
+API_KEY_GNEWS = os.getenv("GNEWS_API_KEY")
+API_KEY_NEWSAPI = os.getenv("NEWSAPI_API_KEY")
+assert API_KEY_GNEWS, "⚠️ GNEWS_API_KEY not set as GitHub Secret"
+assert API_KEY_NEWSAPI, "⚠️ NEWSAPI_API_KEY not set as GitHub Secret"
 
 BST = pytz.timezone('Europe/London')
 now = datetime.now(BST)
@@ -27,7 +26,7 @@ def fetch_articles():
         'lang': 'en',
         'from': (now - timedelta(days=30)).strftime('%Y-%m-%d'),
         'max': 100,
-        'token': API_KEY
+        'token': API_KEY_GNEWS
     }
 
     for attempt in range(3):
@@ -44,6 +43,34 @@ def fetch_articles():
             return []
     return []
 
+def fetch_newsapi_articles():
+    logging.info("🔍 Fetching NewsAPI.org articles...")
+    url = "https://newsapi.org/v2/everything"
+    params = {
+        'q': ' OR '.join(f'"{k}"' for k in KEYWORDS),
+        'language': 'en',
+        'from': (now - timedelta(days=30)).strftime('%Y-%m-%d'),
+        'pageSize': 100,
+        'apiKey': API_KEY_NEWSAPI
+    }
+
+    articles = []
+    for attempt in range(3):
+        resp = requests.get(url, params=params)
+        if resp.status_code == 429:
+            logging.warning("⏳ Rate limited by NewsAPI. Retrying...")
+            time.sleep(60 * (attempt + 1))
+            continue
+        try:
+            resp.raise_for_status()
+            data = resp.json()
+            articles = data.get('articles', [])
+            break
+        except Exception as e:
+            logging.error(f"NewsAPI error: {e}")
+            return []
+    return articles
+
 def fetch_google_rss():
     logging.info("🔍 Fetching Google RSS articles...")
     query = quote_plus(' OR '.join(f'"{k}"' for k in KEYWORDS))
@@ -57,6 +84,28 @@ def fetch_google_rss():
             dt = datetime(*entry.published_parsed[:6], tzinfo=pytz.utc).astimezone(BST)
         except Exception:
             continue
+        articles.append({
+            'publishedAt': dt.isoformat(),
+            'title': entry.title,
+            'summary': entry.get('summary', '')[:200],
+            'link': entry.link,
+            'domain': clean_domain(entry.link),
+            'source': {'name': clean_domain(entry.link)}
+        })
+    return articles
+
+def fetch_bing_rss():
+    logging.info("🔍 Fetching Bing News RSS articles...")
+    query = quote_plus(' OR '.join(f'"{k}"' for k in KEYWORDS))
+    url = f"https://www.bing.com/news/search?q={query}&format=rss"
+    feed = feedparser.parse(url)
+    articles = []
+    for entry in feed.entries:
+        # Bing RSS sometimes lacks published date, so fallback
+        try:
+            dt = datetime(*entry.published_parsed[:6], tzinfo=pytz.utc).astimezone(BST)
+        except Exception:
+            dt = now
         articles.append({
             'publishedAt': dt.isoformat(),
             'title': entry.title,
@@ -89,20 +138,16 @@ def write_csv(path, articles):
             writer.writerow([a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']])
 
 def main():
-    raw = fetch_articles() + fetch_google_rss()
-
-    allowed_domains = set(NATIONAL_DOMAINS).union(set(ALL_DOMAINS))
-
-    # Filter raw articles by keywords, spokespeople, and domains
-    filtered_raw = filter_articles_by_keywords_and_spokespeople(raw, KEYWORDS, SPOKESPEOPLE, allowed_domains)
-
-    # Deduplicate then format
-    formatted = [format_article(a, now) for a in deduplicate_articles(filtered_raw) if a.get('publishedAt')]
-
+    raw = fetch_articles() + fetch_newsapi_articles() + fetch_google_rss() + fetch_bing_rss()
+    formatted = [format_article(a, now) for a in deduplicate_articles(raw) if a.get('publishedAt')]
     today = now.date()
 
-    today_articles = [a for a in formatted if a['date'].date() == today]
-
+    today_articles = [
+        a for a in formatted if a['date'].date() == today and (
+            any(k.lower() in a['title'].lower() for k in KEYWORDS) or
+            any(sp in (a['title'] + a['summary']).lower() for sp in SPOKESPEOPLE)
+        )
+    ]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
     weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
@@ -121,7 +166,7 @@ def main():
 This automated tracker monitors media mentions of Palo Alto Networks using Python.
 
 ### Features:
-- Pulls news every 4 hours from GNews API + Google News RSS
+- Pulls news every 4 hours from GNews API, NewsAPI.org + Google News RSS + Bing News RSS
 - Filters for keywords & named spokespeople
 - Classifies by publication type (national or trade)
 - Updates `README.md` with markdown tables
