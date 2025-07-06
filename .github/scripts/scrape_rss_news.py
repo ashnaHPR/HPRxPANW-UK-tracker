@@ -123,31 +123,8 @@ def write_csv(path, articles):
                 a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']
             ])
 
-   TECHNICAL_SUMMARY = """
----
-
-## Technical Summary
-
-This repository hosts an automated news coverage tracker for Palo Alto Networks, implemented in Python and integrated with GitHub Actions for continuous operation.
-
-The system queries the GNews API every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
-
-Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's `README.md`. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
-
-Key technical highlights include:
-
-- Robust timezone-aware data filtering  
-- Domain-driven source classification for granular insights  
-- Automated CI/CD pipeline with GitHub Actions for scheduled updates  
-- Modular design allowing easy extension with new keywords or sources  
-
-This setup provides an efficient, scalable, and transparent solution for real-time media intelligence tailored to Palo Alto Networks’ coverage needs.
-"""
-
-    content += TECHNICAL_SUMMARY
-
-    with open("README.md", "w", encoding='utf-8') as f:
-        f.write(content)
+def main():
+    articles_raw = fetch_articles()
 
     articles = [format_article(a) for a in articles_raw if a.get('publishedAt')]
 
@@ -168,6 +145,29 @@ This setup provides an efficient, scalable, and transparent solution for real-ti
     md += build_md_table("📰 National Coverage", national_today)
     md += build_md_table("📘 Trade Coverage", trade_today)
 
+    TECHNICAL_SUMMARY = """
+---
+
+## Technical Summary
+
+This repository hosts an automated news coverage tracker for Palo Alto Networks, implemented in Python and integrated with GitHub Actions for continuous operation.
+
+The system queries the GNews API every 4 hours to pull the latest articles containing Palo Alto Networks-related keywords and mentions of specific spokespeople. Articles are filtered to ensure timeliness based on BST timezone, and source classification is performed via a comprehensive domain mapping strategy that segments outlets into national and trade media categories.
+
+Results are formatted into Markdown tables with clickable headlines, publication timestamps, and article summaries, then committed back to the repository's `README.md`. This creates a continuously updated, version-controlled media monitoring dashboard accessible to stakeholders at any time.
+
+Key technical highlights include:
+
+- Robust timezone-aware data filtering  
+- Domain-driven source classification for granular insights  
+- Automated CI/CD pipeline with GitHub Actions for scheduled updates  
+- Modular design allowing easy extension with new keywords or sources  
+
+This setup provides an efficient, scalable, and transparent solution for real-time media intelligence tailored to Palo Alto Networks’ coverage needs.
+"""
+
+    md += TECHNICAL_SUMMARY
+
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(md)
 
@@ -176,5 +176,7 @@ This setup provides an efficient, scalable, and transparent solution for real-ti
 
     print("✅ README.md, weekly and monthly CSVs updated.")
 
+
 if __name__ == "__main__":
     main()
+
