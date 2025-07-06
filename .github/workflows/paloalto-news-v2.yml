@@ -37,6 +37,7 @@ jobs:
         run: python .github/scrape_rss_news.py
         env:
           GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+          NEWSAPI_API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
 
       - name: Complete
         run: echo "Scraper job finished successfully."
