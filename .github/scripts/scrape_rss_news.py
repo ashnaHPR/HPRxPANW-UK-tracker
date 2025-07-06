@@ -218,4 +218,3 @@ This setup provides an efficient, scalable, and transparent solution for real-ti
     write_csv("summaries/monthly/summary.csv", monthly)
 
     print("✅ README.md and summary CSVs updated successfully.")
-
