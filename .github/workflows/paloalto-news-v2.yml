@@ -24,15 +24,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Check Python version and installed packages
-        run: |
-          python --version
-          pip list
-
       - name: Run scraper
         run: python .github/scrape_rss_news.py
-        env:
-          PYTHONUNBUFFERED: 1
 
       - name: Commit & push changes if any
         uses: stefanzweifel/git-auto-commit-action@v4
