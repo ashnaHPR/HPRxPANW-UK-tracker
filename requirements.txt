@@ -1,5 +1,4 @@
 tldextract
 requests
-feedparser
 pytz
-beautifulsoup4
+bs4
