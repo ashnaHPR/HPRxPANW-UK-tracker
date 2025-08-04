@@ -1,6 +1,6 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-08-04 17:35 BST_
+_Last updated: 2025-08-04 17:46 BST_
 
 ## 📌 All PANW Mentions Today
 
@@ -22,7 +22,7 @@ _No articles found._
 This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 
 **Features:**
-- RSS only (Google News & Bing News)
+- Google News HTML scraping + Bing RSS feeds
 - Each keyword/spokesperson searched independently
 - Filters by target domains
 - Classifies into _national_ or _trade_
