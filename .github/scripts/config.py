@@ -1,5 +1,16 @@
-KEYWORDS = ['Palo Alto', 'Palo Alto Networks', 'Unit 42']
-SPOKESPEOPLE = ['tim erridge', 'scott mckinnon', 'carla baker', 'anna chung', 'sam rubin']
+KEYWORDS = [
+    "Palo Alto Networks",
+    "Unit 42",
+    # Generic keywords (used in filter later)
+]
+
+SPOKESPEOPLE = [
+    "tim erridge",
+    "scott mckinnon",
+    "carla baker",
+    "anna chung",
+    "sam rubin",
+]
 
 NATIONAL_DOMAINS = {
     "bbc.co.uk", "bloomberg.com", "businessinsider.com", "forbes.com", "ft.com",
