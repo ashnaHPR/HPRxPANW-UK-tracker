@@ -5,7 +5,6 @@ import csv
 import time
 import pytz
 from datetime import datetime, timedelta
-from urllib.parse import quote_plus
 from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
 from scripts.utils import (
     clean_domain, classify_domain, escape_md,
@@ -32,80 +31,120 @@ def build_md_table(title, articles):
         )
     return s + "\n"
 
-# ------------------------ RSS Functions -----------------------
-
-def fetch_bing_rss(query):
-    logger.info(f"🔍 Bing News RSS for: {query}")
-    encoded = quote_plus(query)
-    url = f"https://www.bing.com/news/search?q={encoded}&format=rss"
-    return parse_rss(url)
-
-def parse_rss(url):
-    import feedparser
-    feed = feedparser.parse(url)
-    articles = []
-    for entry in feed.entries:
-        try:
-            dt = datetime(*entry.published_parsed[:6], tzinfo=pytz.utc).astimezone(BST)
-        except Exception:
-            dt = now
-        articles.append({
-            'publishedAt': dt.isoformat(),
-            'title': entry.title,
-            'summary': entry.get('summary', '')[:200],
-            'link': entry.link,
-            'domain': clean_domain(entry.link),
-            'source': {'name': clean_domain(entry.link)}
-        })
-    return articles
-
-# ------------------ Google News HTML scraper ------------------
+# ------------------------ Google News scraper -----------------------
 
 def fetch_google_news_html(query):
-    logger.info(f"🔍 Google News HTML scraping for: {query}")
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/116.0.0.0 Safari/537.36"
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+        )
     }
-    encoded = quote_plus(query)
-    url = f"https://www.google.com/search?q={encoded}&tbm=nws&hl=en-GB"
+    encoded_query = requests.utils.quote(query)
+    url = f"https://www.google.com/search?q={encoded_query}&tbm=nws&hl=en-GB"
 
     try:
-        resp = requests.get(url, headers=headers, timeout=10)
-        resp.raise_for_status()
-    except Exception as e:
-        logger.error(f"Failed to fetch Google News: {e}")
-        return []
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code != 200:
+            logger.warning(f"Failed to fetch Google News page, status code: {response.status_code}")
+            return []
 
-    soup = BeautifulSoup(resp.text, 'html.parser')
-    articles = []
+        html = response.text
 
-    for item in soup.select('div.dbsr'):
-        try:
-            link = item.a['href']
-            title = item.a.text.strip()
-            snippet = item.select_one('div.Y3v8qd').text.strip() if item.select_one('div.Y3v8qd') else ""
-            source_and_time = item.select_one('div.XTjFC WF4CUc').text.strip() if item.select_one('div.XTjFC.WF4CUc') else ""
-            
-            # Parse date/time roughly (Google News often shows relative time)
-            # We just set date as now for simplicity
-            dt = now
+        soup = BeautifulSoup(html, "html.parser")
+        articles = []
 
-            domain = clean_domain(link)
+        containers = soup.select("div.dbsr")
+
+        if not containers:
+            logger.info("No Google News articles found for query: " + query)
+            return []
+
+        for container in containers:
+            a_tag = container.find("a")
+            if not a_tag or not a_tag.get("href"):
+                continue
+            link = a_tag['href']
+
+            title_tag = container.find("div", recursive=True)
+            title = title_tag.get_text(strip=True) if title_tag else ""
+
+            snippet_tag = container.find("div", class_="Y3v8qd") or container.find("div", class_="st")
+            summary = snippet_tag.get_text(strip=True) if snippet_tag else ""
+
+            dt = datetime.now(BST)
 
             articles.append({
                 'publishedAt': dt.isoformat(),
                 'title': title,
-                'summary': snippet,
+                'summary': summary,
                 'link': link,
-                'domain': domain,
-                'source': {'name': domain}
+                'domain': clean_domain(link),
+                'source': {'name': clean_domain(link)}
             })
-        except Exception as e:
-            logger.warning(f"Failed to parse one article: {e}")
 
-    return articles
+        return articles
+
+    except Exception as e:
+        logger.error(f"Exception during Google News scraping: {e}")
+        return []
+
+# ------------------------ Bing News scraper -----------------------
+
+def fetch_bing_news_html(query):
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+        )
+    }
+    encoded_query = requests.utils.quote(query)
+    url = f"https://www.bing.com/news/search?q={encoded_query}&form=QBNH"
+
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code != 200:
+            logger.warning(f"Failed to fetch Bing News page, status code: {response.status_code}")
+            return []
+
+        html = response.text
+
+        soup = BeautifulSoup(html, "html.parser")
+        articles = []
+
+        containers = soup.select("div.news-card")
+
+        if not containers:
+            logger.info("No Bing news articles found for query: " + query)
+            return []
+
+        for container in containers:
+            a_tag = container.find("a")
+            if not a_tag or not a_tag.get("href"):
+                continue
+            link = a_tag['href']
+
+            title = a_tag.get_text(strip=True)
+
+            summary_tag = container.find("div", class_="snippet")
+            summary = summary_tag.get_text(strip=True) if summary_tag else ""
+
+            dt = datetime.now(BST)
+
+            articles.append({
+                'publishedAt': dt.isoformat(),
+                'title': title,
+                'summary': summary,
+                'link': link,
+                'domain': clean_domain(link),
+                'source': {'name': clean_domain(link)}
+            })
+
+        return articles
+
+    except Exception as e:
+        logger.error(f"Exception during Bing News scraping: {e}")
+        return []
 
 # -------------------------- Helpers ---------------------------
 
@@ -122,15 +161,18 @@ def write_csv(path, articles):
 def main():
     logger.info("🚀 Starting scrape...")
 
-    # Compose queries as before
+    # Queries: keywords + (Palo Alto Networks AND each spokesperson)
     queries = KEYWORDS + [f'"Palo Alto Networks" AND {sp}' for sp in SPOKESPEOPLE]
 
     raw_articles = []
 
     for query in queries:
+        logger.info(f"Fetching Google News for query: {query}")
         raw_articles += fetch_google_news_html(query)
-        time.sleep(2)  # gentle delay to avoid Google rate limits
-        raw_articles += fetch_bing_rss(query)
+        time.sleep(1)  # gentle delay
+
+        logger.info(f"Fetching Bing News for query: {query}")
+        raw_articles += fetch_bing_news_html(query)
         time.sleep(1)
 
     filtered = filter_articles_by_keywords_and_spokespeople(
@@ -159,14 +201,14 @@ def main():
 This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 
 **Features:**
-- Google News HTML scraping + Bing RSS feeds
+- HTML scrape (Google News & Bing News)
 - Each keyword/spokesperson searched independently
 - Filters by target domains
 - Classifies into _national_ or _trade_
 - Markdown + weekly/monthly CSV
 
-📌 Keywords: `{', '.join(KEYWORDS)}`  
-🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`  
+📌 Keywords: `{', '.join(KEYWORDS)}`
+🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`
 📰 National domains: `{len(NATIONAL_DOMAINS)}` sources tracked
 
 """
