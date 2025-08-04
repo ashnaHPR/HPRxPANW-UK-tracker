@@ -1,4 +1,5 @@
-import feedparser
+import requests
+from bs4 import BeautifulSoup
 import os
 import csv
 import time
@@ -33,12 +34,6 @@ def build_md_table(title, articles):
 
 # ------------------------ RSS Functions -----------------------
 
-def fetch_google_rss(query):
-    logger.info(f"🔍 Google News RSS for: {query}")
-    encoded = quote_plus(query)
-    url = f"https://news.google.com/rss/search?q={encoded}&hl=en-GB&gl=GB&ceid=GB:en"
-    return parse_rss(url)
-
 def fetch_bing_rss(query):
     logger.info(f"🔍 Bing News RSS for: {query}")
     encoded = quote_plus(query)
@@ -46,6 +41,7 @@ def fetch_bing_rss(query):
     return parse_rss(url)
 
 def parse_rss(url):
+    import feedparser
     feed = feedparser.parse(url)
     articles = []
     for entry in feed.entries:
@@ -63,6 +59,54 @@ def parse_rss(url):
         })
     return articles
 
+# ------------------ Google News HTML scraper ------------------
+
+def fetch_google_news_html(query):
+    logger.info(f"🔍 Google News HTML scraping for: {query}")
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/116.0.0.0 Safari/537.36"
+    }
+    encoded = quote_plus(query)
+    url = f"https://www.google.com/search?q={encoded}&tbm=nws&hl=en-GB"
+
+    try:
+        resp = requests.get(url, headers=headers, timeout=10)
+        resp.raise_for_status()
+    except Exception as e:
+        logger.error(f"Failed to fetch Google News: {e}")
+        return []
+
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    articles = []
+
+    for item in soup.select('div.dbsr'):
+        try:
+            link = item.a['href']
+            title = item.a.text.strip()
+            snippet = item.select_one('div.Y3v8qd').text.strip() if item.select_one('div.Y3v8qd') else ""
+            source_and_time = item.select_one('div.XTjFC WF4CUc').text.strip() if item.select_one('div.XTjFC.WF4CUc') else ""
+            
+            # Parse date/time roughly (Google News often shows relative time)
+            # We just set date as now for simplicity
+            dt = now
+
+            domain = clean_domain(link)
+
+            articles.append({
+                'publishedAt': dt.isoformat(),
+                'title': title,
+                'summary': snippet,
+                'link': link,
+                'domain': domain,
+                'source': {'name': domain}
+            })
+        except Exception as e:
+            logger.warning(f"Failed to parse one article: {e}")
+
+    return articles
+
 # -------------------------- Helpers ---------------------------
 
 def write_csv(path, articles):
@@ -78,12 +122,14 @@ def write_csv(path, articles):
 def main():
     logger.info("🚀 Starting scrape...")
 
+    # Compose queries as before
     queries = KEYWORDS + [f'"Palo Alto Networks" AND {sp}' for sp in SPOKESPEOPLE]
+
     raw_articles = []
 
     for query in queries:
-        raw_articles += fetch_google_rss(query)
-        time.sleep(1)  # polite delay between requests
+        raw_articles += fetch_google_news_html(query)
+        time.sleep(2)  # gentle delay to avoid Google rate limits
         raw_articles += fetch_bing_rss(query)
         time.sleep(1)
 
@@ -113,7 +159,7 @@ def main():
 This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 
 **Features:**
-- RSS only (Google News & Bing News)
+- Google News HTML scraping + Bing RSS feeds
 - Each keyword/spokesperson searched independently
 - Filters by target domains
 - Classifies into _national_ or _trade_
