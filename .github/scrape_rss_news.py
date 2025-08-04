@@ -37,7 +37,8 @@ def fetch_google_news(query):
     encoded = quote_plus(query)
     url = f"https://www.google.com/search?q={encoded}&tbm=nws&hl=en-GB"
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; NewsScraper/1.0; +https://github.com/yourrepo)"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
     }
 
     resp = requests.get(url, headers=headers)
@@ -48,20 +49,47 @@ def fetch_google_news(query):
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []
 
-    for g in soup.select('div.dbsr'):
+    articles = soup.find_all('article', class_='xrnccd')
+
+    logger.info(f"Found {len(articles)} articles on page.")
+
+    for article in articles:
         try:
-            link_tag = g.find('a')
-            link = link_tag['href'] if link_tag else ''
-            title_tag = g.find('div', class_='JheGif nDgy9d')
-            title = title_tag.text.strip() if title_tag else ''
-            snippet_tag = g.find('div', class_='Y3v8qd')
-            summary = snippet_tag.text.strip() if snippet_tag else ''
-            source_tag = g.find('div', class_='XTjFC WF4CUc')
-            pub_name = source_tag.text.strip() if source_tag else ''
-            time_tag = g.find('span', class_='WG9SHc')
-            time_text = time_tag.text.strip() if time_tag else ''
-            
-            publishedAt = parse_relative_time(time_text)
+            # Extract link - Google News links are relative and need fixing
+            link_tag = article.find('a', href=True)
+            link = ""
+            if link_tag:
+                href = link_tag['href']
+                if href.startswith('.'):
+                    link = "https://news.google.com" + href[1:]
+                elif href.startswith('http'):
+                    link = href
+                else:
+                    link = "https://news.google.com" + href
+
+            # Title inside h3
+            title_tag = article.find('h3')
+            title = title_tag.get_text(strip=True) if title_tag else ''
+
+            # Summary snippet
+            summary_tag = article.find('span', class_='xBbh9')
+            summary = summary_tag.get_text(strip=True) if summary_tag else ''
+
+            # Source and time
+            source_and_time = article.find('div', class_='SVJrMe')
+            pub_name = ''
+            time_text = ''
+
+            if source_and_time:
+                source_span = source_and_time.find('a')
+                pub_name = source_span.get_text(strip=True) if source_span else ''
+                time_tag = source_and_time.find('time')
+                time_text = time_tag['datetime'] if time_tag and time_tag.has_attr('datetime') else ''
+
+            if time_text:
+                publishedAt = datetime.fromisoformat(time_text.replace('Z', '+00:00')).astimezone(BST)
+            else:
+                publishedAt = now
 
             results.append({
                 'publishedAt': publishedAt.isoformat(),
@@ -73,34 +101,8 @@ def fetch_google_news(query):
             })
         except Exception as e:
             logger.warning(f"Error parsing an article: {e}")
+
     return results
-
-
-def parse_relative_time(time_str):
-    """
-    Convert relative times like '2 hours ago', '1 day ago' to datetime in BST
-    """
-    now_utc = datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(BST)
-    if 'hour' in time_str:
-        try:
-            hours = int(time_str.split()[0])
-            return now_utc - timedelta(hours=hours)
-        except Exception:
-            pass
-    elif 'minute' in time_str:
-        try:
-            minutes = int(time_str.split()[0])
-            return now_utc - timedelta(minutes=minutes)
-        except Exception:
-            pass
-    elif 'day' in time_str:
-        try:
-            days = int(time_str.split()[0])
-            return now_utc - timedelta(days=days)
-        except Exception:
-            pass
-    # fallback to now if unknown or unparsable format
-    return now_utc
 
 
 def write_csv(path, articles):
@@ -119,30 +121,17 @@ def main():
     raw_articles = []
 
     for query in queries:
-        logger.info(f"Fetching query: {query}")
-        articles = fetch_google_news(query)
-        logger.info(f"Got {len(articles)} articles for query '{query}'")
-        raw_articles += articles
-        time.sleep(1)
-
-    logger.info(f"Total raw articles fetched: {len(raw_articles)}")
+        raw_articles += fetch_google_news(query)
+        time.sleep(1)  # polite delay to avoid blocks
 
     filtered = filter_articles_by_keywords_and_spokespeople(
         raw_articles, KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
     )
 
-    logger.info(f"Articles after filtering: {len(filtered)}")
-
     formatted = [format_article(a, now) for a in deduplicate_articles(filtered)]
-
-    # Log some sample article dates and titles
-    for a in formatted[:5]:  # just top 5 for brevity
-        logger.info(f"Article date: {a['date']} title: {a['title']}")
-
     today = now.date()
-    today_articles = [a for a in formatted if a['date'].date() == today]
-    logger.info(f"Articles from today: {len(today_articles)}")
 
+    today_articles = [a for a in formatted if a['date'].date() == today]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
     weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
