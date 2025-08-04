@@ -8,14 +8,18 @@ BST = pytz.timezone('Europe/London')
 def clean_domain(url):
     try:
         ext = tldextract.extract(url)
-        return f"{ext.domain}.{ext.suffix}".lower()
+        domain = f"{ext.domain}.{ext.suffix}".lower()
+        return domain
     except Exception:
         return ""
 
 def classify_domain(domain):
+    domain = domain.lower()
     return "national" if domain in NATIONAL_DOMAINS else "trade"
 
 def escape_md(text):
+    if not text:
+        return ""
     return text.replace("|", "\\|").replace("\n", " ").strip()
 
 def deduplicate_articles(articles):
@@ -35,12 +39,13 @@ def format_article(a, fallback_time):
         dt = fallback_time
     url = a.get('url') or a.get('link') or ''
     domain = clean_domain(url)
+    summary = a.get('summary') or ''
     return {
         'date': dt,
         'domain': domain,
         'pub': a.get('source', {}).get('name', domain),
         'title': a.get('title', '').strip(),
-        'summary': a.get('summary', '').strip(),
+        'summary': summary.strip(),
         'link': url
     }
 
@@ -52,13 +57,11 @@ def filter_articles_by_keywords_and_spokespeople(articles, keywords, spokespeopl
         domain = clean_domain(a.get('link') or a.get('url') or '')
         if domain not in allowed_domains:
             continue
-        title = a.get('title', '').lower()
-        summary = a.get('summary', '').lower()
-        # Check if any keyword in title
+        title = (a.get('title') or '').lower()
+        summary = (a.get('summary') or '').lower()
         if any(k in title for k in keywords_lower):
             filtered.append(a)
             continue
-        # Check if any spoke in title or summary
         if any(sp in title or sp in summary for sp in spokespeople_lower):
             filtered.append(a)
             continue
