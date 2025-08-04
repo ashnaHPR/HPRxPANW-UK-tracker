@@ -83,7 +83,7 @@ def main():
 
     for query in queries:
         raw_articles += fetch_google_rss(query)
-        time.sleep(1)  # gentle delay
+        time.sleep(1)  # polite delay between requests
         raw_articles += fetch_bing_rss(query)
         time.sleep(1)
 
