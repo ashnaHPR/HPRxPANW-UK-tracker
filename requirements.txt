@@ -1,4 +1,4 @@
 tldextract
 requests
 pytz
-bs4
+beautifulsoup4
