@@ -61,7 +61,6 @@ def fetch_google_news(query):
             time_tag = g.find('span', class_='WG9SHc')
             time_text = time_tag.text.strip() if time_tag else ''
             
-            # Parse relative time like '2 hours ago'
             publishedAt = parse_relative_time(time_text)
 
             results.append({
@@ -83,17 +82,25 @@ def parse_relative_time(time_str):
     """
     now_utc = datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(BST)
     if 'hour' in time_str:
-        hours = int(time_str.split()[0])
-        return now_utc - timedelta(hours=hours)
+        try:
+            hours = int(time_str.split()[0])
+            return now_utc - timedelta(hours=hours)
+        except Exception:
+            pass
     elif 'minute' in time_str:
-        minutes = int(time_str.split()[0])
-        return now_utc - timedelta(minutes=minutes)
+        try:
+            minutes = int(time_str.split()[0])
+            return now_utc - timedelta(minutes=minutes)
+        except Exception:
+            pass
     elif 'day' in time_str:
-        days = int(time_str.split()[0])
-        return now_utc - timedelta(days=days)
-    else:
-        # fallback to now if unknown format
-        return now_utc
+        try:
+            days = int(time_str.split()[0])
+            return now_utc - timedelta(days=days)
+        except Exception:
+            pass
+    # fallback to now if unknown or unparsable format
+    return now_utc
 
 
 def write_csv(path, articles):
@@ -112,17 +119,30 @@ def main():
     raw_articles = []
 
     for query in queries:
-        raw_articles += fetch_google_news(query)
-        time.sleep(1)  # gentle delay
+        logger.info(f"Fetching query: {query}")
+        articles = fetch_google_news(query)
+        logger.info(f"Got {len(articles)} articles for query '{query}'")
+        raw_articles += articles
+        time.sleep(1)
+
+    logger.info(f"Total raw articles fetched: {len(raw_articles)}")
 
     filtered = filter_articles_by_keywords_and_spokespeople(
         raw_articles, KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
     )
 
-    formatted = [format_article(a, now) for a in deduplicate_articles(filtered)]
-    today = now.date()
+    logger.info(f"Articles after filtering: {len(filtered)}")
 
+    formatted = [format_article(a, now) for a in deduplicate_articles(filtered)]
+
+    # Log some sample article dates and titles
+    for a in formatted[:5]:  # just top 5 for brevity
+        logger.info(f"Article date: {a['date']} title: {a['title']}")
+
+    today = now.date()
     today_articles = [a for a in formatted if a['date'].date() == today]
+    logger.info(f"Articles from today: {len(today_articles)}")
+
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
     weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
