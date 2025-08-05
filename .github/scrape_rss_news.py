@@ -62,16 +62,19 @@ def fetch_bing_news(query, interval_hours=None):
             source_tag = g.find('div', class_='source')
             pub_name = source_tag.text.strip() if source_tag else ''
 
-            # Bing sometimes shows relative time in a <span class='time'> tag
             time_tag = g.find('span', class_='time')
             time_text = time_tag.text.strip() if time_tag else ''
 
-            # We'll parse relative times like "17h", "1d", "3y" into datetime or fallback to now
             publishedAt = parse_bing_time(time_text)
 
-            # Skip articles without valid date or too old (e.g., more than 7 days)
-            if (now - publishedAt).days > 7:
-                continue
+            # STRICT FILTER by the requested interval
+            if interval_hours is not None:
+                max_age = timedelta(hours=interval_hours)
+            else:
+                max_age = timedelta(days=7)  # default max age
+
+            if (now - publishedAt) > max_age:
+                continue  # skip articles older than requested interval
 
             results.append({
                 'date': publishedAt,
