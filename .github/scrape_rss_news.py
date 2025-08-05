@@ -13,10 +13,10 @@ from scripts.utils import (
     filter_articles_by_keywords_and_spokespeople
 )
 from scripts.logger import logger
-import re  # <-- added here
 
 BST = pytz.timezone('Europe/London')
 now = datetime.now(BST)
+
 
 def build_md_table(title, articles):
     if not articles:
@@ -31,47 +31,37 @@ def build_md_table(title, articles):
         )
     return s + "\n"
 
+
 def parse_bing_time(time_str: str) -> datetime:
-    """
-    Parse Bing news relative or absolute date strings into BST datetime.
-    Handles shorthand like '3y', '1y ago', '2d', '15h', '30m', etc.
-    """
     now = datetime.now(BST)
     time_str = time_str.lower().strip()
 
     try:
-        # Match patterns like '3y', '1y ago', '2d', '15h', '30m', '5 mins ago'
-        match = re.match(r"(\d+)\s*(y|year|years|d|day|days|h|hr|hour|hours|m|min|minute|minutes)s?\s*(ago)?", time_str)
-        if match:
-            value = int(match.group(1))
-            unit = match.group(2)
+        if 'hour' in time_str or 'hr' in time_str:
+            hours = int(''.join(filter(str.isdigit, time_str)))
+            return now - timedelta(hours=hours)
 
-            if unit.startswith('y'):
-                return now - timedelta(days=365 * value)
-            elif unit.startswith('d'):
-                return now - timedelta(days=value)
-            elif unit.startswith('h'):
-                return now - timedelta(hours=value)
-            elif unit.startswith('m'):
-                return now - timedelta(minutes=value)
+        elif 'min' in time_str:
+            mins = int(''.join(filter(str.isdigit, time_str)))
+            return now - timedelta(minutes=mins)
 
-        # Try absolute date formats Bing might use
-        for fmt in ['%b %d, %Y', '%d %b %Y', '%b %d']:
-            try:
-                dt = datetime.strptime(time_str, fmt)
-                if '%Y' not in fmt:
-                    dt = dt.replace(year=now.year)
-                return BST.localize(dt)
-            except ValueError:
-                continue
+        elif 'day' in time_str:
+            days = int(''.join(filter(str.isdigit, time_str)))
+            return now - timedelta(days=days)
 
-        # fallback to now if parsing fails
-        logger.warning(f"Unparsed Bing time string: '{time_str}', defaulting to now")
+        else:
+            for fmt in ['%b %d, %Y', '%d %b %Y', '%b %d']:
+                try:
+                    dt = datetime.strptime(time_str, fmt)
+                    if '%Y' not in fmt:
+                        dt = dt.replace(year=now.year)
+                    return BST.localize(dt)
+                except ValueError:
+                    continue
+            return now
+    except Exception:
         return now
 
-    except Exception as e:
-        logger.error(f"Error parsing Bing time '{time_str}': {e}")
-        return now
 
 def fetch_bing_news(query):
     logger.info(f"🔍 Scraping Bing News for: {query}")
@@ -89,9 +79,9 @@ def fetch_bing_news(query):
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []
 
-    articles = soup.select('div.news-card')  # Bing news article cards
+    articles = soup.select('div.news-card')
     if not articles:
-        articles = soup.select('div.t_s')  # fallback selectors if Bing layout changes
+        articles = soup.select('div.t_s')
 
     for g in articles:
         try:
@@ -105,7 +95,17 @@ def fetch_bing_news(query):
             time_tag = g.find('span', class_='time')
             time_text = time_tag.text.strip() if time_tag else ''
 
+            logger.info(f"⏱️ Raw time text: '{time_text}' — Title: {title}")
+
+            if not time_text:
+                logger.info(f"⏭️ Skipping (no time found): {title}")
+                continue
+
             publishedAt = parse_bing_time(time_text)
+
+            if publishedAt > now + timedelta(hours=1):
+                logger.warning(f"⏳ Skipping (future date): {title} @ {publishedAt}")
+                continue
 
             results.append({
                 'publishedAt': publishedAt.isoformat(),
@@ -116,25 +116,22 @@ def fetch_bing_news(query):
                 'source': {'name': pub_name}
             })
         except Exception as e:
-            logger.warning(f"Error parsing a Bing article: {e}")
+            logger.warning(f"⚠️ Error parsing a Bing article: {e}")
 
-    logger.info(f"Found {len(results)} articles on page.")
+    logger.info(f"✅ Found {len(results)} articles on page.")
     return results
 
+
 def is_article_in_target_range(article_dt: datetime) -> bool:
-    """
-    Return True if the article date is in the target range:
-    - On Mondays: show articles from last Friday, Saturday, Sunday
-    - Other days: show only articles from today
-    """
     today = datetime.now(BST).date()
-    weekday = today.weekday()  # Monday=0 ... Sunday=6
+    weekday = today.weekday()
 
     if weekday == 0:  # Monday
         friday = today - timedelta(days=3)
         return friday <= article_dt.date() <= today
     else:
         return article_dt.date() == today
+
 
 def write_csv(path, articles):
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -144,6 +141,7 @@ def write_csv(path, articles):
         for a in sorted(articles, key=lambda x: x['date'], reverse=True):
             writer.writerow([a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']])
 
+
 def main():
     logger.info("🚀 Starting scrape...")
 
@@ -152,37 +150,30 @@ def main():
 
     for query in queries:
         raw_articles += fetch_bing_news(query)
-        time.sleep(1)  # gentle delay
+        time.sleep(1)
 
     logger.info("🔎 Domains before filtering:")
     for a in raw_articles:
         logger.info(f"{clean_domain(a['link'])} → {a['title']}")
 
-    # Use None to skip domain filtering for now:
     filtered = filter_articles_by_keywords_and_spokespeople(
         raw_articles, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
 
     formatted = [format_article(a, now) for a in deduplicate_articles(filtered)]
 
-    # Log article dates for debugging
     for a in formatted:
-        logger.info(f"Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
+        logger.info(f"🗞️ Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
 
-    # Apply the Monday-Friday filtering
     filtered_date = [a for a in formatted if is_article_in_target_range(a['date'])]
-
-    # Filter out articles older than 30 days to avoid stale entries
-    cutoff_date = now - timedelta(days=30)
-    filtered_recent = [a for a in filtered_date if a['date'] >= cutoff_date]
 
     today = now.date()
 
-    today_articles = [a for a in filtered_recent if a['date'].date() == today]
+    today_articles = [a for a in filtered_date if a['date'].date() == today]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
-    weekly = [a for a in filtered_recent if a['date'].date() >= today - timedelta(days=7)]
-    monthly = [a for a in filtered_recent if a['date'].date() >= today - timedelta(days=30)]
+    weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
+    monthly = [a for a in formatted if a['date'].date() >= today - timedelta(days=30)]
 
     md = f"# 🔐 Palo Alto Networks Coverage\n\n_Last updated: {now.strftime('%Y-%m-%d %H:%M %Z')}_\n\n"
     md += build_md_table("📌 All PANW Mentions Today", today_articles)
@@ -206,7 +197,6 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 📌 Keywords: `{', '.join(KEYWORDS)}`
 🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`
 📰 National domains: `{len(NATIONAL_DOMAINS)}` sources tracked
-
 """
 
     with open("README.md", "w", encoding="utf-8") as f:
@@ -216,6 +206,7 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
     write_csv("summaries/monthly/summary.csv", monthly)
 
     logger.info("✅ Scrape complete. README + CSVs updated.")
+
 
 if __name__ == "__main__":
     main()
