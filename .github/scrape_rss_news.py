@@ -40,36 +40,43 @@ def parse_bing_time(time_str: str) -> datetime:
       - 'Jun 20'
       - '20 Jun 2025'
       - 'Aug 4, 2025'
+      - '3y' (3 years ago)
     """
     now = datetime.now(BST)
     time_str = time_str.lower().strip()
 
     try:
+        if 'year' in time_str or 'y' in time_str:
+            years = int(''.join(filter(str.isdigit, time_str)))
+            return now - timedelta(days=365 * years)
+
         if 'hour' in time_str or 'hr' in time_str:
             hours = int(''.join(filter(str.isdigit, time_str)))
             return now - timedelta(hours=hours)
 
-        elif 'min' in time_str:
+        if 'min' in time_str:
             mins = int(''.join(filter(str.isdigit, time_str)))
             return now - timedelta(minutes=mins)
 
-        elif 'day' in time_str:
+        if 'day' in time_str:
             days = int(''.join(filter(str.isdigit, time_str)))
             return now - timedelta(days=days)
 
-        else:
-            # Try various absolute date formats Bing might use
-            for fmt in ['%b %d, %Y', '%d %b %Y', '%b %d']:
-                try:
-                    dt = datetime.strptime(time_str, fmt)
-                    if '%Y' not in fmt:
-                        dt = dt.replace(year=now.year)
-                    return BST.localize(dt)
-                except ValueError:
-                    continue
-            # fallback to now if parsing fails
-            return now
-    except Exception:
+        # Try various absolute date formats Bing might use
+        for fmt in ['%b %d, %Y', '%d %b %Y', '%b %d']:
+            try:
+                dt = datetime.strptime(time_str, fmt)
+                if '%Y' not in fmt:
+                    dt = dt.replace(year=now.year)
+                return BST.localize(dt)
+            except ValueError:
+                continue
+
+        logger.warning(f"Unparsed Bing time string: '{time_str}', defaulting to now")
+        return now
+
+    except Exception as e:
+        logger.error(f"Error parsing Bing time '{time_str}': {e}")
         return now
 
 
@@ -125,7 +132,7 @@ def fetch_bing_news(query):
 def is_article_in_target_range(article_dt: datetime) -> bool:
     """
     Return True if the article date is in the target range:
-    - On Mondays: show articles from last Friday, Saturday, Sunday
+    - On Mondays: show articles from last Friday, Saturday, Sunday, Monday
     - Other days: show only articles from today
     """
     today = datetime.now(BST).date()
@@ -172,17 +179,21 @@ def main():
     for a in formatted:
         logger.info(f"Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
 
-    # === NEW: filter out old articles outside your target range ===
-    filtered_date = [a for a in formatted if is_article_in_target_range(a['date'])]
-    logger.info(f"Filtering articles by date. Keeping {len(filtered_date)} out of {len(formatted)} after date cutoff.")
+    # Filter out old articles beyond 7 days to avoid very old entries
+    max_age_days = 7
+    cutoff_date = now - timedelta(days=max_age_days)
+    filtered_recent = [a for a in formatted if a['date'] >= cutoff_date]
+
+    # Apply the Monday-Friday filtering on recent articles
+    filtered_date = [a for a in filtered_recent if is_article_in_target_range(a['date'])]
 
     today = now.date()
 
     today_articles = [a for a in filtered_date if a['date'].date() == today]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
-    weekly = [a for a in formatted if a['date'].date() >= today - timedelta(days=7)]
-    monthly = [a for a in formatted if a['date'].date() >= today - timedelta(days=30)]
+    weekly = [a for a in filtered_recent if a['date'].date() >= today - timedelta(days=7)]
+    monthly = [a for a in filtered_recent if a['date'].date() >= today - timedelta(days=30)]
 
     md = f"# 🔐 Palo Alto Networks Coverage\n\n_Last updated: {now.strftime('%Y-%m-%d %H:%M %Z')}_\n\n"
     md += build_md_table("📌 All PANW Mentions Today", today_articles)
