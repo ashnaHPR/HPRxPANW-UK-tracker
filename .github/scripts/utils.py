@@ -49,20 +49,21 @@ def format_article(a, fallback_time):
         'link': url
     }
 
-def filter_articles_by_keywords_and_spokespeople(articles, keywords, spokespeople, allowed_domains):
+def filter_articles_by_keywords_and_spokespeople(articles, keywords, spokespeople, allowed_domains=None):
     keywords_lower = [k.lower() for k in keywords]
     spokespeople_lower = [s.lower() for s in spokespeople]
     filtered = []
+
     for a in articles:
         domain = clean_domain(a.get('link') or a.get('url') or '')
-        if domain not in allowed_domains:
+        if allowed_domains and domain not in allowed_domains:
             continue
-        title = (a.get('title') or '').lower()
-        summary = (a.get('summary') or '').lower()
-        if any(k in title for k in keywords_lower):
+
+        title = a.get('title', '').lower()
+        summary = a.get('summary', '').lower()
+
+        if any(k in title for k in keywords_lower) or any(sp in title or sp in summary for sp in spokespeople_lower):
+            a['domain'] = domain  # Ensure domain is set
             filtered.append(a)
-            continue
-        if any(sp in title or sp in summary for sp in spokespeople_lower):
-            filtered.append(a)
-            continue
+
     return filtered
