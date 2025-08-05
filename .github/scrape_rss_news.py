@@ -33,30 +33,34 @@ def build_md_table(title, articles):
 def fetch_bing_news(query):
     logger.info(f"🔍 Scraping Bing News for: {query}")
     encoded = quote_plus(query)
-    url = f"https://www.bing.com/news/search?q={encoded}&form=QBNH"
+    url = f"https://www.bing.com/news/search?q={encoded}&qft=sortbydate%3d%221%22&form=YFNR"
     headers = {
         "User-Agent": "Mozilla/5.0 (compatible; NewsScraper/1.0; +https://github.com/yourrepo)"
     }
 
     resp = requests.get(url, headers=headers)
     if resp.status_code != 200:
-        logger.error(f"Failed to fetch Bing News for '{query}': HTTP {resp.status_code}")
+        logger.error(f"Failed to fetch Bing News page for query '{query}': HTTP {resp.status_code}")
         return []
 
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []
 
-    articles = soup.select("div.news-card")
-    logger.info(f"Found {len(articles)} articles on page.")
-
-    for card in articles:
+    for card in soup.select('div.news-card'):
         try:
-            title_tag = card.find("a")
-            title = title_tag.text.strip()
-            link = title_tag['href']
-            summary = card.find("div", class_="snippet").text.strip() if card.find("div", class_="snippet") else ""
-            pub_name = card.find("div", class_="source").text.strip() if card.find("div", class_="source") else ""
-            publishedAt = now  # Approximate, since Bing doesn't give timestamps reliably
+            link_tag = card.find('a', href=True)
+            link = link_tag['href'] if link_tag else ''
+            title_tag = card.find('a', class_='title')
+            title = title_tag.text.strip() if title_tag else ''
+            summary_tag = card.find('div', class_='snippet')
+            summary = summary_tag.text.strip() if summary_tag else ''
+            source_tag = card.find('div', class_='source')
+            pub_name = source_tag.text.strip() if source_tag else ''
+            time_tag = card.find('span', class_='source')
+            time_text = time_tag.text.strip() if time_tag else ''
+
+            # Bing does not provide relative time in a simple format; skipping detailed parse for now
+            publishedAt = now  # fallback to current time
 
             results.append({
                 'publishedAt': publishedAt.isoformat(),
@@ -67,7 +71,8 @@ def fetch_bing_news(query):
                 'source': {'name': pub_name}
             })
         except Exception as e:
-            logger.warning(f"⚠️ Error parsing Bing article: {e}")
+            logger.warning(f"Error parsing an article: {e}")
+    logger.info(f"Found {len(results)} articles on page.")
     return results
 
 def write_csv(path, articles):
@@ -86,10 +91,14 @@ def main():
 
     for query in queries:
         raw_articles += fetch_bing_news(query)
-        time.sleep(1)
+        time.sleep(1)  # gentle delay
+
+    logger.info("🔎 Domains before filtering:")
+    for a in raw_articles:
+        logger.info(f"{clean_domain(a['link'])} → {a['title']}")
 
     filtered = filter_articles_by_keywords_and_spokespeople(
-        raw_articles, KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
+        raw_articles, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
 
     formatted = [format_article(a, now) for a in deduplicate_articles(filtered)]
@@ -116,13 +125,14 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 **Features:**
 - Scrapes Bing News HTML directly (no RSS, no API keys)
 - Each keyword/spokesperson searched independently
-- Filters by target domains
+- Filters by target domains (currently disabled for testing)
 - Classifies into _national_ or _trade_
 - Markdown + weekly/monthly CSV
 
 📌 Keywords: `{', '.join(KEYWORDS)}`
 🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`
 📰 National domains: `{len(NATIONAL_DOMAINS)}` sources tracked
+
 """
 
     with open("README.md", "w", encoding="utf-8") as f:
