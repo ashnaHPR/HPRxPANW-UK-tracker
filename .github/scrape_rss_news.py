@@ -32,11 +32,10 @@ def build_md_table(title, articles):
 
 def parse_bing_time(time_str: str) -> datetime:
     """
-    Parse time strings like:
-    - '17h' = 17 hours ago
-    - '1d' = 1 day ago
-    - '3y' = 3 years ago (returns old date for filtering out)
-    - 'Just now' or empty = now
+    Parse Bing time strings:
+    - Relative times like '17h', '1d', '5m'
+    - 'Just now' or empty → now
+    - If format looks like an absolute date or unparseable → return old date (e.g. 30 days ago)
     """
     time_str = time_str.lower().strip()
     now_dt = datetime.now(BST)
@@ -55,12 +54,15 @@ def parse_bing_time(time_str: str) -> datetime:
             return now_dt - timedelta(minutes=mins)
         if time_str.endswith('y'):
             years = int(time_str[:-1])
-            # Return a datetime years ago, to be filtered out if older than 7 days
             return now_dt - timedelta(days=years * 365)
-        # Unknown format fallback
-        return now_dt
+        # Try parsing absolute date formats (add more formats if needed)
+        try:
+            parsed_date = datetime.strptime(time_str, '%b %d, %Y')
+            return BST.localize(parsed_date)
+        except Exception:
+            return now_dt - timedelta(days=30)
     except Exception:
-        return now_dt
+        return now_dt - timedelta(days=30)
 
 def fetch_bing_news(query, interval_hours=None):
     logger.info(f"🔍 Scraping Bing News for: {query} (interval={interval_hours}h)")
@@ -94,8 +96,8 @@ def fetch_bing_news(query, interval_hours=None):
             source_tag = g.find('div', class_='source')
             pub_name = source_tag.text.strip() if source_tag else ''
 
-            # Handle missing or '.' publication names
-            if not pub_name or pub_name == ".":
+            # Fix for empty or '.' publication name
+            if not pub_name or pub_name.strip() == ".":
                 pub_name = "Unknown"
 
             time_tag = g.find('span', class_='time')
@@ -150,21 +152,25 @@ def main():
     for a in all_articles_24h:
         logger.info(f"{a['domain']} → {a['title']}")
 
+    # Filter articles by keywords/spokespeople for 24h batch (adjust as you want)
     filtered_24h = filter_articles_by_keywords_and_spokespeople(
         all_articles_24h, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
 
     formatted_24h = [format_article(a, now) for a in deduplicate_articles(filtered_24h)]
 
+    # Log article dates for debugging
     for a in formatted_24h:
         logger.info(f"Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
 
     today = now.date()
 
+    # Classification by domain for today articles
     today_articles = [a for a in formatted_24h if a['date'].date() == today]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
 
+    # Weekly and monthly from 7d articles, dedup + filter
     filtered_7d = filter_articles_by_keywords_and_spokespeople(
         all_articles_7d, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
