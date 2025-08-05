@@ -26,7 +26,7 @@ def deduplicate_articles(articles):
     seen = set()
     unique = []
     for a in articles:
-        key = a.get('url') or a.get('link')
+        key = a.get('link') or a.get('url')
         if key and key not in seen:
             seen.add(key)
             unique.append(a)
@@ -37,7 +37,7 @@ def format_article(a, fallback_time):
         dt = datetime.fromisoformat(a['publishedAt'].replace('Z', '+00:00')).astimezone(BST)
     except Exception:
         dt = fallback_time
-    url = a.get('url') or a.get('link') or ''
+    url = a.get('link') or a.get('url') or ''
     domain = clean_domain(url)
     summary = a.get('summary') or ''
     return {
