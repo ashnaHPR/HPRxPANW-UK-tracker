@@ -172,8 +172,9 @@ def main():
     for a in formatted:
         logger.info(f"Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
 
-    # Apply the Monday-Friday filtering
+    # === NEW: filter out old articles outside your target range ===
     filtered_date = [a for a in formatted if is_article_in_target_range(a['date'])]
+    logger.info(f"Filtering articles by date. Keeping {len(filtered_date)} out of {len(formatted)} after date cutoff.")
 
     today = now.date()
 
