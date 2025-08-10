@@ -1,13 +1,15 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-08-10 09:30 BST_
+_Last updated: 2025-08-10 13:48 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Publication | Title | Summary |
 |------|-------------|--------|---------|
-| 2025-08-10 09:30 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
-| 2025-08-10 09:30 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+| 2025-08-10 13:48 | msn.com | [Palo Alto Networks to snap six straight sessions of losses](https://www.msn.com/en-us/money/topstocks/palo-alto-networks-to-snap-six-straight-sessions-of-losses/ar-AA1K2hbJ?ocid=BingNewsVerp) | Palo Alto Networks ( NASDAQ: PANW) reversed course to enter the green territory on Wednesday after trading in the red for six consecutive sessions. The company gained 1.63% to trade at $171.84 on ... |
+| 2025-08-10 13:48 | msn.com | [Palo Alto Networks inks $25b deal to buy identity-security shop CyberArk](https://www.msn.com/en-us/money/technologyinvesting/palo-alto-networks-inks-25b-deal-to-buy-identity-security-shop-cyberark/ar-AA1JACgi?ocid=BingNewsVerp) | Palo Alto Networks will buy Israeli security biz CyberArk in a $25 billion cash-and-stock deal confirmed today. It's Palo Alto Networks' largest purchase to date, and one of the most expensive ... |
+| 2025-08-10 13:48 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
+| 2025-08-10 13:48 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
 
 ## 📰 National Coverage
 
@@ -17,8 +19,10 @@ _No articles found._
 
 | Date | Publication | Title | Summary |
 |------|-------------|--------|---------|
-| 2025-08-10 09:30 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
-| 2025-08-10 09:30 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+| 2025-08-10 13:48 | msn.com | [Palo Alto Networks to snap six straight sessions of losses](https://www.msn.com/en-us/money/topstocks/palo-alto-networks-to-snap-six-straight-sessions-of-losses/ar-AA1K2hbJ?ocid=BingNewsVerp) | Palo Alto Networks ( NASDAQ: PANW) reversed course to enter the green territory on Wednesday after trading in the red for six consecutive sessions. The company gained 1.63% to trade at $171.84 on ... |
+| 2025-08-10 13:48 | msn.com | [Palo Alto Networks inks $25b deal to buy identity-security shop CyberArk](https://www.msn.com/en-us/money/technologyinvesting/palo-alto-networks-inks-25b-deal-to-buy-identity-security-shop-cyberark/ar-AA1JACgi?ocid=BingNewsVerp) | Palo Alto Networks will buy Israeli security biz CyberArk in a $25 billion cash-and-stock deal confirmed today. It's Palo Alto Networks' largest purchase to date, and one of the most expensive ... |
+| 2025-08-10 13:48 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
+| 2025-08-10 13:48 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
 
 
 ---
