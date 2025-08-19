@@ -1,13 +1,12 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-08-19 13:47 BST_
+_Last updated: 2025-08-19 17:29 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Publication | Title | Summary |
 |------|-------------|--------|---------|
-| 2025-08-19 13:47 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
-| 2025-08-19 13:47 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+| 2025-08-19 17:29 | msn.com | [Top Stock Movers Now: Intel, Palo Alto Networks, Nvidia, and More](https://www.msn.com/en-us/money/topstocks/top-stock-movers-now-intel-palo-alto-networks-nvidia-and-more/ar-AA1KOBa2?ocid=BingNewsVerp) | Intel ( INTC) was the best-performing stock in the S&P 500 when Japan's SoftBank Group made a $2 billion investment in the struggling chipmaker. |
 
 ## 📰 National Coverage
 
@@ -17,8 +16,7 @@ _No articles found._
 
 | Date | Publication | Title | Summary |
 |------|-------------|--------|---------|
-| 2025-08-19 13:47 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
-| 2025-08-19 13:47 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+| 2025-08-19 17:29 | msn.com | [Top Stock Movers Now: Intel, Palo Alto Networks, Nvidia, and More](https://www.msn.com/en-us/money/topstocks/top-stock-movers-now-intel-palo-alto-networks-nvidia-and-more/ar-AA1KOBa2?ocid=BingNewsVerp) | Intel ( INTC) was the best-performing stock in the S&P 500 when Japan's SoftBank Group made a $2 billion investment in the struggling chipmaker. |
 
 
 ---
