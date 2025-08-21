@@ -1,13 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-08-21 05:27 BST_
+_Last updated: 2025-08-21 09:30 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Publication | Title | Summary |
 |------|-------------|--------|---------|
-| 2025-08-21 05:27 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
-| 2025-08-21 05:27 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+| 2025-08-21 09:30 | msn.com | [Palo Alto Networks Earnings Boost Confidence in Cybersecurity Investments](https://www.msn.com/en-us/technology/cybersecurity/palo-alto-networks-earnings-boost-confidence-in-cybersecurity-investments/ar-AA1KTWIX?ocid=BingNewsVerp) | In the rapidly evolving digital landscape, cybersecurity remains a paramount concern for businesses across the globe. With ever-increasing threats and ... |
+| 2025-08-21 09:30 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
+| 2025-08-21 09:30 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
 
 ## 📰 National Coverage
 
@@ -17,8 +18,9 @@ _No articles found._
 
 | Date | Publication | Title | Summary |
 |------|-------------|--------|---------|
-| 2025-08-21 05:27 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
-| 2025-08-21 05:27 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+| 2025-08-21 09:30 | msn.com | [Palo Alto Networks Earnings Boost Confidence in Cybersecurity Investments](https://www.msn.com/en-us/technology/cybersecurity/palo-alto-networks-earnings-boost-confidence-in-cybersecurity-investments/ar-AA1KTWIX?ocid=BingNewsVerp) | In the rapidly evolving digital landscape, cybersecurity remains a paramount concern for businesses across the globe. With ever-increasing threats and ... |
+| 2025-08-21 09:30 | . | [London Evening Standard](/news/search?q=site%3awww.standard.co.uk&FORM=NWBCLM) | Carla Baker, senior director of government affairs for the UK and Ireland at cybersecurity firm Palo Alto Networks, said she welcomed the “renewed focus” on cybersecurity and the “vital role ... |
+| 2025-08-21 09:30 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
 
 
 ---
