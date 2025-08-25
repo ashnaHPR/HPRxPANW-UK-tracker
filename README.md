@@ -1,13 +1,10 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-08-25 17:29 BST_
+_Last updated: 2025-08-25 21:25 BST_
 
 ## 📌 All PANW Mentions Today
 
-| Date | Publication | Title | Summary |
-|------|-------------|--------|---------|
-| 2025-08-25 17:29 | . | [Infosecurity-magazine.com](/news/search?q=site%3awww.infosecurity-magazine.com&FORM=NWBCLM) | Scott McKinnon, Chief Security Officer, UK & Ireland at Palo Alto Networks, commented: “With the proliferation of solutions, the task at hand is to simplify and integrate tools to ensure they are ... |
-| 2025-08-25 17:29 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+_No articles found._
 
 ## 📰 National Coverage
 
@@ -15,10 +12,7 @@ _No articles found._
 
 ## 📘 Trade Coverage
 
-| Date | Publication | Title | Summary |
-|------|-------------|--------|---------|
-| 2025-08-25 17:29 | . | [Infosecurity-magazine.com](/news/search?q=site%3awww.infosecurity-magazine.com&FORM=NWBCLM) | Scott McKinnon, Chief Security Officer, UK & Ireland at Palo Alto Networks, commented: “With the proliferation of solutions, the task at hand is to simplify and integrate tools to ensure they are ... |
-| 2025-08-25 17:29 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
+_No articles found._
 
 
 ---
