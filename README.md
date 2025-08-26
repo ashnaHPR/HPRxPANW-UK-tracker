@@ -1,15 +1,10 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-08-26 09:32 BST_
+_Last updated: 2025-08-26 13:50 BST_
 
 ## 📌 All PANW Mentions Today
 
-| Date | Publication | Title | Summary |
-|------|-------------|--------|---------|
-| 2025-08-26 09:32 | . | [Infosecurity-magazine.com](/news/search?q=site%3awww.infosecurity-magazine.com&FORM=NWBCLM) | Scott McKinnon, Chief Security Officer, UK & Ireland at Palo Alto Networks, commented: “With the proliferation of solutions, the task at hand is to simplify and integrate tools to ensure they are ... |
-| 2025-08-26 09:32 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
-| 2025-08-26 09:32 | . | [c-span](/news/search?q=site%3awww.c-span.org&FORM=NWBCLM) | On the C-SPAN Networks: Sam Rubin is a Vice President and Head for Cybersecurity Firm Unit 42 in the Palo Alto Networks with one video in the C-SPAN Video Library; the first appearance was a 2023 ... |
-| 2025-08-26 09:32 | . | [The Daily Star](/news/search?q=site%3awww.thedailystar.net&FORM=NWBCLM) | A hacker group known as "Scattered Spider," is targeting the aviation industry, according to Sam Rubin, SVP of Consulting and Threat Intelligence at Unit 42 by Palo Alto Networks. |
+_No articles found._
 
 ## 📰 National Coverage
 
@@ -17,12 +12,7 @@ _No articles found._
 
 ## 📘 Trade Coverage
 
-| Date | Publication | Title | Summary |
-|------|-------------|--------|---------|
-| 2025-08-26 09:32 | . | [Infosecurity-magazine.com](/news/search?q=site%3awww.infosecurity-magazine.com&FORM=NWBCLM) | Scott McKinnon, Chief Security Officer, UK & Ireland at Palo Alto Networks, commented: “With the proliferation of solutions, the task at hand is to simplify and integrate tools to ensure they are ... |
-| 2025-08-26 09:32 | . | [Information Age](/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... |
-| 2025-08-26 09:32 | . | [c-span](/news/search?q=site%3awww.c-span.org&FORM=NWBCLM) | On the C-SPAN Networks: Sam Rubin is a Vice President and Head for Cybersecurity Firm Unit 42 in the Palo Alto Networks with one video in the C-SPAN Video Library; the first appearance was a 2023 ... |
-| 2025-08-26 09:32 | . | [The Daily Star](/news/search?q=site%3awww.thedailystar.net&FORM=NWBCLM) | A hacker group known as "Scattered Spider," is targeting the aviation industry, according to Sam Rubin, SVP of Consulting and Threat Intelligence at Unit 42 by Palo Alto Networks. |
+_No articles found._
 
 
 ---
