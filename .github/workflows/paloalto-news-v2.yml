@@ -27,6 +27,15 @@ jobs:
       - name: Run scraper
         run: python .github/scrape_rss_news.py
 
+      - name: Debug summary files
+        run: |
+          echo "==== WEEKLY ===="
+          head -n 5 summaries/weekly/summary.csv || echo "weekly missing"
+          echo "==== MONTHLY ===="
+          head -n 5 summaries/monthly/summary.csv || echo "monthly missing"
+          echo "==== Git Status ===="
+          git status
+
       - name: Commit & push changes if any
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -35,3 +44,7 @@ jobs:
           file_pattern: |
             README.md
             summaries/**
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          skip_dirty_check: false
+          push_options: '--force'
