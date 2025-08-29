@@ -210,4 +210,18 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 - Markdown + weekly/monthly CSV
 
 📌 Keywords: `{', '.join(KEYWORDS)}`  
-🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`
+🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`  
+📰 National domains: `{len(NATIONAL_DOMAINS)}` sources tracked
+
+"""
+
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(md)
+
+    write_csv("summaries/weekly/summary.csv", weekly)
+    write_csv("summaries/monthly/summary.csv", monthly)
+
+    logger.info("✅ Scrape complete. README + CSVs updated.")
+
+if __name__ == "__main__":
+    main()
