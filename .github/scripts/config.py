@@ -20,7 +20,7 @@ NATIONAL_DOMAINS = {
     "cnet.com", "edition.cnn.com", "cbronline.com", "computerworld.com", "express.co.uk",
     "dailymail.co.uk", "mirror.co.uk", "standard.co.uk", "inews.co.uk", "ibtimes.co.uk",
     "itv.com", "metro.co.uk", "thesun.co.uk", "thesundaytimes.co.uk",
-    "wsj.com", "businesspost.ie", "newstalk.com", "rte.ie", "thetimes.co.ie", "irishindependent.ie"
+    "wsj.com", "businesspost.ie", "newstalk.com", "rte.ie", "thetimes.co.ie", "irishindependent.ie", "dailystar.co.uk"
 }
 
 ALL_DOMAINS = [
