@@ -20,18 +20,23 @@ now = datetime.now(BST)
 def build_md_table(title, articles):
     if not articles:
         return f"## {title}\n\n_No articles found._\n\n"
-    s = f"## {title}\n\n| Date | Publication | Title | Link | Summary |\n|------|-------------|-------|------|---------|\n"
+    s = f"## {title}\n\n| Date | Publication | Title | Summary |\n|------|-------------|--------|---------|\n"
     for a in sorted(articles, key=lambda x: x['date'], reverse=True):
         s += (
             f"| {a['date'].strftime('%Y-%m-%d %H:%M')} "
             f"| {escape_md(a['pub'])} "
-            f"| {escape_md(a['title'])} "
-            f"| [Link]({a['link']}) "
+            f"| [{escape_md(a['title'])}]({a['link']}) "
             f"| {escape_md(a['summary'])} |\n"
         )
     return s + "\n"
 
 def parse_bing_time(time_str: str) -> datetime:
+    """
+    Parse Bing time strings:
+    - Relative times like '17h', '1d', '5m'
+    - 'Just now' or empty → now
+    - If format looks like an absolute date or unparseable → return old date (e.g. 30 days ago)
+    """
     time_str = time_str.lower().strip()
     now_dt = datetime.now(BST)
 
@@ -50,6 +55,7 @@ def parse_bing_time(time_str: str) -> datetime:
         if time_str.endswith('y'):
             years = int(time_str[:-1])
             return now_dt - timedelta(days=years * 365)
+        # Try parsing absolute date formats (add more formats if needed)
         try:
             parsed_date = datetime.strptime(time_str, '%b %d, %Y')
             return BST.localize(parsed_date)
@@ -76,7 +82,7 @@ def fetch_bing_news(query, interval_hours=None):
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []
 
-    # Bing has changed its classes often; this selector may need update if Bing updates its HTML
+    # Try the known selectors for Bing news cards
     articles = soup.select('div.news-card')
     if not articles:
         articles = soup.select('div.t_s')
@@ -84,18 +90,23 @@ def fetch_bing_news(query, interval_hours=None):
     for g in articles:
         try:
             link_tag = g.find('a')
-            link = link_tag['href'] if link_tag else ''
-            title = link_tag.text.strip() if link_tag else ''
+            link = ''
+            if link_tag and link_tag.has_attr('href'):
+                href = link_tag['href']
+                if href.startswith('/'):
+                    link = 'https://www.bing.com' + href
+                else:
+                    link = href
 
+            title = link_tag.text.strip() if link_tag else ''
             summary_tag = g.find('div', class_='snippet')
             summary = summary_tag.text.strip() if summary_tag else ''
-
             source_tag = g.find('div', class_='source')
             pub_name = source_tag.text.strip() if source_tag else ''
 
-            # Fix for empty or '.' publication name - try to get from URL domain if empty
-            if not pub_name or pub_name == ".":
-                pub_name = clean_domain(link) or "Unknown"
+            # Fix for empty or '.' publication name
+            if not pub_name or pub_name.strip() == ".":
+                pub_name = "Unknown"
 
             time_tag = g.find('span', class_='time')
             time_text = time_tag.text.strip() if time_tag else ''
@@ -105,6 +116,9 @@ def fetch_bing_news(query, interval_hours=None):
             # Skip articles older than 7 days
             if (now - publishedAt).days > 7:
                 continue
+
+            # DEBUG LOG:
+            logger.info(f"Article: {title} | Pub: {pub_name} | Date: {publishedAt} | Link: {link}")
 
             results.append({
                 'date': publishedAt,
@@ -124,14 +138,14 @@ def write_csv(path, articles):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", newline='', encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['Date', 'Publication', 'Title', 'Link', 'Summary'])
+        writer.writerow(['Date', 'Publication', 'Title', 'Summary', 'Link'])
         for a in sorted(articles, key=lambda x: x['date'], reverse=True):
             writer.writerow([
                 a['date'].strftime('%Y-%m-%d %H:%M'),
                 a['pub'],
                 a['title'],
-                a['link'],
-                a['summary']
+                a['summary'],
+                a['link']
             ])
 
 def main():
@@ -155,18 +169,25 @@ def main():
     for a in all_articles_24h:
         logger.info(f"{a['domain']} → {a['title']}")
 
+    # Filter articles by keywords/spokespeople for 24h batch (adjust as you want)
     filtered_24h = filter_articles_by_keywords_and_spokespeople(
         all_articles_24h, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
 
     formatted_24h = [format_article(a, now) for a in deduplicate_articles(filtered_24h)]
 
+    # Log article dates for debugging
+    for a in formatted_24h:
+        logger.info(f"Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
+
     today = now.date()
 
+    # Classification by domain for today articles
     today_articles = [a for a in formatted_24h if a['date'].date() == today]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
 
+    # Weekly and monthly from 7d articles, dedup + filter
     filtered_7d = filter_articles_by_keywords_and_spokespeople(
         all_articles_7d, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
