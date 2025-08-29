@@ -1,159 +1,165 @@
-import os
-import csv
-import time
-import pytz
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-from urllib.parse import quote_plus, urlparse, parse_qs, unquote
-from scripts.config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS
-from scripts.utils import (
-    clean_domain, classify_domain, escape_md,
-    deduplicate_articles, format_article,
-    filter_articles_by_keywords_and_spokespeople
-)
-from scripts.logger import logger
+import logging
+import time
+import os
+import csv
+from urllib.parse import urlparse
 
-BST = pytz.timezone('Europe/London')
-now = datetime.now(BST)
+# Load config from config.py in the repo
+from config import KEYWORDS, SPOKESPEOPLE, NATIONAL_DOMAINS, ALL_DOMAINS
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+now = datetime.utcnow()
+
+def fetch_bing_news(query, interval_hours=24):
+    """Fetch Bing News results for a given query and time interval."""
+    logger.info(f"Fetching news for query: '{query}' in last {interval_hours} hours")
+
+    base_url = "https://www.bing.com/news/search"
+    params = {
+        "q": query,
+        "qft": f"+filterui:age-lt{interval_hours}h",
+        "form": "NWRFSH",
+        "sp": "-1",
+        "sc": "0-0",
+    }
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; NewsScraper/1.0; +https://github.com/user/repo)"
+    }
+
+    response = requests.get(base_url, params=params, headers=headers)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    articles = []
+    results = soup.find_all("div", class_="news-card")
+
+    for r in results:
+        try:
+            title_tag = r.find("a")
+            if not title_tag:
+                continue
+            title = title_tag.get_text(strip=True)
+            url = title_tag['href']
+
+            source_tag = r.find("div", class_="source")
+            if source_tag:
+                publication = source_tag.get_text(strip=True)
+            else:
+                publication = "Unknown"
+
+            snippet_tag = r.find("div", class_="snippet")
+            summary = snippet_tag.get_text(strip=True) if snippet_tag else ""
+
+            date_tag = r.find("span", class_="time")
+            if date_tag:
+                # Bing often shows relative times like '2 hours ago', parse accordingly
+                date_str = date_tag.get_text(strip=True)
+                published_at = parse_bing_relative_date(date_str)
+            else:
+                published_at = now
+
+            domain = urlparse(url).netloc.lower().replace("www.", "")
+
+            article = {
+                "title": title,
+                "url": url,
+                "publication": publication,
+                "summary": summary,
+                "date": published_at,
+                "domain": domain,
+            }
+            articles.append(article)
+        except Exception as e:
+            logger.warning(f"Failed to parse a news item: {e}")
+    logger.info(f"Fetched {len(articles)} articles for query '{query}'")
+    return articles
+
+def parse_bing_relative_date(date_str):
+    """Parse relative date strings from Bing News like '2 hours ago'."""
+    date_str = date_str.lower()
+    now_ = datetime.utcnow()
+    if "hour" in date_str:
+        hours = int(date_str.split()[0])
+        return now_ - timedelta(hours=hours)
+    elif "minute" in date_str:
+        minutes = int(date_str.split()[0])
+        return now_ - timedelta(minutes=minutes)
+    elif "day" in date_str:
+        days = int(date_str.split()[0])
+        return now_ - timedelta(days=days)
+    else:
+        # fallback to now if unrecognized format
+        return now_
+
+def filter_articles_by_keywords_and_spokespeople(articles, keywords, spokespeople, allowed_domains=None):
+    filtered = []
+    keywords_lower = [k.lower() for k in keywords]
+    spokespeople_lower = [s.lower() for s in spokespeople]
+    for a in articles:
+        title_lower = a['title'].lower()
+        summary_lower = a['summary'].lower()
+        pub_lower = a['publication'].lower()
+        if allowed_domains and a['domain'] not in allowed_domains:
+            continue
+        if any(k in title_lower or k in summary_lower for k in keywords_lower) or \
+           any(sp in title_lower or sp in summary_lower for sp in spokespeople_lower) or \
+           any(sp in pub_lower for sp in spokespeople_lower):
+            filtered.append(a)
+    return filtered
+
+def deduplicate_articles(articles):
+    seen = set()
+    unique = []
+    for a in articles:
+        key = (a['title'], a['url'])
+        if key not in seen:
+            seen.add(key)
+            unique.append(a)
+    return unique
+
+def classify_domain(domain):
+    if domain in NATIONAL_DOMAINS:
+        return "national"
+    else:
+        return "trade"
+
+def format_article(article, now):
+    date_str = article['date'].strftime("%Y-%m-%d %H:%M")
+    return {
+        "date": article['date'],
+        "date_str": date_str,
+        "publication": article['publication'],
+        "title": article['title'],
+        "summary": article['summary'],
+        "url": article['url'],
+        "domain": article['domain']
+    }
 
 def build_md_table(title, articles):
     if not articles:
-        return f"## {title}\n\n_No articles found._\n\n"
-    s = f"## {title}\n\n| Date | Publication | Title | Summary |\n|------|-------------|--------|---------|\n"
-    for a in sorted(articles, key=lambda x: x['date'], reverse=True):
-        s += (
-            f"| {a['date'].strftime('%Y-%m-%d %H:%M')} "
-            f"| {escape_md(a['pub'])} "
-            f"| [{escape_md(a['title'])}]({a['link']}) "
-            f"| {escape_md(a['summary'])} |\n"
-        )
-    return s + "\n"
+        return f"\n## {title}\n\n_No articles found._\n"
+    md = f"\n## {title}\n\n"
+    md += "| Date | Publication | Title | Summary |\n"
+    md += "| --- | --- | --- | --- |\n"
+    for a in articles:
+        # Format markdown links properly with the article url
+        md += f"| {a['date_str']} | [{a['publication']}]({a['url']}) | [{a['title']}]({a['url']}) | {a['summary']} |\n"
+    return md
 
-def parse_bing_time(time_str: str) -> datetime:
-    """
-    Parse Bing time strings:
-    - Relative times like '17h', '1d', '5m'
-    - 'Just now' or empty → now
-    - If format looks like an absolute date or unparseable → return old date (e.g. 30 days ago)
-    """
-    time_str = time_str.lower().strip()
-    now_dt = datetime.now(BST)
-
-    try:
-        if time_str in ('just now', ''):
-            return now_dt
-        if time_str.endswith('h'):
-            hours = int(time_str[:-1])
-            return now_dt - timedelta(hours=hours)
-        if time_str.endswith('d'):
-            days = int(time_str[:-1])
-            return now_dt - timedelta(days=days)
-        if time_str.endswith('m'):
-            mins = int(time_str[:-1])
-            return now_dt - timedelta(minutes=mins)
-        if time_str.endswith('y'):
-            years = int(time_str[:-1])
-            return now_dt - timedelta(days=years * 365)
-        # Try parsing absolute date formats (add more formats if needed)
-        try:
-            parsed_date = datetime.strptime(time_str, '%b %d, %Y')
-            return BST.localize(parsed_date)
-        except Exception:
-            return now_dt - timedelta(days=30)
-    except Exception:
-        return now_dt - timedelta(days=30)
-
-def extract_real_url(bing_url):
-    """
-    Extract the real article URL from Bing News redirect URLs.
-    If not a redirect, returns the original URL.
-    """
-    parsed = urlparse(bing_url)
-    # Bing news redirect URLs often contain the real URL as a 'url' query param
-    if 'bing.com/news/apiclick.aspx' in bing_url or 'bing.com/news/hovercard' in bing_url:
-        qs = parse_qs(parsed.query)
-        if 'url' in qs:
-            return unquote(qs['url'][0])
-    return bing_url
-
-def fetch_bing_news(query, interval_hours=None):
-    logger.info(f"🔍 Scraping Bing News for: {query} (interval={interval_hours}h)")
-    encoded = quote_plus(query)
-    url = f"https://www.bing.com/news/search?q={encoded}&setlang=en-US&mkt=en-GB"
-    if interval_hours:
-        url += f"&qft=interval%3d%22{interval_hours}%22"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; NewsScraper/1.0; +https://github.com/yourrepo)"
-    }
-
-    resp = requests.get(url, headers=headers)
-    if resp.status_code != 200:
-        logger.error(f"Failed to fetch Bing News page for query '{query}': HTTP {resp.status_code}")
-        return []
-
-    soup = BeautifulSoup(resp.text, "html.parser")
-    results = []
-
-    articles = soup.select('div.news-card')
-    if not articles:
-        articles = soup.select('div.t_s')
-
-    for g in articles:
-        try:
-            link_tag = g.find('a')
-            if not link_tag:
-                continue
-
-            raw_link = link_tag.get('data-href') or link_tag.get('href') or ''
-            link = extract_real_url(raw_link)
-
-            title = link_tag.text.strip()
-
-            # Get publication name
-            source_tag = g.find('div', class_='source')
-            pub_name = source_tag.text.strip() if source_tag and source_tag.text.strip() and source_tag.text.strip() != '.' else ''
-
-            # Fallback: use domain from link if publication name missing or invalid
-            if not pub_name:
-                pub_name = clean_domain(link) or "Unknown"
-
-            summary_tag = g.find('div', class_='snippet')
-            summary = summary_tag.text.strip() if summary_tag else ''
-
-            time_tag = g.find('span', class_='time')
-            time_text = time_tag.text.strip() if time_tag else ''
-
-            publishedAt = parse_bing_time(time_text)
-
-            # Skip articles older than 7 days
-            if (now - publishedAt).days > 7:
-                continue
-
-            results.append({
-                'date': publishedAt,
-                'title': title,
-                'summary': summary[:200],
-                'link': link,
-                'pub': pub_name,
-                'domain': clean_domain(link),
-            })
-
-            logger.info(f"Article parsed: {title} | {pub_name} | {link}")
-
-        except Exception as e:
-            logger.warning(f"Error parsing a Bing article: {e}")
-
-    logger.info(f"✅ Found {len(results)} articles on page.")
-    return results
-
-def write_csv(path, articles):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", newline='', encoding="utf-8") as f:
+def write_csv(filepath, articles):
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    with open(filepath, mode="w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(['Date', 'Publication', 'Title', 'Link', 'Summary'])
-        for a in sorted(articles, key=lambda x: x['date'], reverse=True):
-            writer.writerow([a['date'].strftime('%Y-%m-%d %H:%M'), a['pub'], a['title'], a['link'], a['summary']])
+        writer.writerow(["Date", "Publication", "Title", "Summary", "URL"])
+        for a in articles:
+            writer.writerow([a['date'].strftime("%Y-%m-%d %H:%M"), a['publication'], a['title'], a['summary'], a['url']])
 
 def main():
     logger.info("🚀 Starting scrape...")
@@ -218,3 +224,22 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 - Scrapes Bing News HTML directly (no RSS, no API keys)
 - Each keyword/spokesperson searched independently
 - Filters by target domains (disabled now)
+- Classifies into _national_ or _trade_
+- Markdown + weekly/monthly CSV
+
+📌 Keywords: `{', '.join(KEYWORDS)}`
+🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`
+📰 National domains: `{len(NATIONAL_DOMAINS)}` sources tracked
+
+"""
+
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(md)
+
+    write_csv("summaries/weekly/summary.csv", weekly)
+    write_csv("summaries/monthly/summary.csv", monthly)
+
+    logger.info("✅ Scrape complete. README + CSVs updated.")
+
+if __name__ == "__main__":
+    main()
