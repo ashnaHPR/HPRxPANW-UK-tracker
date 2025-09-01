@@ -20,13 +20,13 @@ now = datetime.now(BST)
 def build_md_table(title, articles):
     if not articles:
         return f"## {title}\n\n_No articles found._\n\n"
-    s = f"## {title}\n\n| Date | Publication | Title | Summary |\n|------|-------------|--------|---------|\n"
+    s = f"## {title}\n\n| Date | Title | Summary | Link |\n|------|-------|---------|------|\n"
     for a in sorted(articles, key=lambda x: x['date'], reverse=True):
         s += (
             f"| {a['date'].strftime('%Y-%m-%d %H:%M')} "
-            f"| {escape_md(a['pub'])} "
-            f"| [{escape_md(a['title'])}]({a['link']}) "
-            f"| {escape_md(a['summary'])} |\n"
+            f"| {escape_md(a['title'])} "
+            f"| {escape_md(a['summary'])} "
+            f"| {a['link']} |\n"
         )
     return s + "\n"
 
@@ -87,7 +87,8 @@ def fetch_bing_news(query, interval_hours=None):
             time_text = time_tag.text.strip() if time_tag else ''
             publishedAt = parse_bing_time(time_text)
 
-            if (now - publishedAt).days > 7:
+            # Filter out articles older than 30 days (regardless of interval)
+            if (now - publishedAt).days > 30:
                 continue
 
             logger.info(f"Article: {title} | Pub: {pub_name} | Date: {publishedAt} | Link: {link}")
@@ -128,6 +129,7 @@ def main():
     all_articles_1h = []
     all_articles_24h = []
     all_articles_7d = []
+    all_articles_full = []  # NEW: no interval - for monthly
 
     for query in queries:
         all_articles_1h += fetch_bing_news(query, interval_hours=1)
@@ -135,6 +137,8 @@ def main():
         all_articles_24h += fetch_bing_news(query, interval_hours=24)
         time.sleep(1)
         all_articles_7d += fetch_bing_news(query, interval_hours=168)
+        time.sleep(1)
+        all_articles_full += fetch_bing_news(query)  # No interval for monthly
         time.sleep(1)
 
     logger.info("🔎 Domains before filtering:")
@@ -152,16 +156,20 @@ def main():
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
 
+    # Monthly from the full no-interval fetch
+    filtered_full = filter_articles_by_keywords_and_spokespeople(
+        all_articles_full, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
+    )
+    formatted_full = [format_article(a, now) for a in deduplicate_articles(filtered_full)]
+
+    monthly = [a for a in formatted_full if a['date'].date() >= today - timedelta(days=30)]
+
+    # Weekly from 7d fetch as before
     filtered_7d = filter_articles_by_keywords_and_spokespeople(
         all_articles_7d, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
     formatted_7d = [format_article(a, now) for a in deduplicate_articles(filtered_7d)]
-
-    # Weekly summary: last 7 days
     weekly = [a for a in formatted_7d if a['date'].date() >= today - timedelta(days=7)]
-
-    # Monthly summary: last 30 days
-    monthly = [a for a in formatted_7d if a['date'].date() >= today - timedelta(days=30)]
 
     md = f"# 🔐 Palo Alto Networks Coverage\n\n_Last updated: {now.strftime('%Y-%m-%d %H:%M %Z')}_\n\n"
     md += build_md_table("📌 All PANW Mentions Today", today_articles)
@@ -191,16 +199,14 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(md)
 
-    # Write weekly CSV
+    # Write weekly summary CSV
     write_csv("summaries/weekly/summary.csv", weekly)
 
-    # Write monthly CSVs per calendar month
+    # Write monthly summaries (one CSV per month)
     monthly_by_month = {}
     for article in monthly:
         month_key = article['date'].strftime('%Y-%m')
-        if month_key not in monthly_by_month:
-            monthly_by_month[month_key] = []
-        monthly_by_month[month_key].append(article)
+        monthly_by_month.setdefault(month_key, []).append(article)
 
     for month_key, articles in monthly_by_month.items():
         path = f"summaries/monthly/{month_key}.csv"
@@ -209,3 +215,4 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
     logger.info("✅ Scrape complete. README + CSVs updated.")
 
 if __name__ == "__main__":
+    main()
