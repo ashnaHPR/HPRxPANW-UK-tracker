@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '0 */4 * * *'  # every 4 hours
   workflow_dispatch:
+    inputs:
+      backfill:
+        description: 'Run backfill mode?'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   scrape-and-update:
@@ -24,28 +30,17 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run scraping script
+        env:
+          BACKFILL_MODE: ${{ github.event.inputs.backfill || 'false' }}
         run: |
           python .github/scrape_rss_news.py
 
-      - name: Commit and safely push updates
+      - name: Commit and push updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-
-          git add README.md summaries/weekly/summary.csv summaries/monthly/**/*.csv
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            COMMIT_MSG="🗞️ Auto update: W$(date +'%V'), $(date +'%Y-%m')"
-            git commit -m "$COMMIT_MSG"
-
-            # Safely pull latest changes
-            git stash push -m "temp-changes" || true
-            git pull --rebase --autostash
-
-            # Push changes
-            git push
-          fi
+          git add README.md summaries/weekly/summary.csv summaries/monthly/*
+          git diff --cached --quiet || git commit -m "🗞️ Auto update: W${{ github.run_number }}, ${{ github.event.schedule || github.event.inputs.backfill }}"
+          git push || echo "No changes to push"
