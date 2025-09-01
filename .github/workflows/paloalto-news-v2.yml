@@ -51,5 +51,7 @@ jobs:
             WEEK=$(date +%V)
             MONTH=$(date +%Y-%m)
             git commit -m "🗞️ Auto update: W${WEEK}, ${MONTH}"
+
+            git pull --rebase
             git push
           fi
