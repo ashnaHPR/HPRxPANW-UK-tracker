@@ -13,21 +13,21 @@ from scripts.utils import (
     filter_articles_by_keywords_and_spokespeople
 )
 from scripts.logger import logger
+import sys
 
 BST = pytz.timezone('Europe/London')
 now = datetime.now(BST)
-today = now.date()
 
 def build_md_table(title, articles):
     if not articles:
         return f"## {title}\n\n_No articles found._\n\n"
-    s = f"## {title}\n\n| Date | Title | Summary | Link |\n|------|-------|---------|------|\n"
+    s = f"## {title}\n\n| Date | Title | Summary | Link |\n|------|--------|---------|------|\n"
     for a in sorted(articles, key=lambda x: x['date'], reverse=True):
         s += (
             f"| {a['date'].strftime('%Y-%m-%d %H:%M')} "
-            f"| {escape_md(a['title'])} "
+            f"| [{escape_md(a['title'])}]({a['link']}) "
             f"| {escape_md(a['summary'])} "
-            f"| [Full Article]({a['link']}) |\n"
+            f"| {a['link']} |\n"
         )
     return s + "\n"
 
@@ -39,13 +39,17 @@ def parse_bing_time(time_str: str) -> datetime:
         if time_str in ('just now', ''):
             return now_dt
         if time_str.endswith('h'):
-            return now_dt - timedelta(hours=int(time_str[:-1]))
+            hours = int(time_str[:-1])
+            return now_dt - timedelta(hours=hours)
         if time_str.endswith('d'):
-            return now_dt - timedelta(days=int(time_str[:-1]))
+            days = int(time_str[:-1])
+            return now_dt - timedelta(days=days)
         if time_str.endswith('m'):
-            return now_dt - timedelta(minutes=int(time_str[:-1]))
+            mins = int(time_str[:-1])
+            return now_dt - timedelta(minutes=mins)
         if time_str.endswith('y'):
-            return now_dt - timedelta(days=int(time_str[:-1]) * 365)
+            years = int(time_str[:-1])
+            return now_dt - timedelta(days=years * 365)
         try:
             parsed_date = datetime.strptime(time_str, '%b %d, %Y')
             return BST.localize(parsed_date)
@@ -72,23 +76,40 @@ def fetch_bing_news(query, interval_hours=None):
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []
 
-    articles = soup.select('div.news-card') or soup.select('div.t_s')
+    articles = soup.select('div.news-card')
+    if not articles:
+        articles = soup.select('div.t_s')
 
     for g in articles:
         try:
             link_tag = g.find('a')
-            link = 'https://www.bing.com' + link_tag['href'] if link_tag and link_tag['href'].startswith('/') else link_tag['href']
+            link = ''
+            if link_tag and link_tag.has_attr('href'):
+                href = link_tag['href']
+                if href.startswith('/'):
+                    link = 'https://www.bing.com' + href
+                else:
+                    link = href
+
             title = link_tag.text.strip() if link_tag else ''
             summary_tag = g.find('div', class_='snippet')
             summary = summary_tag.text.strip() if summary_tag else ''
             source_tag = g.find('div', class_='source')
-            pub_name = source_tag.text.strip() if source_tag else 'Unknown'
+            pub_name = source_tag.text.strip() if source_tag else ''
+
+            if not pub_name or pub_name.strip() == ".":
+                pub_name = "Unknown"
+
             time_tag = g.find('span', class_='time')
             time_text = time_tag.text.strip() if time_tag else ''
+
             publishedAt = parse_bing_time(time_text)
 
+            # Skip articles older than 30 days (max range)
             if (now - publishedAt).days > 30:
                 continue
+
+            logger.info(f"Article: {title} | Pub: {pub_name} | Date: {publishedAt} | Link: {link}")
 
             results.append({
                 'date': publishedAt,
@@ -118,6 +139,21 @@ def write_csv(path, articles):
             ])
 
 def main():
+    # === Backfill mode detection ===
+    backfill_env = os.getenv('BACKFILL_MODE', '').lower()
+    if backfill_env in ['true', '1', 'yes']:
+        backfill_mode = True
+    elif backfill_env in ['false', '0', 'no']:
+        backfill_mode = False
+    else:
+        # fallback prompt only if interactive
+        if sys.stdin.isatty():
+            resp = input("Backfill mode? (true/false): ").strip().lower()
+            backfill_mode = (resp == 'true')
+        else:
+            backfill_mode = False
+    logger.info(f"Backfill mode: {backfill_mode}")
+
     logger.info("🚀 Starting scrape...")
 
     queries = KEYWORDS + [f'"Palo Alto Networks" AND {sp}' for sp in SPOKESPEOPLE]
@@ -132,34 +168,46 @@ def main():
         time.sleep(1)
         all_articles_24h += fetch_bing_news(query, interval_hours=24)
         time.sleep(1)
-        all_articles_7d += fetch_bing_news(query, interval_hours=168)  # 7 days
+        all_articles_7d += fetch_bing_news(query, interval_hours=168)
         time.sleep(1)
-        all_articles_30d += fetch_bing_news(query, interval_hours=720)  # 30 days
+        all_articles_30d += fetch_bing_news(query, interval_hours=720)  # ~30 days
         time.sleep(1)
+
+    logger.info("🔎 Domains before filtering:")
+    for a in all_articles_24h:
+        logger.info(f"{a['domain']} → {a['title']}")
 
     filtered_24h = filter_articles_by_keywords_and_spokespeople(
         all_articles_24h, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
     formatted_24h = [format_article(a, now) for a in deduplicate_articles(filtered_24h)]
 
-    # 🔁 Use last 24 hours instead of strict "today"
-    cutoff_24h = now - timedelta(hours=24)
-    today_articles = [a for a in formatted_24h if a['date'] >= cutoff_24h]
+    for a in formatted_24h:
+        logger.info(f"Article date: {a['date'].strftime('%Y-%m-%d %H:%M %Z')} - Title: {a['title']}")
 
+    today = now.date()
+
+    # Today's articles classification
+    today_articles = [a for a in formatted_24h if a['date'].date() == today]
     national_today = [a for a in today_articles if classify_domain(a['domain']) == "national"]
     trade_today = [a for a in today_articles if classify_domain(a['domain']) == "trade"]
 
-    # Weekly + Monthly logic
+    # Weekly summary from 7d
     filtered_7d = filter_articles_by_keywords_and_spokespeople(
         all_articles_7d, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
     )
     formatted_7d = [format_article(a, now) for a in deduplicate_articles(filtered_7d)]
-    weekly = [a for a in formatted_7d if a['date'] >= now - timedelta(days=7)]
-    monthly = [a for a in formatted_7d if a['date'] >= now - timedelta(days=30)]
+    weekly = [a for a in formatted_7d if a['date'].date() >= today - timedelta(days=7)]
 
-    # Build README content
+    # Monthly summary from 30d articles, dedup + filter
+    filtered_30d = filter_articles_by_keywords_and_spokespeople(
+        all_articles_30d, KEYWORDS, SPOKESPEOPLE, allowed_domains=None
+    )
+    formatted_30d = [format_article(a, now) for a in deduplicate_articles(filtered_30d)]
+    monthly = [a for a in formatted_30d if a['date'].date() >= today - timedelta(days=30)]
+
     md = f"# 🔐 Palo Alto Networks Coverage\n\n_Last updated: {now.strftime('%Y-%m-%d %H:%M %Z')}_\n\n"
-    md += build_md_table("📌 All PANW Mentions (Last 24 Hours)", today_articles)
+    md += build_md_table("📌 All PANW Mentions Today", today_articles)
     md += build_md_table("📰 National Coverage", national_today)
     md += build_md_table("📘 Trade Coverage", trade_today)
 
@@ -173,22 +221,30 @@ This GitHub Action fetches UK coverage of Palo Alto Networks every 4 hours.
 **Features:**
 - Scrapes Bing News HTML directly (no RSS, no API keys)
 - Each keyword/spokesperson searched independently
-- Filters by target domains (optional)
+- Filters by target domains (disabled now)
 - Classifies into _national_ or _trade_
 - Markdown + weekly/monthly CSV
 
 📌 Keywords: `{', '.join(KEYWORDS)}`
 🧑‍💼 Spokespeople tracked: `{', '.join(SPOKESPEOPLE)}`
 📰 National domains: `{len(NATIONAL_DOMAINS)}` sources tracked
+
 """
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(md)
 
     write_csv("summaries/weekly/summary.csv", weekly)
-    write_csv("summaries/monthly/summary.csv", monthly)
 
-    logger.info("✅ Scrape complete. README + CSVs updated.")
+    # Write monthly CSV per month folder
+    year = now.strftime("%Y")
+    month = now.strftime("%m")
+    monthly_folder = f"summaries/monthly/{year}"
+    os.makedirs(monthly_folder, exist_ok=True)
+    monthly_path = os.path.join(monthly_folder, f"{month}.csv")
+    write_csv(monthly_path, monthly)
+
+    logger.info("✅ Done writing files.")
 
 if __name__ == "__main__":
     main()
