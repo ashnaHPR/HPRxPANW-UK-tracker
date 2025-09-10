@@ -1,10 +1,12 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-09-10 05:25 BST_
+_Last updated: 2025-09-10 09:30 BST_
 
 ## 📌 All PANW Mentions Today
 
-_No articles found._
+| Date | Title | Summary | Link |
+|------|--------|---------|------|
+| 2025-09-10 09:30 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -12,7 +14,9 @@ _No articles found._
 
 ## 📘 Trade Coverage
 
-_No articles found._
+| Date | Title | Summary | Link |
+|------|--------|---------|------|
+| 2025-09-10 09:30 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
