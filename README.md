@@ -1,12 +1,10 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-09-10 17:27 BST_
+_Last updated: 2025-09-10 21:23 BST_
 
 ## 📌 All PANW Mentions Today
 
-| Date | Title | Summary | Link |
-|------|--------|---------|------|
-| 2025-09-10 17:27 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+_No articles found._
 
 ## 📰 National Coverage
 
@@ -14,9 +12,7 @@ _No articles found._
 
 ## 📘 Trade Coverage
 
-| Date | Title | Summary | Link |
-|------|--------|---------|------|
-| 2025-09-10 17:27 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+_No articles found._
 
 
 ---
