@@ -1,6 +1,6 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-09-10 02:42 BST_
+_Last updated: 2025-09-10 05:25 BST_
 
 ## 📌 All PANW Mentions Today
 
