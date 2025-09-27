@@ -1,13 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-09-27 17:24 BST_
+_Last updated: 2025-09-27 21:21 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2025-09-27 17:24 | [Palo Alto Networks gets HSR early termination for CyberArk acquisition](https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp) | Palo Alto Networks (NASDAQ:PANW) has received an early termination notice for its planned $25 billion acquisition of CyberArk (NASDAQ:CYBR). The early termination notice was disclosed on the Federal . | https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp |
-| 2025-09-27 17:24 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2025-09-27 21:21 | [Palo Alto Networks Stock Has Surged Since August. Can This Momentum Continue?](https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-has-surged-since-august-can-this-momentum-continue/ar-AA1NqtPG?ocid=BingNewsVerp) | Strong quarterly results and upbeat guidance have powered the stock higher. But the valuation leaves little room for error. | https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-has-surged-since-august-can-this-momentum-continue/ar-AA1NqtPG?ocid=BingNewsVerp |
+| 2025-09-27 21:21 | [Palo Alto Networks gets HSR early termination for CyberArk acquisition](https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp) | Palo Alto Networks (NASDAQ:PANW) has received an early termination notice for its planned $25 billion acquisition of CyberArk (NASDAQ:CYBR). The early termination notice was disclosed on the Federal . | https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp |
+| 2025-09-27 21:21 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2025-09-27 17:24 | [Palo Alto Networks gets HSR early termination for CyberArk acquisition](https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp) | Palo Alto Networks (NASDAQ:PANW) has received an early termination notice for its planned $25 billion acquisition of CyberArk (NASDAQ:CYBR). The early termination notice was disclosed on the Federal . | https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp |
-| 2025-09-27 17:24 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2025-09-27 21:21 | [Palo Alto Networks Stock Has Surged Since August. Can This Momentum Continue?](https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-has-surged-since-august-can-this-momentum-continue/ar-AA1NqtPG?ocid=BingNewsVerp) | Strong quarterly results and upbeat guidance have powered the stock higher. But the valuation leaves little room for error. | https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-has-surged-since-august-can-this-momentum-continue/ar-AA1NqtPG?ocid=BingNewsVerp |
+| 2025-09-27 21:21 | [Palo Alto Networks gets HSR early termination for CyberArk acquisition](https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp) | Palo Alto Networks (NASDAQ:PANW) has received an early termination notice for its planned $25 billion acquisition of CyberArk (NASDAQ:CYBR). The early termination notice was disclosed on the Federal . | https://www.msn.com/en-us/money/companies/palo-alto-networks-gets-hsr-early-termination-for-cyberark-acquisition/ar-AA1Nim64?ocid=BingNewsVerp |
+| 2025-09-27 21:21 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
