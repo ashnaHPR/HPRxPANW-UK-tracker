@@ -1,12 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2025-10-10 09:29 BST_
+_Last updated: 2025-10-10 13:47 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2025-10-10 09:29 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2025-10-10 13:47 | [Why Palo Alto Networks (PANW) Dipped More Than Broader Market Today](https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-dipped-more-than-broader-market-today/ar-AA1OaVFQ?ocid=BingNewsVerp) | In the latest trading session, Palo Alto Networks (PANW) closed at $215.17, marking a -1.2% move from the previous day. | https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-dipped-more-than-broader-market-today/ar-AA1OaVFQ?ocid=BingNewsVerp |
+| 2025-10-10 13:47 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -16,7 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2025-10-10 09:29 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2025-10-10 13:47 | [Why Palo Alto Networks (PANW) Dipped More Than Broader Market Today](https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-dipped-more-than-broader-market-today/ar-AA1OaVFQ?ocid=BingNewsVerp) | In the latest trading session, Palo Alto Networks (PANW) closed at $215.17, marking a -1.2% move from the previous day. | https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-dipped-more-than-broader-market-today/ar-AA1OaVFQ?ocid=BingNewsVerp |
+| 2025-10-10 13:47 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
