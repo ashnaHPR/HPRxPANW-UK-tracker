@@ -1,14 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-01-26 20:32 GMT_
+_Last updated: 2026-01-27 02:11 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-01-26 20:32 | [Guggenheim lifts Palo Alto Networks (PANW) rating following deal activity and AI tailwinds](https://www.msn.com/en-us/money/topstocks/guggenheim-lifts-palo-alto-networks-panw-rating-following-deal-activity-and-ai-tailwinds/ar-AA1THXOw?ocid=BingNewsVerp) | Palo Alto Networks, Inc. (NASDAQ:PANW) is one of the AI Stocks Making Waves on Wall Street. On January 4, Guggenheim analyst John DiFucci upgraded the stock from Sell to “Neutral,” noting that the ... | https://www.msn.com/en-us/money/topstocks/guggenheim-lifts-palo-alto-networks-panw-rating-following-deal-activity-and-ai-tailwinds/ar-AA1THXOw?ocid=BingNewsVerp |
-| 2026-01-26 20:32 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-01-26 20:32 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-01-27 02:11 | [Palo Alto Networks (PANW) surpasses market returns: Some facts worth knowing](https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-surpasses-market-returns-some-facts-worth-knowing/ar-AA1V2cJg?ocid=BingNewsVerp) | Palo Alto Networks (PANW) closed at $184.22 in the latest trading session, marking a +2.24% move from the prior day. The stock outpaced the S&P 500's daily gain of 0.5%. Elsewhere, the Dow saw an ... | https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-surpasses-market-returns-some-facts-worth-knowing/ar-AA1V2cJg?ocid=BingNewsVerp |
+| 2026-01-27 02:11 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-01-27 02:11 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -18,9 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-01-26 20:32 | [Guggenheim lifts Palo Alto Networks (PANW) rating following deal activity and AI tailwinds](https://www.msn.com/en-us/money/topstocks/guggenheim-lifts-palo-alto-networks-panw-rating-following-deal-activity-and-ai-tailwinds/ar-AA1THXOw?ocid=BingNewsVerp) | Palo Alto Networks, Inc. (NASDAQ:PANW) is one of the AI Stocks Making Waves on Wall Street. On January 4, Guggenheim analyst John DiFucci upgraded the stock from Sell to “Neutral,” noting that the ... | https://www.msn.com/en-us/money/topstocks/guggenheim-lifts-palo-alto-networks-panw-rating-following-deal-activity-and-ai-tailwinds/ar-AA1THXOw?ocid=BingNewsVerp |
-| 2026-01-26 20:32 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-01-26 20:32 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-01-27 02:11 | [Palo Alto Networks (PANW) surpasses market returns: Some facts worth knowing](https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-surpasses-market-returns-some-facts-worth-knowing/ar-AA1V2cJg?ocid=BingNewsVerp) | Palo Alto Networks (PANW) closed at $184.22 in the latest trading session, marking a +2.24% move from the prior day. The stock outpaced the S&P 500's daily gain of 0.5%. Elsewhere, the Dow saw an ... | https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-surpasses-market-returns-some-facts-worth-knowing/ar-AA1V2cJg?ocid=BingNewsVerp |
+| 2026-01-27 02:11 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-01-27 02:11 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
