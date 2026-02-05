@@ -1,14 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-02-05 05:17 GMT_
+_Last updated: 2026-02-05 08:51 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-02-05 05:17 | [Palo Alto Networks, Inc. (PANW): A bull case theory](https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp) | We came across a bullish thesis on Palo Alto Networks, Inc. on LongYield’s Substack. In this article, we will summarize the bulls’ thesis on PANW. Palo Alto Networks, Inc.’s share was trading at $176. | https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp |
-| 2026-02-05 05:17 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-02-05 05:17 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-02-05 08:51 | [Palo Alto Networks, Inc. (PANW): A bull case theory](https://www.msn.com/en-us/money/other/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp) | We came across a bullish thesis on Palo Alto Networks, Inc. on LongYield’s Substack. In this article, we will summarize the bulls’ thesis on PANW. Palo Alto Networks, Inc.’s share was trading at $176. | https://www.msn.com/en-us/money/other/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp |
+| 2026-02-05 08:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-02-05 08:51 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -18,9 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-02-05 05:17 | [Palo Alto Networks, Inc. (PANW): A bull case theory](https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp) | We came across a bullish thesis on Palo Alto Networks, Inc. on LongYield’s Substack. In this article, we will summarize the bulls’ thesis on PANW. Palo Alto Networks, Inc.’s share was trading at $176. | https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp |
-| 2026-02-05 05:17 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-02-05 05:17 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-02-05 08:51 | [Palo Alto Networks, Inc. (PANW): A bull case theory](https://www.msn.com/en-us/money/other/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp) | We came across a bullish thesis on Palo Alto Networks, Inc. on LongYield’s Substack. In this article, we will summarize the bulls’ thesis on PANW. Palo Alto Networks, Inc.’s share was trading at $176. | https://www.msn.com/en-us/money/other/palo-alto-networks-inc-panw-a-bull-case-theory/ar-AA1VxnY5?ocid=BingNewsVerp |
+| 2026-02-05 08:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-02-05 08:51 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
