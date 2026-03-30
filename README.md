@@ -1,10 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-03-30 14:44 BST_
+_Last updated: 2026-03-30 18:01 BST_
 
 ## 📌 All PANW Mentions Today
 
-_No articles found._
+| Date | Title | Summary | Link |
+|------|--------|---------|------|
+| 2026-03-30 18:01 | [Why Palo Alto Networks Stock Popped Today](https://www.msn.com/en-us/money/topstocks/why-palo-alto-networks-stock-popped-today/ar-AA1ZJwbS?ocid=BingNewsVerp) | Yes, Claude Mythos is coming. No, you should not be afraid of it. | https://www.msn.com/en-us/money/topstocks/why-palo-alto-networks-stock-popped-today/ar-AA1ZJwbS?ocid=BingNewsVerp |
+| 2026-03-30 18:01 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -12,7 +15,10 @@ _No articles found._
 
 ## 📘 Trade Coverage
 
-_No articles found._
+| Date | Title | Summary | Link |
+|------|--------|---------|------|
+| 2026-03-30 18:01 | [Why Palo Alto Networks Stock Popped Today](https://www.msn.com/en-us/money/topstocks/why-palo-alto-networks-stock-popped-today/ar-AA1ZJwbS?ocid=BingNewsVerp) | Yes, Claude Mythos is coming. No, you should not be afraid of it. | https://www.msn.com/en-us/money/topstocks/why-palo-alto-networks-stock-popped-today/ar-AA1ZJwbS?ocid=BingNewsVerp |
+| 2026-03-30 18:01 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
