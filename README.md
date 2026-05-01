@@ -1,12 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-04-30 22:05 BST_
+_Last updated: 2026-05-01 04:49 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-04-30 22:05 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-01 04:49 | [KPMG, Palo Alto Networks, DocuSign unveil major AI initiatives](https://www.msn.com/en-us/news/insight/kpmg-palo-alto-networks-docusign-unveil-major-ai-initiatives/gm-GM0C1E7801?ocid=BingNewsVerp) | KPMG Canada, Palo Alto Networks, and DocuSign each announced significant AI-focused initiatives, signaling a rapid acceleration in enterprise AI adoption. KPMG is expanding agentic AI capabilities ... | https://www.msn.com/en-us/news/insight/kpmg-palo-alto-networks-docusign-unveil-major-ai-initiatives/gm-GM0C1E7801?ocid=BingNewsVerp |
+| 2026-05-01 04:49 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -16,7 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-04-30 22:05 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-01 04:49 | [KPMG, Palo Alto Networks, DocuSign unveil major AI initiatives](https://www.msn.com/en-us/news/insight/kpmg-palo-alto-networks-docusign-unveil-major-ai-initiatives/gm-GM0C1E7801?ocid=BingNewsVerp) | KPMG Canada, Palo Alto Networks, and DocuSign each announced significant AI-focused initiatives, signaling a rapid acceleration in enterprise AI adoption. KPMG is expanding agentic AI capabilities ... | https://www.msn.com/en-us/news/insight/kpmg-palo-alto-networks-docusign-unveil-major-ai-initiatives/gm-GM0C1E7801?ocid=BingNewsVerp |
+| 2026-05-01 04:49 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
