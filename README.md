@@ -1,12 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-05-17 21:58 BST_
+_Last updated: 2026-05-18 05:06 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-05-17 21:58 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-18 05:06 | [Palo Alto Networks will benefit from further push into identity: Oppenheimer](https://www.msn.com/en-us/news/technology/palo-alto-networks-will-benefit-from-further-push-into-identity-oppenheimer/ar-AA23isdG?ocid=BingNewsVerp) | Following its acquisition of CyberArk, Palo Alto Networks (PANW) appears poised to further benefit from a deeper push into the identity market, Oppenheimer said. Analyst Ittai Kidron, who upped his .. | https://www.msn.com/en-us/news/technology/palo-alto-networks-will-benefit-from-further-push-into-identity-oppenheimer/ar-AA23isdG?ocid=BingNewsVerp |
+| 2026-05-18 05:06 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -16,7 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-05-17 21:58 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-18 05:06 | [Palo Alto Networks will benefit from further push into identity: Oppenheimer](https://www.msn.com/en-us/news/technology/palo-alto-networks-will-benefit-from-further-push-into-identity-oppenheimer/ar-AA23isdG?ocid=BingNewsVerp) | Following its acquisition of CyberArk, Palo Alto Networks (PANW) appears poised to further benefit from a deeper push into the identity market, Oppenheimer said. Analyst Ittai Kidron, who upped his .. | https://www.msn.com/en-us/news/technology/palo-alto-networks-will-benefit-from-further-push-into-identity-oppenheimer/ar-AA23isdG?ocid=BingNewsVerp |
+| 2026-05-18 05:06 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
