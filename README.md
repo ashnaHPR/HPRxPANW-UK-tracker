@@ -1,13 +1,12 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-05-21 05:09 BST_
+_Last updated: 2026-05-21 12:29 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-05-21 05:09 | [Stifel just raised its price target on Palo Alto Networks. Here's why.](https://www.msn.com/en-us/money/topstocks/stifel-just-raised-its-price-target-on-palo-alto-networks-here-s-why/ar-AA23GFbV?ocid=BingNewsVerp) | Palo Alto Networks (PANW) shares closed meaningfully higher on Wednesday after Stifel said the cybersecurity giant was strongly positioned to gain further as the year unfolds. In a research note this | https://www.msn.com/en-us/money/topstocks/stifel-just-raised-its-price-target-on-palo-alto-networks-here-s-why/ar-AA23GFbV?ocid=BingNewsVerp |
-| 2026-05-21 05:09 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-21 12:29 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +16,7 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-05-21 05:09 | [Stifel just raised its price target on Palo Alto Networks. Here's why.](https://www.msn.com/en-us/money/topstocks/stifel-just-raised-its-price-target-on-palo-alto-networks-here-s-why/ar-AA23GFbV?ocid=BingNewsVerp) | Palo Alto Networks (PANW) shares closed meaningfully higher on Wednesday after Stifel said the cybersecurity giant was strongly positioned to gain further as the year unfolds. In a research note this | https://www.msn.com/en-us/money/topstocks/stifel-just-raised-its-price-target-on-palo-alto-networks-here-s-why/ar-AA23GFbV?ocid=BingNewsVerp |
-| 2026-05-21 05:09 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-21 12:29 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
