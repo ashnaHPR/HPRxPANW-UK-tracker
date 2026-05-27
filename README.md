@@ -1,14 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-05-27 12:41 BST_
+_Last updated: 2026-05-27 16:55 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-05-27 12:41 | [Palo Alto Networks (PANW) stock drops despite market gains: Important facts to note](https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-stock-drops-despite-market-gains-important-facts-to-note/ar-AA247KyG?ocid=BingNewsVerp) | In the latest close session, Palo Alto Networks (PANW) was down 1.47% at $256.75. This change lagged the S&P 500's 0.61% gain on the day. On the other hand, the Dow registered a loss of 0.23%, and the | https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-stock-drops-despite-market-gains-important-facts-to-note/ar-AA247KyG?ocid=BingNewsVerp |
-| 2026-05-27 12:41 | [Is trending stock Palo Alto Networks, Inc. (PANW) a buy now?](https://www.msn.com/en-us/money/general/is-trending-stock-palo-alto-networks-inc-panw-a-buy-now/ar-AA246D6z?ocid=BingNewsVerp) | Palo Alto Networks (PANW) has been one of the most searched-for stocks on Zacks.com lately. So, you might want to look at some of the facts that could shape the stock's performance in the near term. | https://www.msn.com/en-us/money/general/is-trending-stock-palo-alto-networks-inc-panw-a-buy-now/ar-AA246D6z?ocid=BingNewsVerp |
-| 2026-05-27 12:41 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-27 16:55 | [Iran-linked hackers targeted US, Israel and UAE, Palo Alto Networks says](https://www.msn.com/en-us/news/technology/iran-linked-hackers-targeted-us-israel-and-uae-palo-alto-networks-says/ar-AA23W8f2?ocid=BingNewsVerp) | Palo Alto Networks’ Unit 42 said the Screening Serpens group used six new remote access Trojan variants and a new attack technique against targets during the regional escalation. | https://www.msn.com/en-us/news/technology/iran-linked-hackers-targeted-us-israel-and-uae-palo-alto-networks-says/ar-AA23W8f2?ocid=BingNewsVerp |
+| 2026-05-27 16:55 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -18,9 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-05-27 12:41 | [Palo Alto Networks (PANW) stock drops despite market gains: Important facts to note](https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-stock-drops-despite-market-gains-important-facts-to-note/ar-AA247KyG?ocid=BingNewsVerp) | In the latest close session, Palo Alto Networks (PANW) was down 1.47% at $256.75. This change lagged the S&P 500's 0.61% gain on the day. On the other hand, the Dow registered a loss of 0.23%, and the | https://www.msn.com/en-us/money/topstocks/palo-alto-networks-panw-stock-drops-despite-market-gains-important-facts-to-note/ar-AA247KyG?ocid=BingNewsVerp |
-| 2026-05-27 12:41 | [Is trending stock Palo Alto Networks, Inc. (PANW) a buy now?](https://www.msn.com/en-us/money/general/is-trending-stock-palo-alto-networks-inc-panw-a-buy-now/ar-AA246D6z?ocid=BingNewsVerp) | Palo Alto Networks (PANW) has been one of the most searched-for stocks on Zacks.com lately. So, you might want to look at some of the facts that could shape the stock's performance in the near term. | https://www.msn.com/en-us/money/general/is-trending-stock-palo-alto-networks-inc-panw-a-buy-now/ar-AA246D6z?ocid=BingNewsVerp |
-| 2026-05-27 12:41 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-05-27 16:55 | [Iran-linked hackers targeted US, Israel and UAE, Palo Alto Networks says](https://www.msn.com/en-us/news/technology/iran-linked-hackers-targeted-us-israel-and-uae-palo-alto-networks-says/ar-AA23W8f2?ocid=BingNewsVerp) | Palo Alto Networks’ Unit 42 said the Screening Serpens group used six new remote access Trojan variants and a new attack technique against targets during the regional escalation. | https://www.msn.com/en-us/news/technology/iran-linked-hackers-targeted-us-israel-and-uae-palo-alto-networks-says/ar-AA23W8f2?ocid=BingNewsVerp |
+| 2026-05-27 16:55 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
