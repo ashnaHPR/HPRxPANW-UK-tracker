@@ -1,14 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-08-25 13:53 BST_
+_Last updated: 2026-08-25 17:40 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-08-25 13:53 | [This analyst just upped its price target on Palo Alto Networks stock. Here's why.](https://www.msn.com/en-us/money/topstocks/this-analyst-just-upped-its-price-target-on-palo-alto-networks-stock-heres-why/ar-AA2aQ8mK?ocid=BingNewsVerp) | Palo Alto Networks (PANW) shares are in focus on Aug. 24 after Benchmark increased its price target on the cybersecurity company ahead of its fiscal Q4 earnings. Analyst Yi Fu Lee reiterated his “Buy” | https://www.msn.com/en-us/money/topstocks/this-analyst-just-upped-its-price-target-on-palo-alto-networks-stock-heres-why/ar-AA2aQ8mK?ocid=BingNewsVerp |
-| 2026-08-25 13:53 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-08-25 13:53 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-08-25 17:40 | [Here's how much you'd have if you invested $1000 in Palo Alto Networks a decade ago](https://www.msn.com/en-us/money/technology/here-s-how-much-you-d-have-if-you-invested-1000-in-palo-alto-networks-a-decade-ago/ar-AA2aOLkZ?ocid=BingNewsVerp) | For most investors, how much a stock's price changes over time is important. Not only can it impact your investment portfolio, but it can also help you compare investment results across sectors and .. | https://www.msn.com/en-us/money/technology/here-s-how-much-you-d-have-if-you-invested-1000-in-palo-alto-networks-a-decade-ago/ar-AA2aOLkZ?ocid=BingNewsVerp |
+| 2026-08-25 17:40 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-08-25 17:40 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -18,9 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-08-25 13:53 | [This analyst just upped its price target on Palo Alto Networks stock. Here's why.](https://www.msn.com/en-us/money/topstocks/this-analyst-just-upped-its-price-target-on-palo-alto-networks-stock-heres-why/ar-AA2aQ8mK?ocid=BingNewsVerp) | Palo Alto Networks (PANW) shares are in focus on Aug. 24 after Benchmark increased its price target on the cybersecurity company ahead of its fiscal Q4 earnings. Analyst Yi Fu Lee reiterated his “Buy” | https://www.msn.com/en-us/money/topstocks/this-analyst-just-upped-its-price-target-on-palo-alto-networks-stock-heres-why/ar-AA2aQ8mK?ocid=BingNewsVerp |
-| 2026-08-25 13:53 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-08-25 13:53 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-08-25 17:40 | [Here's how much you'd have if you invested $1000 in Palo Alto Networks a decade ago](https://www.msn.com/en-us/money/technology/here-s-how-much-you-d-have-if-you-invested-1000-in-palo-alto-networks-a-decade-ago/ar-AA2aOLkZ?ocid=BingNewsVerp) | For most investors, how much a stock's price changes over time is important. Not only can it impact your investment portfolio, but it can also help you compare investment results across sectors and .. | https://www.msn.com/en-us/money/technology/here-s-how-much-you-d-have-if-you-invested-1000-in-palo-alto-networks-a-decade-ago/ar-AA2aOLkZ?ocid=BingNewsVerp |
+| 2026-08-25 17:40 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-08-25 17:40 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
