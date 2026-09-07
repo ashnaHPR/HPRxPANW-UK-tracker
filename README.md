@@ -1,13 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-09-06 23:00 BST_
+_Last updated: 2026-09-07 04:48 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-09-06 23:00 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-09-06 23:00 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-09-07 04:48 | [What's going on with Palo Alto Networks stock Wednesday?](https://www.msn.com/en-us/news/other/whats-going-on-with-palo-alto-networks-stock-wednesday/ar-AA2bpVfg?ocid=BingNewsVerp) | <?xml encoding="utf-8" ?> Palo Alto Networks, Inc. PANW stock slid more than 2% during Wednesday’s premarket session as traders digest a post-earnings setup and an overnight risk-off tone. Nasdaq ... | https://www.msn.com/en-us/news/other/whats-going-on-with-palo-alto-networks-stock-wednesday/ar-AA2bpVfg?ocid=BingNewsVerp |
+| 2026-09-07 04:48 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-09-07 04:48 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-09-06 23:00 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-09-06 23:00 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-09-07 04:48 | [What's going on with Palo Alto Networks stock Wednesday?](https://www.msn.com/en-us/news/other/whats-going-on-with-palo-alto-networks-stock-wednesday/ar-AA2bpVfg?ocid=BingNewsVerp) | <?xml encoding="utf-8" ?> Palo Alto Networks, Inc. PANW stock slid more than 2% during Wednesday’s premarket session as traders digest a post-earnings setup and an overnight risk-off tone. Nasdaq ... | https://www.msn.com/en-us/news/other/whats-going-on-with-palo-alto-networks-stock-wednesday/ar-AA2bpVfg?ocid=BingNewsVerp |
+| 2026-09-07 04:48 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-09-07 04:48 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
