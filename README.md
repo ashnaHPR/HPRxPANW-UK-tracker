@@ -1,14 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-10-11 00:20 BST_
+_Last updated: 2026-10-11 05:59 BST_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-10-11 00:20 | [Amerx Initiates Coverage of Palo Alto Networks with Hold](https://www.msn.com/en-us/news/other/amerx-initiates-coverage-of-palo-alto-networks-with-hold/ar-AA2dR8Er?ocid=BingNewsVerp) | Fintel reports that on October 8, 2026, Amerx initiated coverage of Palo Alto Networks (NASDAQGS:PANW) (TASE:CYBR) with a Hold recommendation. Palo Alto Networks, Inc., based in the United States, ... | https://www.msn.com/en-us/news/other/amerx-initiates-coverage-of-palo-alto-networks-with-hold/ar-AA2dR8Er?ocid=BingNewsVerp |
-| 2026-10-11 00:20 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-10-11 00:20 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-10-11 05:59 | [Palo Alto Networks stock reaches new highs: What's happening?](https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-reaches-new-highs-what-s-happening/ar-AA2dHcn5?ocid=BingNewsVerp) | Palo Alto Networks Inc PANW shares are rising Tuesday, hitting new all-time highs. Cybersecurity stocks are climbing after Zscaler reaffirmed its first-quarter and fiscal 2027 adjusted earnings ... | https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-reaches-new-highs-what-s-happening/ar-AA2dHcn5?ocid=BingNewsVerp |
+| 2026-10-11 05:59 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-10-11 05:59 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -18,9 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-10-11 00:20 | [Amerx Initiates Coverage of Palo Alto Networks with Hold](https://www.msn.com/en-us/news/other/amerx-initiates-coverage-of-palo-alto-networks-with-hold/ar-AA2dR8Er?ocid=BingNewsVerp) | Fintel reports that on October 8, 2026, Amerx initiated coverage of Palo Alto Networks (NASDAQGS:PANW) (TASE:CYBR) with a Hold recommendation. Palo Alto Networks, Inc., based in the United States, ... | https://www.msn.com/en-us/news/other/amerx-initiates-coverage-of-palo-alto-networks-with-hold/ar-AA2dR8Er?ocid=BingNewsVerp |
-| 2026-10-11 00:20 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-10-11 00:20 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
+| 2026-10-11 05:59 | [Palo Alto Networks stock reaches new highs: What's happening?](https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-reaches-new-highs-what-s-happening/ar-AA2dHcn5?ocid=BingNewsVerp) | Palo Alto Networks Inc PANW shares are rising Tuesday, hitting new all-time highs. Cybersecurity stocks are climbing after Zscaler reaffirmed its first-quarter and fiscal 2027 adjusted earnings ... | https://www.msn.com/en-us/money/top-stocks/palo-alto-networks-stock-reaches-new-highs-what-s-happening/ar-AA2dHcn5?ocid=BingNewsVerp |
+| 2026-10-11 05:59 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-10-11 05:59 | [Royal United Services Institute](https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM) | Carla Baker is a Senior Director for Policy & Government Affairs at Palo Alto networks, responsible for driving the company’s public policy agenda in the UK and Ireland, developing policy positions on | https://www.bing.com/news/search?q=site%3awww.rusi.org&FORM=NWBCLM |
 
 
 ---
