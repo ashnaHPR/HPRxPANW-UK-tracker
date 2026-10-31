@@ -1,13 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-10-31 04:51 GMT_
+_Last updated: 2026-10-31 14:24 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-10-31 04:51 | [Palo Alto Networks CEO Nikesh Arora: Our security response time has to get faster as AI gets faster](https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp) | Palo Alto Networks CEO Nikesh Arora joins 'Closing Bell' ... | https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp |
-| 2026-10-31 04:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-10-31 14:24 | [Palo Alto Networks (PANW) laps the stock market: here's why](https://www.msn.com/en-us/news/other/palo-alto-networks-panw-laps-the-stock-market-heres-why/ar-AA2g7HJq?ocid=BingNewsVerp) | In the latest trading session, Palo Alto Networks (PANW) closed at $390.54, marking a +2.63% move from the previous day. The stock's performance was ahead of the S&P 500's daily gain of 0.7%. | https://www.msn.com/en-us/news/other/palo-alto-networks-panw-laps-the-stock-market-heres-why/ar-AA2g7HJq?ocid=BingNewsVerp |
+| 2026-10-31 14:24 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-10-31 04:51 | [Palo Alto Networks CEO Nikesh Arora: Our security response time has to get faster as AI gets faster](https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp) | Palo Alto Networks CEO Nikesh Arora joins 'Closing Bell' ... | https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp |
-| 2026-10-31 04:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-10-31 14:24 | [Palo Alto Networks (PANW) laps the stock market: here's why](https://www.msn.com/en-us/news/other/palo-alto-networks-panw-laps-the-stock-market-heres-why/ar-AA2g7HJq?ocid=BingNewsVerp) | In the latest trading session, Palo Alto Networks (PANW) closed at $390.54, marking a +2.63% move from the previous day. The stock's performance was ahead of the S&P 500's daily gain of 0.7%. | https://www.msn.com/en-us/news/other/palo-alto-networks-panw-laps-the-stock-market-heres-why/ar-AA2g7HJq?ocid=BingNewsVerp |
+| 2026-10-31 14:24 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
