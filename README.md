@@ -1,13 +1,14 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-11-01 14:51 GMT_
+_Last updated: 2026-11-01 20:20 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-01 14:51 | [Investors heavily search Palo Alto Networks, Inc. (PANW): Here is what you need to know](https://www.msn.com/en-us/news/other/investors-heavily-search-palo-alto-networks-inc-panw-here-is-what-you-need-to-know/ar-AA2g5HVz?ocid=BingNewsVerp) | Palo Alto Networks (PANW) has been one of the most searched-for stocks on Zacks.com lately. So, you might want to look at some of the facts that could shape the stock's performance in the near term. | https://www.msn.com/en-us/news/other/investors-heavily-search-palo-alto-networks-inc-panw-here-is-what-you-need-to-know/ar-AA2g5HVz?ocid=BingNewsVerp |
-| 2026-11-01 14:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-01 20:20 | [Why Palo Alto Networks (PANW) stock is falling today](https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-stock-is-falling-today/ar-AA2e5v3T?ocid=BingNewsVerp) | What Happened? Shares of cybersecurity platform provider Palo Alto Networks (NASDAQ:PANW) fell 4.7% in the afternoon session after Phillip Securities downgraded the company to Neutral from Buy with a | https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-stock-is-falling-today/ar-AA2e5v3T?ocid=BingNewsVerp |
+| 2026-11-01 20:20 | [Palo Alto Networks CEO Nikesh Arora: Our security response time has to get faster as AI gets faster](https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp) | Palo Alto Networks CEO Nikesh Arora joins 'Closing Bell' ... | https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp |
+| 2026-11-01 20:20 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +18,9 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-01 14:51 | [Investors heavily search Palo Alto Networks, Inc. (PANW): Here is what you need to know](https://www.msn.com/en-us/news/other/investors-heavily-search-palo-alto-networks-inc-panw-here-is-what-you-need-to-know/ar-AA2g5HVz?ocid=BingNewsVerp) | Palo Alto Networks (PANW) has been one of the most searched-for stocks on Zacks.com lately. So, you might want to look at some of the facts that could shape the stock's performance in the near term. | https://www.msn.com/en-us/news/other/investors-heavily-search-palo-alto-networks-inc-panw-here-is-what-you-need-to-know/ar-AA2g5HVz?ocid=BingNewsVerp |
-| 2026-11-01 14:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-01 20:20 | [Why Palo Alto Networks (PANW) stock is falling today](https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-stock-is-falling-today/ar-AA2e5v3T?ocid=BingNewsVerp) | What Happened? Shares of cybersecurity platform provider Palo Alto Networks (NASDAQ:PANW) fell 4.7% in the afternoon session after Phillip Securities downgraded the company to Neutral from Buy with a | https://www.msn.com/en-us/money/top-stocks/why-palo-alto-networks-panw-stock-is-falling-today/ar-AA2e5v3T?ocid=BingNewsVerp |
+| 2026-11-01 20:20 | [Palo Alto Networks CEO Nikesh Arora: Our security response time has to get faster as AI gets faster](https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp) | Palo Alto Networks CEO Nikesh Arora joins 'Closing Bell' ... | https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp |
+| 2026-11-01 20:20 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
