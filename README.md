@@ -1,13 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-11-05 19:51 GMT_
+_Last updated: 2026-11-06 00:53 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-05 19:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-11-05 19:51 | [Palo Alto Networks trending after launching AI-powered cyber defense service](https://www.msn.com/en-us/technology/cybersecurity/palo-alto-networks-trending-after-launching-ai-powered-cyber-defense-service/ar-AA2cKJf9?ocid=BingNewsVerp) | Palo Alto Networks Inc. PANW is trending after the company announced Unit 42 Continuous Frontier AI Defense, a new agentic offensive security service built around gated AI models from Anthropic and .. | https://www.msn.com/en-us/technology/cybersecurity/palo-alto-networks-trending-after-launching-ai-powered-cyber-defense-service/ar-AA2cKJf9?ocid=BingNewsVerp |
+| 2026-11-06 00:53 | [Palo Alto Networks CEO Nikesh Arora: Our security response time has to get faster as AI gets faster](https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp) | Palo Alto Networks CEO Nikesh Arora joins 'Closing Bell' ... | https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp |
+| 2026-11-06 00:53 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-05 19:51 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
-| 2026-11-05 19:51 | [Palo Alto Networks trending after launching AI-powered cyber defense service](https://www.msn.com/en-us/technology/cybersecurity/palo-alto-networks-trending-after-launching-ai-powered-cyber-defense-service/ar-AA2cKJf9?ocid=BingNewsVerp) | Palo Alto Networks Inc. PANW is trending after the company announced Unit 42 Continuous Frontier AI Defense, a new agentic offensive security service built around gated AI models from Anthropic and .. | https://www.msn.com/en-us/technology/cybersecurity/palo-alto-networks-trending-after-launching-ai-powered-cyber-defense-service/ar-AA2cKJf9?ocid=BingNewsVerp |
+| 2026-11-06 00:53 | [Palo Alto Networks CEO Nikesh Arora: Our security response time has to get faster as AI gets faster](https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp) | Palo Alto Networks CEO Nikesh Arora joins 'Closing Bell' ... | https://www.msn.com/en-us/video/other/palo-alto-networks-ceo-nikesh-arora-our-security-response-time-has-to-get-faster-as-ai-gets-faster/vi-AA2ekvB6?ocid=BingNewsVerp |
+| 2026-11-06 00:53 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
