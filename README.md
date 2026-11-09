@@ -1,12 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-11-08 20:17 GMT_
+_Last updated: 2026-11-09 05:30 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-08 20:17 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-09 05:30 | [Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M](https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/ar-AA2gS9JQ?ocid=BingNewsVerp) | Clutch, backed by Lightspeed and SignalFire, was last valued at $85 million, according to a source. | https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/ar-AA2gS9JQ?ocid=BingNewsVerp |
+| 2026-11-09 05:30 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -16,7 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-08 20:17 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-09 05:30 | [Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M](https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/ar-AA2gS9JQ?ocid=BingNewsVerp) | Clutch, backed by Lightspeed and SignalFire, was last valued at $85 million, according to a source. | https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/ar-AA2gS9JQ?ocid=BingNewsVerp |
+| 2026-11-09 05:30 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
