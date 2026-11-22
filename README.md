@@ -1,13 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-11-21 21:30 GMT_
+_Last updated: 2026-11-22 05:54 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-21 21:30 | [Palo Alto Networks: Accelerating Growth and a $4.5 Billion Bet on the Future of Cybersecurity](https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp) | Demand has never been stronger for the cybersecurity specialist. | https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp |
-| 2026-11-21 21:30 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-22 05:54 | [Palo Alto Networks: Accelerating Growth and a $4.5 Billion Bet on the Future of Cybersecurity](https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp) | Demand has never been stronger for the cybersecurity specialist. | https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp |
+| 2026-11-22 05:54 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-21 21:30 | [Palo Alto Networks: Accelerating Growth and a $4.5 Billion Bet on the Future of Cybersecurity](https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp) | Demand has never been stronger for the cybersecurity specialist. | https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp |
-| 2026-11-21 21:30 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-22 05:54 | [Palo Alto Networks: Accelerating Growth and a $4.5 Billion Bet on the Future of Cybersecurity](https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp) | Demand has never been stronger for the cybersecurity specialist. | https://www.msn.com/en-us/news/other/palo-alto-networks-accelerating-growth-and-a-45-billion-bet-on-the-future-of-cybersecurity/ar-AA2hJLGu?ocid=BingNewsVerp |
+| 2026-11-22 05:54 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
