@@ -1,12 +1,13 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-11-24 02:47 GMT_
+_Last updated: 2026-11-24 14:39 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-24 02:47 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-24 14:39 | [Palo Alto Networks' acquisition spree continues during $44 billion CrowdStrike, Zscaler cybersecurity megadeal](https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-acquisition-spree-continues-during-44-billion-crowdstrike-zscaler-cybersecurity-megadeal/ar-AA2i4EUR?ocid=BingNewsVerp) | Palo Alto Networks, Inc. (NASDAQ:PANW) is reportedly in talks to acquire Israeli cybersecurity startup Terra Security in a transaction that could exceed $500 million. Talks remain at an early stage, . | https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-acquisition-spree-continues-during-44-billion-crowdstrike-zscaler-cybersecurity-megadeal/ar-AA2i4EUR?ocid=BingNewsVerp |
+| 2026-11-24 14:39 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -16,7 +17,8 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-24 02:47 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-24 14:39 | [Palo Alto Networks' acquisition spree continues during $44 billion CrowdStrike, Zscaler cybersecurity megadeal](https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-acquisition-spree-continues-during-44-billion-crowdstrike-zscaler-cybersecurity-megadeal/ar-AA2i4EUR?ocid=BingNewsVerp) | Palo Alto Networks, Inc. (NASDAQ:PANW) is reportedly in talks to acquire Israeli cybersecurity startup Terra Security in a transaction that could exceed $500 million. Talks remain at an early stage, . | https://www.msn.com/en-us/technology/tech-companies/palo-alto-networks-acquisition-spree-continues-during-44-billion-crowdstrike-zscaler-cybersecurity-megadeal/ar-AA2i4EUR?ocid=BingNewsVerp |
+| 2026-11-24 14:39 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
