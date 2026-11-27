@@ -1,13 +1,12 @@
 # 🔐 Palo Alto Networks Coverage
 
-_Last updated: 2026-11-27 00:25 GMT_
+_Last updated: 2026-11-27 13:36 GMT_
 
 ## 📌 All PANW Mentions Today
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-27 00:25 | [Palo Alto Networks falls after former exec sues, alleging accounting fraud](https://www.msn.com/en-us/money/general/palo-alto-networks-falls-after-former-exec-sues-alleging-accounting-fraud/ar-AA2ieODg?ocid=BingNewsVerp) | Palo Alto Networks (PANW) shares fell 1% in extended trading on Monday after a former executive sued the company, alleging it conspired in accounting fraud. Dan McGill, a former vice president at the | https://www.msn.com/en-us/money/general/palo-alto-networks-falls-after-former-exec-sues-alleging-accounting-fraud/ar-AA2ieODg?ocid=BingNewsVerp |
-| 2026-11-27 00:25 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-27 13:36 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 ## 📰 National Coverage
 
@@ -17,8 +16,7 @@ _No articles found._
 
 | Date | Title | Summary | Link |
 |------|--------|---------|------|
-| 2026-11-27 00:25 | [Palo Alto Networks falls after former exec sues, alleging accounting fraud](https://www.msn.com/en-us/money/general/palo-alto-networks-falls-after-former-exec-sues-alleging-accounting-fraud/ar-AA2ieODg?ocid=BingNewsVerp) | Palo Alto Networks (PANW) shares fell 1% in extended trading on Monday after a former executive sued the company, alleging it conspired in accounting fraud. Dan McGill, a former vice president at the | https://www.msn.com/en-us/money/general/palo-alto-networks-falls-after-former-exec-sues-alleging-accounting-fraud/ar-AA2ieODg?ocid=BingNewsVerp |
-| 2026-11-27 00:25 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
+| 2026-11-27 13:36 | [Information Age](https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM) | Carla Baker, senior director, government affairs UK&I at Palo Alto Networks, analyses what the latest iteration of the UK’s National Cyber Strategy means for organisations The UK’s National Cyber ... | https://www.bing.com/news/search?q=site%3awww.information-age.com&FORM=NWBCLM |
 
 
 ---
